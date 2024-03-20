@@ -1,6 +1,6 @@
 ﻿namespace quiz_maker
 {
-    internal class Questions
+    public class Questions
     {
     }
 }
