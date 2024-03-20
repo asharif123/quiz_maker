@@ -4,12 +4,14 @@ What program has multiple choices, random questions and user scoring?
 A quiz maker program! 
 Design a program which asks the user for a list of questions, multiple choice answers for each question 
 and the ability to specify which answer(s) are right. 
+
 The program will then add those questions and answers to a list that gets stored on your harddisk using 
 serialisation.The program can then read that file, randomly pick a question and load up its answers 
 for the user to choose from. When the user chooses an answer the program will determine if the answer chosen is correct.
 It should also keep score for the end.
 
 rocket Tips: First we need to create our repository of questions and answers. 
+
 A simple way to do this is to have your program open up and ask the user to enter questions and their answers. 
 Each question and the answers they add will be stored in a file (serialisation is your friend).
 
@@ -22,8 +24,9 @@ At the end of the quiz their score is this counter variable over the number of q
 
 namespace quiz_maker
 {
-    public class Class1
+    public class Answers
     {
-
+        //keep track of users score
+        public int score;
     }
 }
