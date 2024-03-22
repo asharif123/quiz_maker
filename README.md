@@ -25,4 +25,3 @@ At the end of the quiz their score is this counter variable over the number of q
 User is given the option to replay the game.
 
 If yes, program restarts and user can re input 3 questions
-*/
