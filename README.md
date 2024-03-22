@@ -1,5 +1,3 @@
-/*using System.Collections.Generic;
-
 What program has multiple choices, random questions and user scoring? 
 A quiz maker program! 
 
