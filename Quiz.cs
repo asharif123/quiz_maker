@@ -24,9 +24,15 @@ At the end of the quiz their score is this counter variable over the number of q
 
 namespace quiz_maker
 {
-    public class Answers
+    public class Quiz
     {
-        //keep track of users score
-        public int score;
+        //list of questions that user has inputted
+        public List<string> listOfQuestions = new List<string>();
+
+        //list of answers that user has inputted
+        public List<string> listOfAnswers = new List<string>();
+        
+        //get users updated score depending on number of correct answers
+        public int totalScore;
     }
 }
