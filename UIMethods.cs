@@ -39,5 +39,13 @@
             string inputQuestions = Console.ReadLine();
             return inputQuestions;
         }
+
+        //input answers
+        public static string InputAnswers()
+        {
+            Console.WriteLine("Please input your answers!\n");
+            string inputAnswers = Console.ReadLine();
+            return inputAnswers;
+        }
     }
 }
