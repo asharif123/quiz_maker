@@ -4,9 +4,6 @@
     {
         static void Main()
         {
-            //user can enter up to 3 questions at a time
-            const int NUMBER_OF_QUESTIONS = 3;
-
             //user can enter 4 answers per question
             const int NUMBER_OF_ANSWERS = 4;
 
@@ -15,8 +12,13 @@
 
             //print welcome message
             UIMethods.PrintWelcomeMessage();
+
+            //used to randomly select a question
+            Random rd = new Random();
+
             while (replay)
             {
+                
             }
         }
     }

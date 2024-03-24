@@ -3,7 +3,7 @@
 What program has multiple choices, random questions and user scoring? 
 A quiz maker program! 
 Design a program which asks the user for a list of questions, multiple choice answers for each question 
-and the ability to specify which answer(s) are right. 
+and select which answer is right. 
 
 The program will then add those questions and answers to a list that gets stored on your harddisk using 
 serialisation.The program can then read that file, randomly pick a question and load up its answers 
