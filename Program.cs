@@ -37,6 +37,11 @@
                     string answersToAdd = UIMethods.InputAnswers();
                     newQuiz.listOfAnswers.Add(answersToAdd);
                 }
+
+                if (UIMethods.AskUserToPlayAgain() == false)
+                {
+                    replay = false;
+                }
             }
         }
     }
