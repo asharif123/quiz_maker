@@ -18,7 +18,17 @@
 
             while (replay)
             {
+                var newQuiz = new Quiz();
                 
+                int maxQuestions = UIMethods.AskNumberOfQuestions();
+                //record questions user is entering
+                string questionToAdd = UIMethods.InputQuestions();
+
+            //take number of questions user wants to input and add to list
+            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
+                {
+                    newQuiz.listOfQuestions.Add(questionToAdd);
+                }
             }
         }
     }
