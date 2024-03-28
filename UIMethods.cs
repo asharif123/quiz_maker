@@ -36,7 +36,7 @@
         //take questions user has answered and add them to list
         public static string InputQuestions()
         {
-            Console.WriteLine("Please input your question!\n");
+            Console.WriteLine("\nPlease input your question!\n");
             string inputQuestions = Console.ReadLine();
             return inputQuestions;
         }
