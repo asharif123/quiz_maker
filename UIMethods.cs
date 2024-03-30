@@ -44,7 +44,7 @@
         //input answers
         public static string InputAnswers()
         {
-            Console.WriteLine("Please input your answers!\n");
+            Console.WriteLine("Please input your answers, you can enter upto 4 answers!\n");
             string? inputAnswers = Console.ReadLine();
             return inputAnswers;
         }

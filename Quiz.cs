@@ -28,7 +28,7 @@ namespace quiz_maker
     public class Quiz
     {
         //question user has inputted
-        public string questions;
+        public string questions = "";
 
         //list of answers that user has inputted
         public List<string> listOfAnswers = new List<string>();

@@ -59,6 +59,9 @@ namespace quiz_maker
                     //add each question to a list
                     listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers});
                 }
+                Console.Write((listOfQuestions));
+                //randomly select a question
+
 
                 //serialization
                 XmlSerializer writer = new XmlSerializer(typeof(Quiz));
