@@ -21,10 +21,21 @@ namespace quiz_maker
             //used to randomly select a question
             Random rd = new Random();
 
+            //initiate a new quiz
+            //ask user number of questions to input
+            //ask user a question with 4 answers
+            //initiate a quiz with question and 4 answers, store each question in a list
+            //do this until all questions have been added, randomly select a question
+            //have user select an answer, see if it's correct or not
+            //if correct answer selected, increment totalScore
+            //if user wants to replay, reset the score otherwise exit the game
             while (replay)
             {
                 //initiate a new quiz
                 var newQuiz = new Quiz();
+
+                //get user's total score
+                int totalScore = 0;
 
                 int maxQuestions = UIMethods.AskNumberOfQuestions();
 
