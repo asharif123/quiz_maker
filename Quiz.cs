@@ -22,14 +22,13 @@ Each successful answer can be added to a counter variable.
 At the end of the quiz their score is this counter variable over the number of questions asked.
 */
 
-using System.Security.Cryptography.X509Certificates;
-
+//quiz card contains a question with 4 answers
 namespace quiz_maker
 {
     public class Quiz
     {
-        //list of questions that user has inputted
-        public string questions;
+        //question user has inputted
+        public string questions = "";
 
         //list of answers that user has inputted
         public List<string> listOfAnswers = new List<string>();
