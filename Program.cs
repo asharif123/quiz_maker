@@ -36,7 +36,7 @@ namespace quiz_maker
                 int totalScore = 0;
 
                 //list of questions user has inputted
-                List<string> listOfQuestions = new List<string>();
+                List<object> listOfQuestions = new List<object>();
 
                 //list of answers to add
                 List<string> listOfAnswers = new List<string>();
