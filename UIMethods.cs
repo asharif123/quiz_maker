@@ -3,6 +3,9 @@
     internal class UIMethods
     {
         const char CONTINUE_PLAYING = 'y';
+
+        //user can enter 4 answers per question
+        const int MAX_ANSWERS = 4;
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
@@ -44,9 +47,41 @@
         //input answers
         public static string InputAnswers()
         {
-            Console.WriteLine("Please input your answers, you can enter upto 4 answers!\n");
+            Console.WriteLine("\nPlease input your answers, you can enter upto 4 answers!\n");
             string? inputAnswers = Console.ReadLine();
             return inputAnswers;
+        }
+
+        //create a list of questions based off what user has inputted
+        //return as object type since list of questions will contain object of quizzes
+        public static object CreateListOfQuestions()
+        {
+            //list of questions user has inputted
+            List<object> listOfQuestions = new List<object>();
+
+            //list of answers to add
+            List<string> listOfAnswers = new List<string>();
+
+            int maxQuestions = UIMethods.AskNumberOfQuestions();
+
+            //take number of questions user wants to input and add to list
+            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
+            {
+                //record questions user is entering
+                string questionToAdd = UIMethods.InputQuestions();
+
+                //record answers user has inputted
+                for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
+                {
+                    string answersToAdd = UIMethods.InputAnswers();
+                    //add answers to listofAnswers to initialize to Quiz
+                    listOfAnswers.Add(answersToAdd);
+                }
+
+                //add each question to a list
+                listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
+            }
+            return listOfQuestions;
         }
 
         //ask user to play again

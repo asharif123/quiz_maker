@@ -15,6 +15,7 @@ namespace quiz_maker
             //path to xml file
             const string PATH = @"C";
             Console.WriteLine(PATH);
+
             //print welcome message
             UIMethods.PrintWelcomeMessage();
 
@@ -32,34 +33,10 @@ namespace quiz_maker
             //if user wants to replay, reset the score otherwise exit the game
             while (replay)
             {
-                //get user's total score
-                int totalScore = 0;
-
-                //list of questions user has inputted
-                List<object> listOfQuestions = new List<object>();
-
-                //list of answers to add
-                List<string> listOfAnswers = new List<string>();
-
-                int maxQuestions = UIMethods.AskNumberOfQuestions();
-                //take number of questions user wants to input and add to list
-                for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
-                {
-                    //record questions user is entering
-                    string questionToAdd = UIMethods.InputQuestions();
-
-                    //record answers user has inputted
-                    for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
-                    {
-                        string answersToAdd = UIMethods.InputAnswers();
-                    //add answers to listofAnswers to initialize to Quiz
-                        listOfAnswers.Add(answersToAdd);
-                    }
-
-                    //add each question to a list
-                    listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers});
-                }
-                Console.Write((listOfQuestions));
+                //show total number of questions
+                object totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
+                Console.Write((totalNumberOfQuestions));
+                
                 //randomly select a question
 
 
