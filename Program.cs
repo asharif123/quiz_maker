@@ -25,7 +25,8 @@ namespace quiz_maker
             //ask user number of questions to input
             //ask user a question with 4 answers
             //initiate a quiz with question and 4 answers, store each question in a list
-            //do this until all questions have been added, randomly select a question
+            //do this until all questions have been added
+            //randomly select a question
             //have user select an answer, see if it's correct or not
             //if correct answer selected, increment totalScore
             //if user wants to replay, reset the score otherwise exit the game
@@ -46,13 +47,12 @@ namespace quiz_maker
                 {
                     //record questions user is entering
                     string questionToAdd = UIMethods.InputQuestions();
-                    //initialize the question to the quiz object
-                    newQuiz.questions = questionToAdd;
 
                     //record answers user has inputted
                     for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                     {
                         string answersToAdd = UIMethods.InputAnswers();
+                    //add answers to listofAnswers to initialize to Quiz
                         listOfAnswers.Add(answersToAdd);
                     }
 
