@@ -7,7 +7,7 @@ namespace quiz_maker
         static void Main()
         {
             //user can enter 4 answers per question
-            const int NUMBER_OF_ANSWERS = 4;
+            const int MAX_ANSWERS = 4;
 
             //loop and give user option to replay
             bool replay = true;
@@ -31,27 +31,33 @@ namespace quiz_maker
             //if user wants to replay, reset the score otherwise exit the game
             while (replay)
             {
-                //initiate a new quiz
-                var newQuiz = new Quiz();
-
                 //get user's total score
                 int totalScore = 0;
 
-                int maxQuestions = UIMethods.AskNumberOfQuestions();
+                //list of questions user has inputted
+                List<string> listOfQuestions = new List<string>();
 
+                //list of answers to add
+                List<string> listOfAnswers = new List<string>();
+
+                int maxQuestions = UIMethods.AskNumberOfQuestions();
                 //take number of questions user wants to input and add to list
                 for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
                 {
                     //record questions user is entering
                     string questionToAdd = UIMethods.InputQuestions();
-                    newQuiz.listOfQuestions.Add(questionToAdd);
-                }
+                    //initialize the question to the quiz object
+                    newQuiz.questions = questionToAdd;
 
-                for (int numberOfAnswers = 0; numberOfAnswers < NUMBER_OF_ANSWERS; numberOfAnswers++)
-                {
-                    //answers to add
-                    string answersToAdd = UIMethods.InputAnswers();
-                    newQuiz.listOfAnswers.Add(answersToAdd);
+                    //record answers user has inputted
+                    for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
+                    {
+                        string answersToAdd = UIMethods.InputAnswers();
+                        listOfAnswers.Add(answersToAdd);
+                    }
+
+                    //add each question to a list
+                    listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers});
                 }
 
                 //serialization

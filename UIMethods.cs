@@ -18,7 +18,7 @@
             {
                 Console.WriteLine("\nHow many questions would you like to answer?\n");
                 //expect user to input integer value
-                string questionsToInput = Console.ReadLine();
+                string? questionsToInput = Console.ReadLine();
                 bool isValid = int.TryParse(questionsToInput, out numberOfQuestions);
 
                 if (!isValid)
@@ -37,7 +37,7 @@
         public static string InputQuestions()
         {
             Console.WriteLine("\nPlease input your question!\n");
-            string inputQuestions = Console.ReadLine();
+            string? inputQuestions = Console.ReadLine();
             return inputQuestions;
         }
 
@@ -45,7 +45,7 @@
         public static string InputAnswers()
         {
             Console.WriteLine("Please input your answers!\n");
-            string inputAnswers = Console.ReadLine();
+            string? inputAnswers = Console.ReadLine();
             return inputAnswers;
         }
 
