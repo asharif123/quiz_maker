@@ -24,18 +24,20 @@ namespace quiz_maker
             //ask user a question with 4 answers
             //initiate a quiz with question and 4 answers, store each question in a list
             //do this until all questions have been added
-            //randomly select a question
+            //randomly select a question (deserialization)
             //have user select an answer, see if it's correct or not
             //if correct answer selected, increment totalScore
             //if user wants to replay, reset the score otherwise exit the game
             while (replay)
             {
                 //show total number of questions user has inputted
+                //use List<object> type since you are showing a list of questions stored as object
                 List<object> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
-                Console.Write((totalNumberOfQuestions.GetType()));
 
-                //randomly select a question
+                //randomly select a question of type object
                 object randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
+
+                Console.WriteLine(randomQuestion);
 
                 //serialization
                 XmlSerializer writer = new XmlSerializer(typeof(Quiz));
