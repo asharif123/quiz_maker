@@ -54,7 +54,7 @@
 
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
-        public static object CreateListOfQuestions()
+        public static List<object> CreateListOfQuestions()
         {
             //list of questions user has inputted
             List<object> listOfQuestions = new List<object>();
@@ -82,6 +82,15 @@
                 listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
             }
             return listOfQuestions;
+        }
+
+        //show randomly selected question, pass argument of list of questions
+        public static object RandomlySelectedQuestion(List<object> questionsList)
+        {
+            Console.WriteLine("\nRandomly selecting a question...\n");          
+            Random rd = new Random();
+            int randomNumber = rd.Next(0,questionsList.Count+1);
+            return questionsList[randomNumber];
         }
 
         //ask user to play again

@@ -33,12 +33,12 @@ namespace quiz_maker
             //if user wants to replay, reset the score otherwise exit the game
             while (replay)
             {
-                //show total number of questions
+                //show total number of questions user has inputted
                 object totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
                 Console.Write((totalNumberOfQuestions));
-                
-                //randomly select a question
 
+                //randomly select a question
+                object randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
 
                 //serialization
                 XmlSerializer writer = new XmlSerializer(typeof(Quiz));
