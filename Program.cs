@@ -31,8 +31,8 @@ namespace quiz_maker
             while (replay)
             {
                 //show total number of questions user has inputted
-                object totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
-                Console.Write((totalNumberOfQuestions));
+                List<object> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
+                Console.Write((totalNumberOfQuestions.GetType()));
 
                 //randomly select a question
                 object randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
