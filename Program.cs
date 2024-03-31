@@ -6,9 +6,6 @@ namespace quiz_maker
     {
         static void Main()
         {
-            //user can enter 4 answers per question
-            const int MAX_ANSWERS = 4;
-
             //loop and give user option to replay
             bool replay = true;
 
