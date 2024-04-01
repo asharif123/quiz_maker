@@ -31,13 +31,13 @@ namespace quiz_maker
             while (replay)
             {
                 //show total number of questions user has inputted
-                //use List<object> type since you are showing a list of questions stored as object
-                List<object> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
+                //use List<Quiz> type since you are showing a list of questions stored as classes
+                List<Quiz> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
 
-                //randomly select a question of type object
+                //randomly select a question
                 object randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
-
-                Console.WriteLine(randomQuestion);
+/*
+                Console.WriteLine(randomQuestion);*/
 
                 //serialization
                 XmlSerializer writer = new XmlSerializer(typeof(Quiz));
