@@ -34,7 +34,7 @@ namespace quiz_maker
                 //use List<Quiz> type since you are showing a list of questions stored as classes
                 List<Quiz> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
 
-                //randomly select a question
+                //randomly select a question of Quiz (name class) type
                 Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
 /*
                 Console.WriteLine(randomQuestion);*/
