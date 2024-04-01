@@ -85,7 +85,7 @@
         }
 
         //show randomly selected question, pass argument of list of questions
-        public static object RandomlySelectedQuestion(List<Quiz> questionsList)
+        public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");          
             Random rd = new Random();

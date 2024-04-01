@@ -35,7 +35,7 @@ namespace quiz_maker
                 List<Quiz> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
 
                 //randomly select a question
-                object randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
+                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
 /*
                 Console.WriteLine(randomQuestion);*/
 
