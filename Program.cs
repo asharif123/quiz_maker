@@ -36,8 +36,6 @@ namespace quiz_maker
 
                 //randomly select a question of Quiz (name class) type
                 Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
-/*
-                Console.WriteLine(randomQuestion);*/
 
                 //serialization
                 XmlSerializer writer = new XmlSerializer(typeof(Quiz));
