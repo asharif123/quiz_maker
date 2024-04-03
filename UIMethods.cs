@@ -71,7 +71,7 @@
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> listOfAnswers = new List<string>();
 
-                //record answers user has inputted
+                //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
                     string answersToAdd = UIMethods.InputAnswers();
@@ -86,6 +86,7 @@
         }
 
         //show randomly selected question, pass argument of list of questions
+        //pass random value as an argument
         public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList, Random randomValue)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");          
