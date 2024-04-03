@@ -57,7 +57,7 @@
         public static List<Quiz> CreateListOfQuestions()
         {
             //list of questions user has inputted
-            List<Quiz> listOfQuestions = new List<Quiz>();
+            List<Quiz> listOfQuizzes = new List<Quiz>();
 
             int maxQuestions = UIMethods.AskNumberOfQuestions();
 
@@ -80,17 +80,16 @@
                 }
 
                 //add each question to a list
-                listOfQuestions.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
+                listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
             }
-            return listOfQuestions;
+            return listOfQuizzes;
         }
 
         //show randomly selected question, pass argument of list of questions
-        public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList)
+        public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList, Random randomValue)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");          
-            Random rd = new Random();
-            int randomNumber = rd.Next(0,questionsList.Count);
+            int randomNumber = randomValue.Next(0,questionsList.Count);
             return questionsList[randomNumber];
         }
 

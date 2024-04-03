@@ -32,7 +32,7 @@ namespace quiz_maker
                 List<Quiz> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
 
                 //randomly select a question of Quiz (name class) type
-                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
+                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions, rd);
 
                 //serialization on the entire list of Questions user has inputted
                 //take in a list of quizzes
