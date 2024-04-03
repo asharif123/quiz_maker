@@ -37,7 +37,7 @@
         }
 
         //take questions user has answered and add them to list
-        public static string InputQuestions()
+        public static string InputQuestion()
         {
             Console.WriteLine("\nPlease input your question!\n");
             string? inputQuestions = Console.ReadLine();
@@ -64,8 +64,8 @@
             //take number of questions user wants to input and add to list
             for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
             {
-                //record questions user is entering
-                string questionToAdd = UIMethods.InputQuestions();
+                //record question user is entering
+                string questionToAdd = UIMethods.InputQuestion();
 
                 //list of answers to add
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
