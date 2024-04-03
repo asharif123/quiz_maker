@@ -12,7 +12,7 @@ namespace quiz_maker
         public static void XMLSerialization(List<Quiz> questionsList)
         {
             //serialization
-            XmlSerializer writer = new XmlSerializer(typeof(questionsList));
+            XmlSerializer writer = new XmlSerializer(questionsList.GetType());
 
             using (FileStream file = File.Create(PATH))
             {
