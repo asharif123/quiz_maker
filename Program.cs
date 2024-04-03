@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace quiz_maker
 {
@@ -8,10 +9,6 @@ namespace quiz_maker
         {
             //loop and give user option to replay
             bool replay = true;
-
-            //path to xml file
-            const string PATH = @"C";
-            Console.WriteLine(PATH);
 
             //print welcome message
             UIMethods.PrintWelcomeMessage();
@@ -37,14 +34,11 @@ namespace quiz_maker
                 //randomly select a question of Quiz (name class) type
                 Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions);
 
-                //serialization
-                XmlSerializer writer = new XmlSerializer(typeof(Quiz));
+                //serialization on the entire list of Questions user has inputted
+                //take in a list of quizzes
+                Logic.XMLSerialization(totalNumberOfQuestions);
 
-                using (FileStream file = File.Create(PATH))
-                {
-                    writer.Serialize(file, new Quiz());
-                }
-
+                Console.WriteLine(totalNumberOfQuestions.GetType());
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;

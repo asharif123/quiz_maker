@@ -59,9 +59,6 @@
             //list of questions user has inputted
             List<Quiz> listOfQuestions = new List<Quiz>();
 
-            //list of answers to add
-            List<string> listOfAnswers = new List<string>();
-
             int maxQuestions = UIMethods.AskNumberOfQuestions();
 
             //take number of questions user wants to input and add to list
@@ -69,6 +66,10 @@
             {
                 //record questions user is entering
                 string questionToAdd = UIMethods.InputQuestions();
+
+                //list of answers to add
+                //initialize it in for loop to ensure you have empty answers for each NEW question!
+                List<string> listOfAnswers = new List<string>();
 
                 //record answers user has inputted
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
@@ -89,7 +90,7 @@
         {
             Console.WriteLine("\nRandomly selecting a question...\n");          
             Random rd = new Random();
-            int randomNumber = rd.Next(0,questionsList.Count+1);
+            int randomNumber = rd.Next(0,questionsList.Count);
             return questionsList[randomNumber];
         }
 
