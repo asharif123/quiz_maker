@@ -7,7 +7,7 @@ namespace quiz_maker
     {
         int totalScore = 0;
         //path to xml file
-        const string PATH = @"C";
+        const string PATH = @":\myFile.xml:";
 
         public static void XMLSerialization(List<Quiz> questionsList)
         {
