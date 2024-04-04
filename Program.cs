@@ -32,7 +32,7 @@ namespace quiz_maker
 
                 //serialization on the entire list of Questions user has inputted
                 //take in a list of quizzes
-                List<Quiz> serializedQuestions = Logic.XMLSerialization(totalNumberOfQuestions);
+                List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalNumberOfQuestions);
 
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
