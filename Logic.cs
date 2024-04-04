@@ -9,7 +9,7 @@ namespace quiz_maker
         //path to xml file
         const string PATH = @"..\myFile.xml";
 
-        public static void XMLSerialization(List<Quiz> questionsList)
+        public static List<Quiz> XMLSerialization(List<Quiz> questionsList)
         {
             //serialization
             XmlSerializer writer = new XmlSerializer(questionsList.GetType());
@@ -18,6 +18,10 @@ namespace quiz_maker
             {
                 writer.Serialize(file, questionsList);
             }
+            Console.WriteLine(questionsList.GetType());
+
+            //return a list of quizzes after serialization
+            return questionsList;
         }
     }
 }
