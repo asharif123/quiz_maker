@@ -16,11 +16,6 @@ namespace quiz_maker
             //used to randomly select a question
             Random rd = new Random();
 
-            //initiate a new quiz
-            //ask user number of questions to input
-            //ask user a question with 4 answers
-            //initiate a quiz with question and 4 answers, store each question in a list
-            //do this until all questions have been added
             //randomly select a question (deserialization)
             //have user select an answer, see if it's correct or not
             //if correct answer selected, increment totalScore

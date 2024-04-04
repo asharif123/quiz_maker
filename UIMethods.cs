@@ -15,6 +15,9 @@
         {
             //ensure user inputs correct value
             bool notValidInput = true;
+
+            //initialized numberofQuestions as an integer to ensure we return an integer having
+            //number of questions user has entered
             int numberOfQuestions = 0;
 
             while (notValidInput)
@@ -28,6 +31,8 @@
                 {
                     Console.WriteLine("Please enter a valid integer!\n");
                 }
+
+                //if user enters a valid integer, break out of loop and return it!
                 else
                 {
                     notValidInput = false;
