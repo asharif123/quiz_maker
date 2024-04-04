@@ -7,7 +7,7 @@ namespace quiz_maker
     {
         int totalScore = 0;
         //path to xml file
-        const string PATH = @":\myFile.xml:";
+        const string PATH = @"..\myFile.xml";
 
         public static void XMLSerialization(List<Quiz> questionsList)
         {
@@ -16,7 +16,7 @@ namespace quiz_maker
 
             using (FileStream file = File.Create(PATH))
             {
-                writer.Serialize(file, new Quiz());
+                writer.Serialize(file, questionsList);
             }
         }
     }
