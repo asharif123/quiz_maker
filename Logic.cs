@@ -6,7 +6,8 @@ namespace quiz_maker
     internal class Logic
     {
         int totalScore = 0;
-        //path to xml file
+
+        //relative path to xml file
         const string PATH = @"..\myFile.xml";
 
         //method to save the quiz
@@ -27,9 +28,9 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-/*        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
+        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
         {
 
-        }*/
+        }
     }
 }
