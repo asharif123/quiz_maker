@@ -64,14 +64,9 @@
             //list of questions user has inputted
             List<Quiz> listOfQuizzes = new List<Quiz>();
 
-            int maxQuestions = UIMethods.AskNumberOfQuestions();
-
             //take number of questions user wants to input and add to list
-            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
+            for (int numberOfQuestions = 0; numberOfQuestions < UIMethods.AskNumberOfQuestions(); numberOfQuestions++)
             {
-                //record question user is entering
-                string questionToAdd = UIMethods.InputQuestion();
-
                 //list of answers to add
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> listOfAnswers = new List<string>();
@@ -79,13 +74,12 @@
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
-                    string answersToAdd = UIMethods.InputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
-                    listOfAnswers.Add(answersToAdd);
+                    listOfAnswers.Add(UIMethods.InputAnswers());
                 }
 
                 //add each question to a list
-                listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
+                listOfQuizzes.Add(new Quiz { questions = UIMethods.InputQuestion(), listOfAnswers = listOfAnswers });
             }
             return listOfQuizzes;
         }
