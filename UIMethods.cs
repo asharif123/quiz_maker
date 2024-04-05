@@ -31,7 +31,6 @@
                 {
                     Console.WriteLine("Please enter a valid integer!\n");
                 }
-
                 //if user enters a valid integer, break out of loop and return it!
                 else
                 {
@@ -59,14 +58,20 @@
 
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
+        //NOTE: can call UIMethods directly WITHOUT using UIMethods. notation since in same UIMethods file
         public static List<Quiz> CreateListOfQuestions()
         {
             //list of questions user has inputted
             List<Quiz> listOfQuizzes = new List<Quiz>();
 
+            int maxQuestions = AskNumberOfQuestions();
+
             //take number of questions user wants to input and add to list
-            for (int numberOfQuestions = 0; numberOfQuestions < UIMethods.AskNumberOfQuestions(); numberOfQuestions++)
+            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
             {
+                //record question user is entering
+                string questionToAdd = InputQuestion();
+
                 //list of answers to add
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> listOfAnswers = new List<string>();
@@ -74,12 +79,13 @@
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
+                    string answersToAdd = InputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
-                    listOfAnswers.Add(UIMethods.InputAnswers());
+                    listOfAnswers.Add(answersToAdd);
                 }
 
                 //add each question to a list
-                listOfQuizzes.Add(new Quiz { questions = UIMethods.InputQuestion(), listOfAnswers = listOfAnswers });
+                listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
             }
             return listOfQuizzes;
         }

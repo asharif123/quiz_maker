@@ -9,6 +9,8 @@ namespace quiz_maker
         //path to xml file
         const string PATH = @"..\myFile.xml";
 
+        //method to save the quiz
+        //takes in an argument of List<Quiz> and returns it as same type
         public static List<Quiz> SaveQuizOnXML(List<Quiz> questionsList)
         {
             //serialization
@@ -23,5 +25,11 @@ namespace quiz_maker
             //return a list of quizzes after serialization
             return questionsList;
         }
+
+        //method to load the quiz
+/*        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
+        {
+
+        }*/
     }
 }
