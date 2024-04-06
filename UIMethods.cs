@@ -23,8 +23,11 @@
             while (notValidInput)
             {
                 Console.WriteLine("\nHow many questions would you like to answer?\n");
+
                 //expect user to input integer value
                 string? questionsToInput = Console.ReadLine();
+
+                //confirm user has entered a valid integer
                 bool isValid = int.TryParse(questionsToInput, out numberOfQuestions);
 
                 if (!isValid)
@@ -83,6 +86,10 @@
                     //add answers to listofAnswers to initialize to Quiz
                     listOfAnswers.Add(answersToAdd);
                 }
+
+                //show all the answers in the list
+                //have user select the correct answer
+                //store the correct answer in some variable
 
                 //add each question to a list
                 listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });

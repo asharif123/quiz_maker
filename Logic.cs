@@ -27,9 +27,9 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
+/*        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
         {
 
-        }
+        }*/
     }
 }
