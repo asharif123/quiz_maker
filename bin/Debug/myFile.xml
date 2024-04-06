@@ -3,10 +3,10 @@
   <Quiz>
     <questions>What is your name?</questions>
     <listOfAnswers>
-      <string>Awad</string>
-      <string>Urooj</string>
-      <string>Farihah</string>
       <string>Jim</string>
+      <string>James</string>
+      <string>John</string>
+      <string>Jack</string>
     </listOfAnswers>
   </Quiz>
 </ArrayOfQuiz>

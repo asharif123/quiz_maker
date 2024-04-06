@@ -91,6 +91,11 @@
                 //have user select the correct answer
                 //store the correct answer in some variable
 
+                foreach (string answer in listOfAnswers)
+                {
+                    Console.WriteLine(listOfAnswers);
+                }
+
                 //add each question to a list
                 listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
             }
