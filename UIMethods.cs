@@ -90,10 +90,12 @@
                 //show all the answers in the list
                 //have user select the correct answer
                 //store the correct answer in some variable
+                
+                Console.WriteLine("\nDisplaying answers...");
 
                 foreach (string answer in listOfAnswers)
                 {
-                    Console.WriteLine(listOfAnswers);
+                    Console.WriteLine("\n" + answer);
                 }
 
                 //add each question to a list
