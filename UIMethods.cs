@@ -28,6 +28,7 @@
                 string? questionsToInput = Console.ReadLine();
 
                 //confirm user has entered a valid integer
+                //convert string input to int output
                 bool isValid = int.TryParse(questionsToInput, out numberOfQuestions);
 
                 if (!isValid)
@@ -90,12 +91,24 @@
                 //show all the answers in the list
                 //have user select the correct answer
                 //store the correct answer in some variable
-                
-                Console.WriteLine("\nDisplaying answers...");
 
-                foreach (string answer in listOfAnswers)
+                bool assignCorrectAnswer = true;
+
+                while (assignCorrectAnswer)
                 {
-                    Console.WriteLine("\n" + answer);
+                    Console.WriteLine("\nWhich answer do you want to be the correct one?\n");
+                    string? selectCorrectAnswer = Console.ReadLine();
+
+                    //verify the answer users want to be correct is in the answers list
+                    if (!(listOfAnswers).Contains(selectCorrectAnswer))
+                    {
+                        Console.WriteLine("\nPlease enter an answer that exists!\n");
+                    }
+
+                    else
+                    {
+                        assignCorrectAnswer = false;
+                    }
                 }
 
                 //add each question to a list
@@ -108,8 +121,8 @@
         //pass random value as an argument
         public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList, Random randomValue)
         {
-            Console.WriteLine("\nRandomly selecting a question...\n");          
-            int randomNumber = randomValue.Next(0,questionsList.Count);
+            Console.WriteLine("\nRandomly selecting a question...\n");
+            int randomNumber = randomValue.Next(0, questionsList.Count);
             return questionsList[randomNumber];
         }
 
