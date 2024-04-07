@@ -85,7 +85,7 @@
                 {
                     string answersToAdd = InputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
-                    listOfAnswers.Add(answersToAdd);
+                    listOfAnswers.Add(answersToAdd.ToLower());
                 }
 
                 //show all the answers in the list
@@ -97,7 +97,7 @@
                 while (assignCorrectAnswer)
                 {
                     Console.WriteLine("\nWhich answer do you want to be the correct one?\n");
-                    string? selectCorrectAnswer = Console.ReadLine();
+                    string? selectCorrectAnswer = Console.ReadLine().ToLower();
 
                     //verify the answer users want to be correct is in the answers list
                     if (!(listOfAnswers).Contains(selectCorrectAnswer))
@@ -108,11 +108,11 @@
                     else
                     {
                         assignCorrectAnswer = false;
+
+                        //exit loop and add each question to a list
+                        listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers, correctAnswer = selectCorrectAnswer });
                     }
                 }
-
-                //add each question to a list
-                listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers });
             }
             return listOfQuizzes;
         }

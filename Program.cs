@@ -24,15 +24,15 @@ namespace quiz_maker
             {
                 //show total number of questions user has inputted
                 //use List<Quiz> type since you are showing a list of questions stored as classes
-                List<Quiz> totalNumberOfQuestions = UIMethods.CreateListOfQuestions();
+                List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
 
                 //randomly select a question of Quiz (name class) type
                 //pass random rd as an argument
-                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalNumberOfQuestions, rd);
+                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
 
                 //serialization on the entire list of Questions user has inputted
                 //take in a list of quizzes
-                List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalNumberOfQuestions);
+                List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
 
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
