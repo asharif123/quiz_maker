@@ -27,9 +27,16 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-/*        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
+        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
         {
+            //deserialization
+            XmlSerializer serializer = new XmlSerializer(questionsList.GetType());
+            using(FileStream file = File.OpenRead(PATH))
+            {
+                questionsList = serializer.Deserialize(file) as List<Quiz>;
+            }
 
-        }*/
+            return questionsList;
+        }
     }
 }

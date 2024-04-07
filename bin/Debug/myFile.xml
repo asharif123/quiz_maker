@@ -3,11 +3,11 @@
   <Quiz>
     <questions>What is your name?</questions>
     <listOfAnswers>
+      <string>a</string>
       <string>jim</string>
-      <string>john</string>
-      <string>jack</string>
-      <string>jason</string>
+      <string>jac</string>
+      <string>jacques</string>
     </listOfAnswers>
-    <correctAnswer>jason</correctAnswer>
+    <correctAnswer>jim</correctAnswer>
   </Quiz>
 </ArrayOfQuiz>

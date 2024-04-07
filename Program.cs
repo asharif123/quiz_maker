@@ -34,6 +34,9 @@ namespace quiz_maker
                 //take in a list of quizzes
                 List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
 
+                //deserialization
+                List<Quiz> deserializedQuestions = Logic.LoadQuizOnXml(totalListOfQuestions);
+
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
