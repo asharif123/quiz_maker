@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Quiz>
-    <questions>What is your name?</questions>
+    <questions>Who are you?</questions>
     <listOfAnswers>
-      <string>a</string>
+      <string>mike</string>
       <string>jim</string>
-      <string>jac</string>
-      <string>jacques</string>
+      <string>john</string>
+      <string>missy</string>
     </listOfAnswers>
     <correctAnswer>jim</correctAnswer>
   </Quiz>
