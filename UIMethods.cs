@@ -126,6 +126,14 @@
             return questionsList[randomNumber];
         }
 
+        //ask user if ready to play after inputting all the quizzes
+        public static char ReadyToPlay()
+        {
+            Console.WriteLine($"\nPress {CONTINUE_PLAYING} if you are ready to start playing or any key to the program!\n");
+            char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
+            return startPlaying;
+        }
+
         //ask user to play again
         public static bool AskUserToPlayAgain()
         {

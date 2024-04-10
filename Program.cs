@@ -5,6 +5,7 @@ namespace quiz_maker
 {
     public class Program
     {
+        const char START_GAME = 'y';
         static void Main()
         {
             //loop and give user option to replay
@@ -26,17 +27,26 @@ namespace quiz_maker
                 //use List<Quiz> type since you are showing a list of questions stored as classes
                 List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
 
-
                 //serialization on the entire list of Questions user has inputted
                 //take in a list of quizzes
                 List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
-/*
-                //deserialization
-                List<Quiz> deserializedQuestions = Logic.LoadQuizOnXml(serializedQuestions);*/
 
-                //randomly select a question of Quiz (name class) type
-                //pass random rd as an argument
-                Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
+                //user has option to play or to exit the game
+                char playTheGame = UIMethods.ReadyToPlay();
+                if (playTheGame == START_GAME)
+                {
+
+                    //deserialization
+                    List<Quiz> deserializedQuestions = Logic.LoadQuizOnXml(serializedQuestions);
+
+                    //randomly select a question of Quiz (name class) type
+                    //pass random rd as an argument
+                    Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
+                }
+                else
+                {
+                    replay = false;
+                }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
