@@ -31,8 +31,10 @@ namespace quiz_maker
                 //take in a list of quizzes
                 List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
 
-                //user has option to play or to exit the game
+                //user has option to play a random quiz or the most recent quiz
                 char playTheGame = UIMethods.ReadyToPlay();
+
+                //if user decides to play a random quiz
                 if (playTheGame == START_GAME)
                 {
 
@@ -43,6 +45,8 @@ namespace quiz_maker
                     //pass random rd as an argument
                     Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
                 }
+
+                //if user decides to play the most recent quiz
                 else
                 {
                     replay = false;

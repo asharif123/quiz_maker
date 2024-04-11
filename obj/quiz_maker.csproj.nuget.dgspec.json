@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\quiz_maker.csproj": {}
+    "C:\\Users\\awads\\source\\repos\\quiz_maker\\quiz_maker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\quiz_maker.csproj": {
+    "C:\\Users\\awads\\source\\repos\\quiz_maker\\quiz_maker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\quiz_maker.csproj",
+        "projectUniqueName": "C:\\Users\\awads\\source\\repos\\quiz_maker\\quiz_maker.csproj",
         "projectName": "quiz_maker",
-        "projectPath": "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\quiz_maker.csproj",
+        "projectPath": "C:\\Users\\awads\\source\\repos\\quiz_maker\\quiz_maker.csproj",
         "packagesPath": "C:\\Users\\awads\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\obj\\",
+        "outputPath": "C:\\Users\\awads\\source\\repos\\quiz_maker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\awads\\AppData\\Roaming\\NuGet\\NuGet.Config",

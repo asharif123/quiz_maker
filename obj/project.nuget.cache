@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TMpU+bPogfaLTPOEjn7CH7BWhDzsNgNsMo1HDY+y7mxZ6VkvnbNkgsAj6jvuhnTtOJjYYQLccetoYC4tKFPk3w==",
+  "dgSpecHash": "pw0s7za6Fs4f9C66QNFFHqLQlO0SSVVgmAAo6pvd9eglgXzX0o6NFbbwp8XTy/CwS8zIAlFHn1nawV7/+OYAcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\awads\\Source\\Repos\\quiz_maker\\quiz_maker.csproj",
+  "projectFilePath": "C:\\Users\\awads\\source\\repos\\quiz_maker\\quiz_maker.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

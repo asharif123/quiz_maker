@@ -129,7 +129,7 @@
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
-            Console.WriteLine($"\nPress {CONTINUE_PLAYING} if you are ready to start playing or any key to the program!\n");
+            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to play a random quiz or any key to play the most recent quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
         }
