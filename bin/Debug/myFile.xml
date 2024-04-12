@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Quiz>
-    <questions>How are you?</questions>
+    <questions>Who are you?</questions>
     <listOfAnswers>
-      <string>good</string>
-      <string>bad</string>
-      <string>ugly</string>
-      <string>fine</string>
+      <string>peter</string>
+      <string>schiff</string>
+      <string>government</string>
+      <string>idiot</string>
     </listOfAnswers>
-    <correctAnswer>bad</correctAnswer>
+    <correctAnswer>peter</correctAnswer>
+  </Quiz>
+  <Quiz>
+    <questions>What is 2 plus 2?</questions>
+    <listOfAnswers>
+      <string>21</string>
+      <string>22</string>
+      <string>23</string>
+      <string>4</string>
+    </listOfAnswers>
+    <correctAnswer>4</correctAnswer>
   </Quiz>
 </ArrayOfQuiz>

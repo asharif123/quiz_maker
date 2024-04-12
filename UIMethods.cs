@@ -2,6 +2,7 @@
 {
     internal class UIMethods
     {
+        const char RANDOM_QUIZ = 'r';
         const char CONTINUE_PLAYING = 'y';
 
         //user can enter 4 answers per question
@@ -66,6 +67,8 @@
         public static List<Quiz> CreateListOfQuestions()
         {
             //list of questions user has inputted
+            //initialize it as a type List<Quiz>, where Quiz is the class name. 
+            //Since each item stored is a Quiz you are creating
             List<Quiz> listOfQuizzes = new List<Quiz>();
 
             int maxQuestions = AskNumberOfQuestions();
@@ -126,10 +129,17 @@
             return questionsList[randomNumber];
         }
 
+        //code to generate the last quiz user has created
+        public static Quiz MostRecentQuestion(List<Quiz> questionsList)
+        {
+            Console.WriteLine("\nGenerating most recent quiz created...\n");
+            return questionsList.Last();
+        }
+
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
-            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to play a random quiz or any key to play the most recent quiz!\n");
+            Console.WriteLine($"\nPress {RANDOM_QUIZ} to play a random quiz or any key to play the most recent quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
         }

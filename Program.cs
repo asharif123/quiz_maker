@@ -5,7 +5,7 @@ namespace quiz_maker
 {
     public class Program
     {
-        const char START_GAME = 'y';
+        const char START_GAME = 'r';
         static void Main()
         {
             //loop and give user option to replay
@@ -37,10 +37,6 @@ namespace quiz_maker
                 //if user decides to play a random quiz
                 if (playTheGame == START_GAME)
                 {
-
-                    //deserialization
-                    List<Quiz> deserializedQuestions = Logic.LoadQuizOnXml(serializedQuestions);
-
                     //randomly select a question of Quiz (name class) type
                     //pass random rd as an argument
                     Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
@@ -49,7 +45,7 @@ namespace quiz_maker
                 //if user decides to play the most recent quiz
                 else
                 {
-                    replay = false;
+                    Quiz mostRecentQuiz = UIMethods.MostRecentQuestion(totalListOfQuestions);
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
