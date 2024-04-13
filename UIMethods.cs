@@ -2,7 +2,7 @@
 {
     internal class UIMethods
     {
-        const char RANDOM_QUIZ = 'r';
+        const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
 
         //user can enter 4 answers per question
@@ -11,6 +11,12 @@
         {
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
         }
+
+        public static void QuizSavedMessage()
+        {
+            Console.WriteLine("Your quiz has been saved!\n");
+        }
+
         //method to return number of questions inputted by user
         public static int AskNumberOfQuestions()
         {
@@ -139,7 +145,7 @@
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
-            Console.WriteLine($"\nPress {RANDOM_QUIZ} to play a random quiz or any key to play the most recent quiz!\n");
+            Console.WriteLine($"\nPress {CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
         }
