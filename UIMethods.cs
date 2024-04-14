@@ -29,7 +29,7 @@
 
             while (notValidInput)
             {
-                Console.WriteLine("\nHow many questions would you like to answer?\n");
+                Console.WriteLine("\nHow many questions would you like to create?\n");
 
                 //expect user to input integer value
                 string? questionsToInput = Console.ReadLine();

@@ -27,20 +27,17 @@ namespace quiz_maker
                 //user has option to either create a quiz or play a random quiz
                 char playTheGame = UIMethods.ReadyToPlay();
 
-                //create totalListOfQuestions variable to make it accesible regardless if user decies
-                //to create a new quiz or play a random quiz
-                List<Quiz> totalListOfQuestions = null;
-
                 //if user decides to play a random quiz
                 if (playTheGame == NEW_QUIZ)
                 {
                     //show total number of questions user has inputted
                     //use List<Quiz> type since you are showing a list of questions stored as classes
-                    totalListOfQuestions = UIMethods.CreateListOfQuestions();
+                    List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
 
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
                     List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
+                    Console.WriteLine(serializedQuestions.Count());
 
                     UIMethods.QuizSavedMessage();
 
@@ -49,9 +46,12 @@ namespace quiz_maker
                 //if user decides to play a random quiz
                 else
                 {
+                    List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
                     //randomly select a question of Quiz (name class) type
                     //pass random rd as an argument
                     Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
+
+                    Logic.LoadQuizOnXml(totalListOfQuestions);
 
                 }
 

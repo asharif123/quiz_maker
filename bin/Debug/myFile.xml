@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Quiz>
-    <questions>What color is the sky?</questions>
-    <listOfAnswers>
-      <string>red</string>
-      <string>orange</string>
-      <string>green</string>
-      <string>blue</string>
-    </listOfAnswers>
-    <correctAnswer>blue</correctAnswer>
-  </Quiz>
-  <Quiz>
-    <questions>How old is Joe Biden?</questions>
-    <listOfAnswers>
-      <string>80</string>
-      <string>81</string>
-      <string>82</string>
-      <string>83</string>
-    </listOfAnswers>
-    <correctAnswer>81</correctAnswer>
-  </Quiz>
-</ArrayOfQuiz>
+<ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
