@@ -6,19 +6,21 @@ namespace quiz_maker
     {
         int totalScore = 0;
 
+        //method to save the quiz
+        //takes in an argument of List<Quiz> and returns it as same type
+
+        XmlSerializer serializer = new XmlSerializer(typeof(List<Quiz>));
+
         //relative path to xml file
         const string PATH = @"..\myFile.xml";
 
-        //method to save the quiz
-        //takes in an argument of List<Quiz> and returns it as same type
         public static List<Quiz> SaveQuizOnXML(List<Quiz> questionsList)
         {
             //serialization
-            XmlSerializer writer = new XmlSerializer(questionsList.GetType());
 
             using (FileStream file = File.Create(PATH))
             {
-                writer.Serialize(file, questionsList);
+                serializer.Serialize(file, questionsList);
             }
 
             //return a list of quizzes after serialization
@@ -26,11 +28,22 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static void LoadQuizFromXML()
+        public static void LoadQuizFromXML(List<Quiz> questionsList)
         {
-            //deserialization
+            //list to store quizzes
+            var QuizList = new List<Quiz>();
+
             //confirm if xml file exists or not
             Console.WriteLine(File.Exists(PATH) ? "\nFile exists." : "File does not exist.\n");
+
+            //get path of xml file location
+            Console.WriteLine(new FileInfo(PATH).Directory.FullName);
+
+            //deserialization
+            using (FileStream file = File.OpenRead(PATH))
+            {
+                QuizList = serializer.Deserialize(file) as List<Quiz>;
+            }
         }
     }
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Quiz>
-    <questions>How are you?</questions>
+    <questions>What is it?</questions>
     <listOfAnswers>
-      <string>good</string>
-      <string>bad</string>
-      <string>ugly</string>
-      <string>evil</string>
+      <string>nothing</string>
+      <string>something</string>
+      <string>everything</string>
+      <string>maybe</string>
     </listOfAnswers>
-    <correctAnswer>ugly</correctAnswer>
+    <correctAnswer>maybe</correctAnswer>
   </Quiz>
 </ArrayOfQuiz>
