@@ -50,7 +50,7 @@ namespace quiz_maker
                     //have user enter answer if it doesn't exist, have user reenter
                     //if answer is correct, increment user's score by 5 points
                     //retain user's score and ask user if he want to replay
-                    Logic.LoadQuizFromXml();
+                    Logic.LoadQuizFromXML();
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)

@@ -26,7 +26,7 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static void LoadQuizFromXml()
+        public static void LoadQuizFromXML()
         {
             //deserialization
             //confirm if xml file exists or not
