@@ -20,14 +20,16 @@ namespace quiz_maker
             {
                 writer.Serialize(file, questionsList);
             }
-            Console.WriteLine(questionsList.GetType());
+            
+            //confirm if xml file exists or not
+            Console.WriteLine(File.Exists(PATH) ? "File exists." : "File does not exist.");
 
             //return a list of quizzes after serialization
             return questionsList;
         }
 
         //method to load the quiz
-        public static List<Quiz> LoadQuizOnXml(List<Quiz> questionsList)
+        public static List<Quiz> LoadQuizFromXml(List<Quiz> questionsList)
         {
             //deserialization
             XmlSerializer serializer = new XmlSerializer(questionsList.GetType());

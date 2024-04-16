@@ -37,8 +37,6 @@ namespace quiz_maker
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
                     List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
-                    Console.WriteLine(serializedQuestions.Count());
-
                     UIMethods.QuizSavedMessage();
 
                 }
@@ -46,12 +44,9 @@ namespace quiz_maker
                 //if user decides to play a random quiz
                 else
                 {
-                    List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
-                    //randomly select a question of Quiz (name class) type
-                    //pass random rd as an argument
-                    Quiz randomQuestion = UIMethods.RandomlySelectedQuestion(totalListOfQuestions, rd);
-
-                    Logic.LoadQuizOnXml(totalListOfQuestions);
+                    //load xml file into load method
+                    //return a list of quizzes from xml file
+                    //select a random quiz
 
                 }
 
