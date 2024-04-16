@@ -20,25 +20,17 @@ namespace quiz_maker
             {
                 writer.Serialize(file, questionsList);
             }
-            
-            //confirm if xml file exists or not
-            Console.WriteLine(File.Exists(PATH) ? "File exists." : "File does not exist.");
 
             //return a list of quizzes after serialization
             return questionsList;
         }
 
         //method to load the quiz
-        public static List<Quiz> LoadQuizFromXml(List<Quiz> questionsList)
+        public static void LoadQuizFromXml()
         {
             //deserialization
-            XmlSerializer serializer = new XmlSerializer(questionsList.GetType());
-            using(FileStream file = File.OpenRead(PATH))
-            {
-                questionsList = serializer.Deserialize(file) as List<Quiz>;
-            }
-
-            return questionsList;
+            //confirm if xml file exists or not
+            Console.WriteLine(File.Exists(PATH) ? "\nFile exists." : "File does not exist.\n");
         }
     }
 }

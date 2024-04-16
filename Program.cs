@@ -47,7 +47,10 @@ namespace quiz_maker
                     //load xml file into load method
                     //return a list of quizzes from xml file
                     //select a random quiz
-
+                    //have user enter answer if it doesn't exist, have user reenter
+                    //if answer is correct, increment user's score by 5 points
+                    //retain user's score and ask user if he want to replay
+                    Logic.LoadQuizFromXml();
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
