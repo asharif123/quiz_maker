@@ -70,12 +70,12 @@
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
         //NOTE: can call UIMethods directly WITHOUT using UIMethods. notation since in same UIMethods file
-        public static List<Quiz> CreateListOfQuestions()
+        public static List<QuizCard> CreateListOfQuestions()
         {
             //list of questions user has inputted
             //initialize it as a type List<Quiz>, where Quiz is the class name. 
             //Since each item stored is a Quiz you are creating
-            List<Quiz> listOfQuizzes = new List<Quiz>();
+            List<QuizCard> listOfQuizzes = new List<QuizCard>();
 
             int maxQuestions = AskNumberOfQuestions();
 
@@ -87,14 +87,14 @@
 
                 //list of answers to add
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
-                List<string> listOfAnswers = new List<string>();
+                List<string> answers = new List<string>();
 
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
                     string answersToAdd = InputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
-                    listOfAnswers.Add(answersToAdd.ToLower());
+                    answers.Add(answersToAdd.ToLower());
                 }
 
                 //show all the answers in the list
@@ -109,7 +109,7 @@
                     string? selectCorrectAnswer = Console.ReadLine().ToLower();
 
                     //verify the answer users want to be correct is in the answers list
-                    if (!(listOfAnswers).Contains(selectCorrectAnswer))
+                    if (!(answers).Contains(selectCorrectAnswer))
                     {
                         Console.WriteLine("\nPlease enter an answer that exists!\n");
                     }
@@ -119,7 +119,7 @@
                         assignCorrectAnswer = false;
 
                         //exit loop and add each question to a list
-                        listOfQuizzes.Add(new Quiz { questions = questionToAdd, listOfAnswers = listOfAnswers, correctAnswer = selectCorrectAnswer });
+                        listOfQuizzes.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = selectCorrectAnswer });
                     }
                 }
             }
@@ -128,7 +128,7 @@
 
         //show randomly selected question, pass argument of list of questions
         //pass random value as an argument
-        public static Quiz RandomlySelectedQuestion(List<Quiz> questionsList, Random randomValue)
+        public static QuizCard RandomlySelectedQuestion(List<QuizCard> questionsList, Random randomValue)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");
             int randomNumber = randomValue.Next(0, questionsList.Count);
@@ -136,7 +136,7 @@
         }
 
         //code to generate the last quiz user has created
-        public static Quiz MostRecentQuestion(List<Quiz> questionsList)
+        public static QuizCard MostRecentQuestion(List<QuizCard> questionsList)
         {
             Console.WriteLine("\nGenerating most recent quiz created...\n");
             return questionsList.Last();

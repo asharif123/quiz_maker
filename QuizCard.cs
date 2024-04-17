@@ -25,7 +25,8 @@ At the end of the quiz their score is this counter variable over the number of q
 //quiz card contains a question with 4 answers
 namespace quiz_maker
 {
-    public class Quiz
+    //NOTE: this DOES NOT use static since QuizCard is meant to be instantiated
+    public class QuizCard
     {
         //question user has inputted
         public string questions = "";

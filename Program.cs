@@ -32,11 +32,11 @@ namespace quiz_maker
                 {
                     //show total number of questions user has inputted
                     //use List<Quiz> type since you are showing a list of questions stored as classes
-                    List<Quiz> totalListOfQuestions = UIMethods.CreateListOfQuestions();
+                    List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuestions();
 
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
-                    List<Quiz> serializedQuestions = Logic.SaveQuizOnXML(totalListOfQuestions);
+                    List<QuizCard> serializedQuestions = Logic.SaveQuizToXML(totalListOfQuestions);
                     UIMethods.QuizSavedMessage();
 
                 }

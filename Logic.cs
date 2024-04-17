@@ -10,16 +10,16 @@ namespace quiz_maker
         //takes in an argument of List<Quiz> and returns it as same type
         //Note: this is a static variable because we want to use it once AND
         //make this static so that it is available in static methods
-        static XmlSerializer serializer = new XmlSerializer(typeof(List<Quiz>));
+        static XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
 
         //relative path to xml file
         const string PATH = @"..\myFile.xml";
 
         //if using static, method will NOT belong to instance of class but to class directly
-        //ex: if SaveQuizOnXML is static, cannot access it through instance but as Quiz.SaveQuizOnXML
+        //ex: if SaveQuizOnXML is static, cannot access it through instance but as Logic.SaveQuizOnXML
         //so use static since want to use each method below once
         //using static means it's only available once in your code and CANNOT be instantiated
-        public static List<Quiz> SaveQuizOnXML(List<Quiz> questionsList)
+        public static List<QuizCard> SaveQuizToXML(List<QuizCard> questionsList)
         {
             //serialization
 
@@ -33,10 +33,10 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static void LoadQuizFromXML(List<Quiz> questionsList)
+        public static void LoadQuizFromXML(List<QuizCard> questionsList)
         {
             //list to store quizzes
-            var QuizList = new List<Quiz>();
+            var QuizList = new List<QuizCard>();
 
             //confirm if xml file exists or not
             Console.WriteLine(File.Exists(PATH) ? "\nFile exists." : "File does not exist.\n");
@@ -47,7 +47,7 @@ namespace quiz_maker
             //deserialization
             using (FileStream file = File.OpenRead(PATH))
             {
-                QuizList = serializer.Deserialize(file) as List<Quiz>;
+                QuizList = serializer.Deserialize(file) as List<QuizCard>;
             }
         }
     }
