@@ -33,7 +33,7 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static List<QuizCard> LoadQuizFromXML(List<QuizCard> questionsList)
+        public static List<QuizCard> LoadQuizFromXML()
         {
             //list to store quizzes
             List<QuizCard> quizList = new List<QuizCard>();
