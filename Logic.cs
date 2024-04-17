@@ -33,7 +33,7 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public static void LoadQuizFromXML(List<QuizCard> questionsList)
+        public static List<QuizCard> LoadQuizFromXML(List<QuizCard> questionsList)
         {
             //list to store quizzes
             List<QuizCard> quizList = new List<QuizCard>();
@@ -49,6 +49,8 @@ namespace quiz_maker
             {
                 quizList = serializer.Deserialize(file) as List<QuizCard>;
             }
+
+            return quizList;
         }
     }
 }
