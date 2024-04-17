@@ -25,19 +25,19 @@ namespace quiz_maker
             {
 
                 //user has option to either create a quiz or play a random quiz
-                char playTheGame = UIMethods.ReadyToPlay();
+                char playTheGame = UIMethods.PrintReadyToPlay();
 
                 //if user decides to play a random quiz
                 if (playTheGame == NEW_QUIZ)
                 {
                     //show total number of questions user has inputted
                     //use List<Quiz> type since you are showing a list of questions stored as classes
-                    List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuestions();
+                    List<QuizCard> totalListOfQuestions = UIMethods.PrintCreateListOfQuestions();
 
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
                     List<QuizCard> serializedQuestions = Logic.SaveQuizToXML(totalListOfQuestions);
-                    UIMethods.QuizSavedMessage();
+                    UIMethods.PrintQuizSavedMessage();
 
                 }
 
@@ -53,7 +53,7 @@ namespace quiz_maker
                     /*Logic.LoadQuizFromXML();*/
                 }
 
-                if (UIMethods.AskUserToPlayAgain() == false)
+                if (UIMethods.PrintAskUserToPlayAgain() == false)
                 {
                     replay = false;
                 }

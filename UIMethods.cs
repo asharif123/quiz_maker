@@ -12,13 +12,13 @@
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
         }
 
-        public static void QuizSavedMessage()
+        public static void PrintQuizSavedMessage()
         {
             Console.WriteLine("Your quiz has been saved!\n");
         }
 
         //method to return number of questions inputted by user
-        public static int AskNumberOfQuestions()
+        public static int PrintAskNumberOfQuestions()
         {
             //ensure user inputs correct value
             bool notValidInput = true;
@@ -52,7 +52,7 @@
         }
 
         //take questions user has answered and add them to list
-        public static string InputQuestion()
+        public static string PrintInputQuestion()
         {
             Console.WriteLine("\nPlease input your question!\n");
             string inputQuestions = Console.ReadLine();
@@ -60,7 +60,7 @@
         }
 
         //input answers
-        public static string InputAnswers()
+        public static string PrintInputAnswers()
         {
             Console.WriteLine($"\nPlease input your answers, you can enter upto {MAX_ANSWERS} answers!\n");
             string inputAnswers = Console.ReadLine();
@@ -70,20 +70,20 @@
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
         //NOTE: can call UIMethods directly WITHOUT using UIMethods. notation since in same UIMethods file
-        public static List<QuizCard> CreateListOfQuestions()
+        public static List<QuizCard> PrintCreateListOfQuestions()
         {
             //list of questions user has inputted
             //initialize it as a type List<Quiz>, where Quiz is the class name. 
             //Since each item stored is a Quiz you are creating
             List<QuizCard> listOfQuizzes = new List<QuizCard>();
 
-            int maxQuestions = AskNumberOfQuestions();
+            int maxQuestions = PrintAskNumberOfQuestions();
 
             //take number of questions user wants to input and add to list
             for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
             {
                 //record question user is entering
-                string questionToAdd = InputQuestion();
+                string questionToAdd = PrintInputQuestion();
 
                 //list of answers to add
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
@@ -92,7 +92,7 @@
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
-                    string answersToAdd = InputAnswers();
+                    string answersToAdd = PrintInputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
                     answers.Add(answersToAdd.ToLower());
                 }
@@ -128,7 +128,7 @@
 
         //show randomly selected question, pass argument of list of questions
         //pass random value as an argument
-        public static QuizCard RandomlySelectedQuestion(List<QuizCard> questionsList, Random randomValue)
+        public static QuizCard PrintRandomlySelectedQuestion(List<QuizCard> questionsList, Random randomValue)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");
             int randomNumber = randomValue.Next(0, questionsList.Count);
@@ -136,7 +136,7 @@
         }
 
         //ask user if ready to play after inputting all the quizzes
-        public static char ReadyToPlay()
+        public static char PrintReadyToPlay()
         {
             Console.WriteLine($"\nPress {CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
@@ -144,7 +144,7 @@
         }
 
         //ask user to play again
-        public static bool AskUserToPlayAgain()
+        public static bool PrintAskUserToPlayAgain()
         {
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
