@@ -135,13 +135,6 @@
             return questionsList[randomNumber];
         }
 
-        //code to generate the last quiz user has created
-        public static QuizCard MostRecentQuestion(List<QuizCard> questionsList)
-        {
-            Console.WriteLine("\nGenerating most recent quiz created...\n");
-            return questionsList.Last();
-        }
-
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
