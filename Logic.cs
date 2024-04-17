@@ -36,7 +36,7 @@ namespace quiz_maker
         public static void LoadQuizFromXML(List<QuizCard> questionsList)
         {
             //list to store quizzes
-            var QuizList = new List<QuizCard>();
+            List<QuizCard> quizList = new List<QuizCard>();
 
             //confirm if xml file exists or not
             Console.WriteLine(File.Exists(PATH) ? "\nFile exists." : "File does not exist.\n");
@@ -47,7 +47,7 @@ namespace quiz_maker
             //deserialization
             using (FileStream file = File.OpenRead(PATH))
             {
-                QuizList = serializer.Deserialize(file) as List<QuizCard>;
+                quizList = serializer.Deserialize(file) as List<QuizCard>;
             }
         }
     }
