@@ -7,18 +7,19 @@ namespace quiz_maker
         int totalScore = 0;
 
         //method to save the quiz
-        //takes in an argument of List<Quiz> and returns it as same typ
-        //Note: this is a NON-STATIC variable so methods using it need to be non-static
-        XmlSerializer serializer = new XmlSerializer(typeof(List<Quiz>));
+        //takes in an argument of List<Quiz> and returns it as same type
+        //Note: this is a static variable because we want to use it once AND
+        //make this static so that it is available in static methods
+        static XmlSerializer serializer = new XmlSerializer(typeof(List<Quiz>));
 
         //relative path to xml file
         const string PATH = @"..\myFile.xml";
 
         //if using static, method will NOT belong to instance of class but to class directly
         //ex: if SaveQuizOnXML is static, cannot access it through instance but as Quiz.SaveQuizOnXML
-        //so DON'T put static inside of class
+        //so use static since want to use each method below once
         //using static means it's only available once in your code and CANNOT be instantiated
-        public List<Quiz> SaveQuizOnXML(List<Quiz> questionsList)
+        public static List<Quiz> SaveQuizOnXML(List<Quiz> questionsList)
         {
             //serialization
 
@@ -32,7 +33,7 @@ namespace quiz_maker
         }
 
         //method to load the quiz
-        public void LoadQuizFromXML(List<Quiz> questionsList)
+        public static void LoadQuizFromXML(List<Quiz> questionsList)
         {
             //list to store quizzes
             var QuizList = new List<Quiz>();
