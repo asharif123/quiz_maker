@@ -32,7 +32,7 @@
                 Console.WriteLine("\nHow many questions would you like to create?\n");
 
                 //expect user to input integer value
-                string? questionsToInput = Console.ReadLine();
+                string questionsToInput = Console.ReadLine();
 
                 //confirm user has entered a valid integer
                 //convert string input to int output
@@ -55,7 +55,7 @@
         public static string InputQuestion()
         {
             Console.WriteLine("\nPlease input your question!\n");
-            string? inputQuestions = Console.ReadLine();
+            string inputQuestions = Console.ReadLine();
             return inputQuestions;
         }
 
@@ -63,7 +63,7 @@
         public static string InputAnswers()
         {
             Console.WriteLine($"\nPlease input your answers, you can enter upto {MAX_ANSWERS} answers!\n");
-            string? inputAnswers = Console.ReadLine();
+            string inputAnswers = Console.ReadLine();
             return inputAnswers;
         }
 
