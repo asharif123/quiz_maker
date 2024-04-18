@@ -12,13 +12,13 @@
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
         }
 
-        public static void PrintQuizCardSavedMessage()
+        public static void PrintQuizSavedMessage()
         {
             Console.WriteLine("Your quiz has been saved!\n");
         }
 
         //method to return number of questions inputted by user
-        public static int PrintAskNumberOfQuizCards()
+        public static int PrintAskNumberOfQuestions()
         {
             //ensure user inputs correct value
             bool notValidInput = true;
@@ -70,14 +70,14 @@
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
         //NOTE: can call UIMethods directly WITHOUT using UIMethods. notation since in same UIMethods file
-        public static List<QuizCard> PrintCreateListOfQuestions()
+        public static List<QuizCard> PrintCreateListOfQuizCards()
         {
             //list of questions user has inputted
             //initialize it as a type List<Quiz>, where Quiz is the class name. 
             //Since each item stored is a Quiz you are creating
             List<QuizCard> listOfQuizCards = new List<QuizCard>();
 
-            int maxQuestions = PrintAskNumberOfQuizCards();
+            int maxQuestions = PrintAskNumberOfQuestions();
 
             //take number of questions user wants to input and add to list
             for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
