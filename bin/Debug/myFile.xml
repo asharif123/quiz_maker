@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfQuiz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Quiz>
-    <questions>What is it?</questions>
+<ArrayOfQuizCard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <QuizCard>
+    <questions>How are you?</questions>
     <listOfAnswers>
-      <string>nothing</string>
-      <string>something</string>
-      <string>everything</string>
-      <string>maybe</string>
+      <string>good</string>
+      <string>bad</string>
+      <string>ugly</string>
+      <string>ok</string>
     </listOfAnswers>
-    <correctAnswer>maybe</correctAnswer>
-  </Quiz>
-</ArrayOfQuiz>
+    <correctAnswer>ugly</correctAnswer>
+  </QuizCard>
+  <QuizCard>
+    <questions>What is today's date?</questions>
+    <listOfAnswers>
+      <string>april 17th</string>
+      <string>april 18th</string>
+      <string>april 19th</string>
+      <string>april 20th</string>
+    </listOfAnswers>
+    <correctAnswer>april 17th</correctAnswer>
+  </QuizCard>
+</ArrayOfQuizCard>

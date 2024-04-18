@@ -44,13 +44,11 @@ namespace quiz_maker
                 //if user decides to play a random quiz
                 else
                 {
-                    //load xml file into load method
-                    //return a list of quizzes from xml file
-                    //select a random quiz
-                    //have user enter answer if it doesn't exist, have user reenter
-                    //if answer is correct, increment user's score by 5 points
-                    //retain user's score and ask user if he want to replay
-                    Logic.LoadQuizFromXML();
+                    //print out a list of QuizCards
+                    List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
+
+                    //randomly display a Quiz Card
+                    QuizCard selectedQuizCard = UIMethods.PrintRandomlySelectedQuizCard(listofQuizCards, rd);
 
                 }
 

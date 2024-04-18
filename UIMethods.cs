@@ -75,7 +75,7 @@
             //list of questions user has inputted
             //initialize it as a type List<Quiz>, where Quiz is the class name. 
             //Since each item stored is a Quiz you are creating
-            List<QuizCard> listOfQuizzes = new List<QuizCard>();
+            List<QuizCard> listOfQuizCards = new List<QuizCard>();
 
             int maxQuestions = PrintAskNumberOfQuestions();
 
@@ -119,20 +119,20 @@
                         assignCorrectAnswer = false;
 
                         //exit loop and add each question to a list
-                        listOfQuizzes.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = selectCorrectAnswer });
+                        listOfQuizCards.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = selectCorrectAnswer });
                     }
                 }
             }
-            return listOfQuizzes;
+            return listOfQuizCards;
         }
 
         //show randomly selected question, pass argument of list of questions
         //pass random value as an argument
-        public static QuizCard PrintRandomlySelectedQuestion(List<QuizCard> questionsList, Random randomValue)
+        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList, Random pickQuizCardAtRandom)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");
-            int randomNumber = randomValue.Next(0, questionsList.Count);
-            return questionsList[randomNumber];
+            int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
+            return quizCardList[randomNumber];
         }
 
         //ask user if ready to play after inputting all the quizzes
