@@ -12,13 +12,13 @@
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
         }
 
-        public static void PrintQuizSavedMessage()
+        public static void PrintQuizCardSavedMessage()
         {
             Console.WriteLine("Your quiz has been saved!\n");
         }
 
         //method to return number of questions inputted by user
-        public static int PrintAskNumberOfQuestions()
+        public static int PrintAskNumberOfQuizCards()
         {
             //ensure user inputs correct value
             bool notValidInput = true;
@@ -77,7 +77,7 @@
             //Since each item stored is a Quiz you are creating
             List<QuizCard> listOfQuizCards = new List<QuizCard>();
 
-            int maxQuestions = PrintAskNumberOfQuestions();
+            int maxQuestions = PrintAskNumberOfQuizCards();
 
             //take number of questions user wants to input and add to list
             for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)

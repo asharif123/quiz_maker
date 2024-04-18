@@ -37,7 +37,7 @@ namespace quiz_maker
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
                     List<QuizCard> serializedQuestions = Logic.SaveQuizToXML(totalListOfQuestions);
-                    UIMethods.PrintQuizSavedMessage();
+                    UIMethods.PrintQuizCardSavedMessage();
 
                 }
 
