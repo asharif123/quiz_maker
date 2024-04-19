@@ -38,12 +38,6 @@ namespace quiz_maker
             //list to store quizzes
             List<QuizCard> quizList = new List<QuizCard>();
 
-            //confirm if xml file exists or not
-            Console.WriteLine(File.Exists(PATH) ? "\nFile exists." : "File does not exist.\n");
-
-            //get path of xml file location
-            Console.WriteLine(new FileInfo(PATH).Directory.FullName);
-
             //deserialization
             using (FileStream file = File.OpenRead(PATH))
             {
