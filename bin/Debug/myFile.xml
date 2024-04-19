@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuizCard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <QuizCard>
-    <questions>How are you?</questions>
+    <questions>How old are you?</questions>
     <listOfAnswers>
-      <string>good</string>
-      <string>bad</string>
-      <string>ugly</string>
-      <string>ok</string>
+      <string>33</string>
+      <string>34</string>
+      <string>35</string>
+      <string>36</string>
     </listOfAnswers>
-    <correctAnswer>bad</correctAnswer>
+    <correctAnswer>36</correctAnswer>
+  </QuizCard>
+  <QuizCard>
+    <questions>Why are you stupid?</questions>
+    <listOfAnswers>
+      <string>because i am</string>
+      <string>i am not</string>
+      <string>are you sure</string>
+      <string>you are a moron</string>
+    </listOfAnswers>
+    <correctAnswer>are you sure</correctAnswer>
   </QuizCard>
 </ArrayOfQuizCard>

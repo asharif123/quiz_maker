@@ -14,9 +14,6 @@ namespace quiz_maker
             //print welcome message
             UIMethods.PrintWelcomeMessage();
 
-            //used to randomly select a question
-            Random rd = new Random();
-
             //user can either create a new quiz or play a random quiz
             //have user select an answer, see if it's correct or not
             //if correct answer selected, increment totalScore
@@ -48,7 +45,7 @@ namespace quiz_maker
                     List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
 
                     //randomly display a Quiz Card
-                    QuizCard selectedQuizCard = UIMethods.PrintRandomlySelectedQuizCard(listofQuizCards, rd);
+                    QuizCard selectedQuizCard = UIMethods.PrintRandomlySelectedQuizCard(listofQuizCards);
 
                 }
 

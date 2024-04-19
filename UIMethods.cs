@@ -8,9 +8,13 @@
         const string SECOND_ANSWER = "2";
         const string THIRD_ANSWER = "3";
         const string LAST_ANSWER = "4";
-
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
+
+        //used to randomly select a question
+        //declare it as static to be used in the static method
+        static Random pickQuizCardAtRandom = new Random();
+
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
@@ -106,7 +110,7 @@
 
                 Console.WriteLine($"\nEnter {FIRST_ANSWER} to mark the first answer as correct, " +
                     $"{SECOND_ANSWER} to mark the second answer, {THIRD_ANSWER} to mark the third answer, " +
-                    $"or any key to mark the last answer!\n");
+                    $"or any key to mark the last answer as correct!\n");
 
                 string selectCorrectAnswer = Console.ReadLine();
 
@@ -144,7 +148,7 @@
 
         //show randomly selected question, pass argument of list of questions
         //pass random value as an argument
-        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList, Random pickQuizCardAtRandom)
+        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList)
         {
             Console.WriteLine("\nRandomly selecting a question...\n");
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
