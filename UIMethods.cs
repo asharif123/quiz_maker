@@ -4,6 +4,10 @@
     {
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
+        const string FIRST_ANSWER = "1";
+        const string SECOND_ANSWER = "2";
+        const string THIRD_ANSWER = "3";
+        const string LAST_ANSWER = "4";
 
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
@@ -97,31 +101,41 @@
                     answers.Add(answersToAdd.ToLower());
                 }
 
-                //show all the answers in the list
-                //have user select the correct answer
-                //store the correct answer in some variable
+                //variable to store the correct answer that the user wishes to be the correct one
+                string storeCorrectAnswer = "";
 
-                bool assignCorrectAnswer = true;
+                Console.WriteLine($"\nEnter {FIRST_ANSWER} to mark the first answer as correct, {SECOND_ANSWER} to mark the second answer, {THIRD_ANSWER} to mark the third answer, or any key to mark the last answer!\n");
+                
+                string selectCorrectAnswer = Console.ReadLine();
 
-                while (assignCorrectAnswer)
+                //verify the answer users want to be correct is in the answers list
+
+                //if user wants the first answer to be the correct one
+                if (selectCorrectAnswer == FIRST_ANSWER)
                 {
-                    Console.WriteLine("\nWhich answer do you want to be the correct one?\n");
-                    string? selectCorrectAnswer = Console.ReadLine().ToLower();
-
-                    //verify the answer users want to be correct is in the answers list
-                    if (!(answers).Contains(selectCorrectAnswer))
-                    {
-                        Console.WriteLine("\nPlease enter an answer that exists!\n");
-                    }
-
-                    else
-                    {
-                        assignCorrectAnswer = false;
-
-                        //exit loop and add each question to a list
-                        listOfQuizCards.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = selectCorrectAnswer });
-                    }
+                    storeCorrectAnswer = answers[Int32.Parse(FIRST_ANSWER) - 1];
                 }
+
+                //if user wants the second answer to be the correct one
+                else if (selectCorrectAnswer == SECOND_ANSWER)
+                {
+                    storeCorrectAnswer = answers[Int32.Parse(SECOND_ANSWER) - 1];
+                }
+
+                //if user wants the third answer to be the correct one
+                else if (selectCorrectAnswer == THIRD_ANSWER)
+                {
+                    storeCorrectAnswer = answers[Int32.Parse(THIRD_ANSWER) - 1];
+                }
+
+                //if user wants the last answer to be the correct one
+                else
+                {
+                    storeCorrectAnswer = answers[Int32.Parse(LAST_ANSWER) - 1];
+                }
+
+                //store the questions, answers and chosen correct answer in a listOfQuizCards
+                listOfQuizCards.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = storeCorrectAnswer });
             }
             return listOfQuizCards;
         }

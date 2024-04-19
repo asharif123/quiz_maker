@@ -8,16 +8,6 @@
       <string>ugly</string>
       <string>ok</string>
     </listOfAnswers>
-    <correctAnswer>ugly</correctAnswer>
-  </QuizCard>
-  <QuizCard>
-    <questions>What is today's date?</questions>
-    <listOfAnswers>
-      <string>april 17th</string>
-      <string>april 18th</string>
-      <string>april 19th</string>
-      <string>april 20th</string>
-    </listOfAnswers>
-    <correctAnswer>april 17th</correctAnswer>
+    <correctAnswer>bad</correctAnswer>
   </QuizCard>
 </ArrayOfQuizCard>
