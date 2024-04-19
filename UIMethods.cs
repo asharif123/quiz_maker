@@ -104,8 +104,10 @@
                 //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
 
-                Console.WriteLine($"\nEnter {FIRST_ANSWER} to mark the first answer as correct, {SECOND_ANSWER} to mark the second answer, {THIRD_ANSWER} to mark the third answer, or any key to mark the last answer!\n");
-                
+                Console.WriteLine($"\nEnter {FIRST_ANSWER} to mark the first answer as correct, " +
+                    $"{SECOND_ANSWER} to mark the second answer, {THIRD_ANSWER} to mark the third answer, " +
+                    $"or any key to mark the last answer!\n");
+
                 string selectCorrectAnswer = Console.ReadLine();
 
                 //verify the answer users want to be correct is in the answers list
@@ -128,7 +130,7 @@
                     storeCorrectAnswer = answers[Int32.Parse(THIRD_ANSWER) - 1];
                 }
 
-                //if user wants the last answer to be the correct one
+                //if user enters a random key, by default the last answer will be the correct one
                 else
                 {
                     storeCorrectAnswer = answers[Int32.Parse(LAST_ANSWER) - 1];
