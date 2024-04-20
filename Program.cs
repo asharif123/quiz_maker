@@ -22,14 +22,14 @@ namespace quiz_maker
             {
 
                 //user has option to either create a quiz or play a random quiz
-                char playTheGame = UIMethods.PrintReadyToPlay();
+                char playTheGame = UIMethods.ReadyToPlay();
 
                 //if user decides to play a random quiz
                 if (playTheGame == NEW_QUIZ)
                 {
                     //show total number of questions user has inputted
                     //use List<Quiz> type since you are showing a list of questions stored as classes
-                    List<QuizCard> totalListOfQuestions = UIMethods.PrintCreateListOfQuizCards();
+                    List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuizCards();
 
                     //serialization on the entire list of Questions user has inputted
                     //take in a list of quizzes
@@ -49,7 +49,7 @@ namespace quiz_maker
          
                 }
 
-                if (UIMethods.PrintAskUserToPlayAgain() == false)
+                if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
                 }
