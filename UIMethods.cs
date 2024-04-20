@@ -4,9 +4,6 @@
     {
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
-        const string FIRST_ANSWER = "1";
-        const string SECOND_ANSWER = "2";
-        const string THIRD_ANSWER = "3";
 
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
@@ -113,9 +110,9 @@
                 //while loop to ensure user enters a valid index that can be found within the answers list
                 while (inValidInput)
                 {
-                    Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter {FIRST_ANSWER} to" +
-                    $" mark first answer as correct, {SECOND_ANSWER} to mark second answer as correct, " +
-                    $"{THIRD_ANSWER} to mark the third answer as the correct answer, etc..\n");
+                    Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter 1 to" +
+                    $" mark first answer as correct, 2 to mark second answer as correct, " +
+                    $"3 to mark the third answer as the correct answer, etc..\n");
 
                 //variable to store the answer user marks as correct
                     string assignCorrectAnswer = Console.ReadLine();
@@ -131,7 +128,7 @@
                 //if user enters a value out of range
                     else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
                     {
-                        Console.WriteLine($"\nPlease enter a valid range from {FIRST_ANSWER} to {answers.Count()}!\n");
+                        Console.WriteLine($"\nPlease enter a valid range from 1 to {answers.Count()}!\n");
                     }
 
                 //if user inputs a value having the correct answer
