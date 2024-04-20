@@ -60,13 +60,20 @@
             return inputQuestions;
         }
 
+        //print answers statement
+        public static void PrintInputAnswers()
+        {
+            Console.WriteLine($"\nPlease input your answers, you can enter up to {MAX_ANSWERS} answers!\n");
+        }
+
         //input answers
         public static string InputAnswers()
         {
-            Console.WriteLine($"\nPlease input your answers, you can enter upto {MAX_ANSWERS} answers!\n");
             string inputAnswers = Console.ReadLine();
             return inputAnswers;
         }
+
+        
 
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
@@ -90,6 +97,7 @@
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> answers = new List<string>();
 
+                PrintInputAnswers();
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
