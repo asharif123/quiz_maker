@@ -56,7 +56,6 @@ namespace quiz_maker
         public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList)
         {
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
-            Console.WriteLine(quizCardList[randomNumber]);
             return quizCardList[randomNumber];
         }
     }
