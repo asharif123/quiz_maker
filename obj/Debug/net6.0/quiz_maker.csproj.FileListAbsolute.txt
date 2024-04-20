@@ -1,0 +1,14 @@
+C:\Users\awads\source\repos\quiz_maker\bin\Debug\net6.0\quiz_maker.exe
+C:\Users\awads\source\repos\quiz_maker\bin\Debug\net6.0\quiz_maker.deps.json
+C:\Users\awads\source\repos\quiz_maker\bin\Debug\net6.0\quiz_maker.runtimeconfig.json
+C:\Users\awads\source\repos\quiz_maker\bin\Debug\net6.0\quiz_maker.dll
+C:\Users\awads\source\repos\quiz_maker\bin\Debug\net6.0\quiz_maker.pdb
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.AssemblyInfoInputs.cache
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.AssemblyInfo.cs
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.csproj.CoreCompileInputs.cache
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.dll
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\refint\quiz_maker.dll
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.pdb
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\quiz_maker.genruntimeconfig.cache
+C:\Users\awads\source\repos\quiz_maker\obj\Debug\net6.0\ref\quiz_maker.dll

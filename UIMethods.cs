@@ -61,7 +61,7 @@
         }
 
         //input answers
-        public static string PrintInputAnswers()
+        public static string InputAnswers()
         {
             Console.WriteLine($"\nPlease input your answers, you can enter upto {MAX_ANSWERS} answers!\n");
             string inputAnswers = Console.ReadLine();
@@ -93,7 +93,7 @@
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
-                    string answersToAdd = PrintInputAnswers();
+                    string answersToAdd = InputAnswers();
                     //add answers to listofAnswers to initialize to Quiz
                     answers.Add(answersToAdd.ToLower());
                 }
