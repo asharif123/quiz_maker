@@ -7,7 +7,7 @@
         const string FIRST_ANSWER = "1";
         const string SECOND_ANSWER = "2";
         const string THIRD_ANSWER = "3";
-        const string LAST_ANSWER = "4";
+
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
 
@@ -108,36 +108,39 @@
                 //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
 
-                Console.WriteLine($"\nEnter {FIRST_ANSWER} to mark the first answer as correct, " +
-                    $"{SECOND_ANSWER} to mark the second answer, {THIRD_ANSWER} to mark the third answer, " +
-                    $"or any key to mark the last answer as correct!\n");
+                bool inValidInput = true;
 
-                string selectCorrectAnswer = Console.ReadLine();
-
-                //verify the answer users want to be correct is in the answers list
-
-                //if user wants the first answer to be the correct one
-                if (selectCorrectAnswer == FIRST_ANSWER)
+                //while loop to ensure user enters a valid index that can be found within the answers list
+                while (inValidInput)
                 {
-                    storeCorrectAnswer = answers[Int32.Parse(FIRST_ANSWER) - 1];
-                }
+                    Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter {FIRST_ANSWER} to" +
+                    $" mark first answer as correct, {SECOND_ANSWER} to mark second answer as correct, " +
+                    $"{THIRD_ANSWER} to mark the third answer as the correct answer, etc..\n");
 
-                //if user wants the second answer to be the correct one
-                else if (selectCorrectAnswer == SECOND_ANSWER)
-                {
-                    storeCorrectAnswer = answers[Int32.Parse(SECOND_ANSWER) - 1];
-                }
+                //variable to store the answer user marks as correct
+                    string assignCorrectAnswer = Console.ReadLine();
+                    int indexOfAssignedCorrectAnswer;
 
-                //if user wants the third answer to be the correct one
-                else if (selectCorrectAnswer == THIRD_ANSWER)
-                {
-                    storeCorrectAnswer = answers[Int32.Parse(THIRD_ANSWER) - 1];
-                }
+                //verify user enters a valid integer to parse from the list
+                    bool isValid = int.TryParse(assignCorrectAnswer, out indexOfAssignedCorrectAnswer);
+                    if (!isValid)
+                    {
+                        Console.WriteLine("\nPlease enter a valid integer!\n");
+                    }
 
-                //if user enters a random key, by default the last answer will be the correct one
-                else
-                {
-                    storeCorrectAnswer = answers[Int32.Parse(LAST_ANSWER) - 1];
+                //if user enters a value out of range
+                    else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
+                    {
+                        Console.WriteLine($"\nPlease enter a valid range from {FIRST_ANSWER} to {answers.Count()}!\n");
+                    }
+
+                //if user inputs a value having the correct answer
+                    else
+                    {
+                        storeCorrectAnswer = answers[indexOfAssignedCorrectAnswer - 1];
+                        Console.WriteLine($"\nYou have marked {storeCorrectAnswer} as the correct answer!\n");
+                        inValidInput = false;
+                    }
                 }
 
                 //store the questions, answers and chosen correct answer in a listOfQuizCards

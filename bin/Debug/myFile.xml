@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuizCard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <QuizCard>
-    <questions>How are you?</questions>
+    <questions>What year is it?</questions>
     <listOfAnswers>
-      <string>good</string>
-      <string>bad</string>
-      <string>ok</string>
-      <string>ugly</string>
+      <string>2022</string>
+      <string>2023</string>
+      <string>2024</string>
+      <string>2025</string>
     </listOfAnswers>
-    <correctAnswer>ugly</correctAnswer>
+    <correctAnswer>2024</correctAnswer>
+  </QuizCard>
+  <QuizCard>
+    <questions>What color is the sky?</questions>
+    <listOfAnswers>
+      <string>red</string>
+      <string>orange</string>
+      <string>green</string>
+      <string>blue</string>
+    </listOfAnswers>
+    <correctAnswer>blue</correctAnswer>
   </QuizCard>
 </ArrayOfQuizCard>
