@@ -12,6 +12,10 @@ namespace quiz_maker
         //make this static so that it is available in static methods
         static XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
 
+        //used to randomly select a question
+        //declare it as static to be used in the static method
+        static Random pickQuizCardAtRandom = new Random();
+
         //relative path to xml file
         const string PATH = @"..\myFile.xml";
 
@@ -45,6 +49,15 @@ namespace quiz_maker
             }
 
             return quizList;
+        }
+
+        //show randomly selected question, pass argument of list of questions
+        //pass random value as an argument
+        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList)
+        {
+            int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
+            Console.WriteLine(quizCardList[randomNumber]);
+            return quizCardList[randomNumber];
         }
     }
 }

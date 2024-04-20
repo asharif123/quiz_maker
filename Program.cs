@@ -45,7 +45,8 @@ namespace quiz_maker
                     List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
 
                     //randomly display a Quiz Card
-                    QuizCard selectedQuizCard = UIMethods.PrintRandomlySelectedQuizCard(listofQuizCards);
+                    UIMethods.PrintRandomlySelectingAQuestionMessage();
+                    QuizCard selectedQuizCard = Logic.PrintRandomlySelectedQuizCard(listofQuizCards);
          
                 }
 

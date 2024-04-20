@@ -8,10 +8,6 @@
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
 
-        //used to randomly select a question
-        //declare it as static to be used in the static method
-        static Random pickQuizCardAtRandom = new Random();
-
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
@@ -148,22 +144,17 @@
             return listOfQuizCards;
         }
 
-        //show randomly selected question, pass argument of list of questions
-        //pass random value as an argument
-        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList)
-        {
-            Console.WriteLine("\nRandomly selecting a question...\n");
-            int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
-            Console.WriteLine(quizCardList[randomNumber]);
-            return quizCardList[randomNumber];
-        }
-
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
             Console.WriteLine($"\nPress {CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
+        }
+
+        public static void PrintRandomlySelectingAQuestionMessage()
+        {
+            Console.WriteLine("\nRandomly selecting a question...\n");
         }
 
         //ask user to play again
