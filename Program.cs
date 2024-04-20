@@ -46,7 +46,7 @@ namespace quiz_maker
 
                     //randomly display a Quiz Card
                     QuizCard selectedQuizCard = UIMethods.PrintRandomlySelectedQuizCard(listofQuizCards);
-
+         
                 }
 
                 if (UIMethods.PrintAskUserToPlayAgain() == false)

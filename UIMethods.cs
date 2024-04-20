@@ -152,6 +152,7 @@
         {
             Console.WriteLine("\nRandomly selecting a question...\n");
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
+            Console.WriteLine(quizCardList[randomNumber]);
             return quizCardList[randomNumber];
         }
 
