@@ -139,6 +139,8 @@
                     {
                         storeCorrectAnswer = answers[indexOfAssignedCorrectAnswer - 1];
                         Console.WriteLine($"\nYou have marked {storeCorrectAnswer} as the correct answer!\n");
+                
+                //exit the loop once user has assigned the correct answer
                         inValidInput = false;
                     }
                 }
