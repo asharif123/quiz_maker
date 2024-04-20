@@ -146,7 +146,7 @@
                 }
 
                 //store the questions, answers and chosen correct answer in a listOfQuizCards
-                listOfQuizCards.Add(new QuizCard { questions = questionToAdd, listOfAnswers = answers, correctAnswer = storeCorrectAnswer });
+                listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
             }
             return listOfQuizCards;
         }

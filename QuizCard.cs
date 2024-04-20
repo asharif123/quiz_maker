@@ -32,7 +32,7 @@ namespace quiz_maker
         public string questions = "";
 
         //list of answers that user has inputted
-        public List<string> listOfAnswers = new List<string>();
+        public List<string> answers = new List<string>();
 
         //store correct answer user has inputted
         public string correctAnswer = "";
