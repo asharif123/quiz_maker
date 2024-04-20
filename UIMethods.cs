@@ -97,6 +97,7 @@
                 //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> answers = new List<string>();
 
+                //statement asking user to print answers
                 PrintInputAnswers();
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
