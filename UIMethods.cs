@@ -183,6 +183,11 @@
             Console.WriteLine("\nRandomly selecting a question...\n");
         }
 
+        public static void PrintMessageAskingUserToSelectCorrectAnswer()
+        {
+            Console.WriteLine("\nEnter a value from 1 to 4 to select the correct answer.\n");
+        }
+
         public static void PrintContentsOfRandomQuiz(QuizCard quiz)
         {
             //show the question from the quiz class
@@ -194,6 +199,7 @@
             {
                 Console.WriteLine($"{i+1} - {quiz.answers[i]}");
             }
+            PrintMessageAskingUserToSelectCorrectAnswer();
         }
 
         //ask user to play again
