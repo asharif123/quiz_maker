@@ -53,7 +53,7 @@ namespace quiz_maker
 
         //show randomly selected question, pass argument of list of questions
         //pass random value as an argument
-        public static QuizCard PrintRandomlySelectedQuizCard(List<QuizCard> quizCardList)
+        public static QuizCard RandomlySelectedQuizCard(List<QuizCard> quizCardList)
         {
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
             return quizCardList[randomNumber];
