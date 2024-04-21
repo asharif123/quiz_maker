@@ -2,8 +2,6 @@
 {
     internal class UIMethods
     {
-        int totalScore = 0;
-
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
 
@@ -188,8 +186,14 @@
             Console.WriteLine("\nEnter a value from 1 to 4 to select the correct answer.\n");
         }
 
-        public static void PrintContentsOfRandomQuiz(QuizCard quiz)
+        //print the contents of the quiz and give user options to select
+        //if user enters a non existent answer, have user re enter the answer 
+        //if answer is incorrect, totalScore stays at 0
+        //if answer is correct, increment totalScore by 5 points
+        //despite correct/incorrect answer, show total score at the end
+        public static int GetTotalScoreOfUser(QuizCard quiz)
         {
+            int totalScore = 0;
             //show the question from the quiz class
             Console.WriteLine(quiz.questions);
             Console.WriteLine();
@@ -200,6 +204,7 @@
                 Console.WriteLine($"{i+1} - {quiz.answers[i]}");
             }
             PrintMessageAskingUserToSelectCorrectAnswer();
+            return totalScore;
         }
 
         //ask user to play again
