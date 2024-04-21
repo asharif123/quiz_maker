@@ -181,6 +181,15 @@
             Console.WriteLine("\nRandomly selecting a question...\n");
         }
 
+        public static void PrintContentsOfRandomQuiz(QuizCard quiz)
+        {
+            Console.WriteLine(quiz.questions);
+            for (int i = 0; i < quiz.answers.Count; i++) 
+            {
+                Console.WriteLine(quiz.answers[i]);
+            }
+        }
+
         //ask user to play again
         public static bool AskUserToPlayAgain()
         {
