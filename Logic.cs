@@ -4,8 +4,6 @@ namespace quiz_maker
 {
     internal class Logic
     {
-        int totalScore = 0;
-
         //method to save the quiz
         //takes in an argument of List<Quiz> and returns it as same type
         //Note: this is a static variable because we want to use it once AND

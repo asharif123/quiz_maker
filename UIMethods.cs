@@ -2,6 +2,8 @@
 {
     internal class UIMethods
     {
+        int totalScore = 0;
+
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
 
@@ -83,7 +85,7 @@
         //method asking user to select an answer to be assigned as the correct one
         //takes in a list of answers
         //return the index of the answer user wants to be the correct one
-        public static int GetIndexFromUser(List<string> answers)
+        public static int GetIndexOfCorrectAnswerFromUser(List<string> answers)
         {
             bool inValidInput = true;
 
@@ -155,7 +157,7 @@
                 }
 
                 //call method getting the correct answer
-                int indexOfCorrectAnswer = GetIndexFromUser(answers);
+                int indexOfCorrectAnswer = GetIndexOfCorrectAnswerFromUser(answers);
 
                 //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
@@ -183,10 +185,14 @@
 
         public static void PrintContentsOfRandomQuiz(QuizCard quiz)
         {
+            //show the question from the quiz class
             Console.WriteLine(quiz.questions);
+            Console.WriteLine();
+
+            //show all the answers to the randomly selected quiz
             for (int i = 0; i < quiz.answers.Count; i++) 
             {
-                Console.WriteLine(quiz.answers[i]);
+                Console.WriteLine($"{i+1} - {quiz.answers[i]}");
             }
         }
 
