@@ -160,7 +160,7 @@
                 //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
 
-                storeCorrectAnswer = answers[indexOfCorrectAnswer];
+                storeCorrectAnswer = answers[indexOfCorrectAnswer-1];
 
                 //store the questions, answers and chosen correct answer in a listOfQuizCards
                 listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });

@@ -17,7 +17,7 @@ namespace quiz_maker
         static Random pickQuizCardAtRandom = new Random();
 
         //relative path to xml file
-        const string PATH = @"..\myFile.xml";
+        const string PATH = @"myFile.xml";
 
         //if using static, method will NOT belong to instance of class but to class directly
         //ex: if SaveQuizOnXML is static, cannot access it through instance but as Logic.SaveQuizOnXML
