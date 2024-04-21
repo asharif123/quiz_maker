@@ -73,7 +73,53 @@
             return inputAnswers;
         }
 
-        
+        public static void PrintMessageAskingUserForIndices()
+        {
+            Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter 1 to" +
+            $" mark first answer as correct, 2 to mark second answer as correct, " +
+            $"3 to mark the third answer as the correct answer, etc..\n");
+        }
+
+        //method asking user to select an answer to be assigned as the correct one
+        //takes in a list of answers
+        //return the index of the answer user wants to be the correct one
+        public static int GetIndexFromUser(List<string> answers)
+        {
+            bool inValidInput = true;
+
+            //create integer so GetIndexFromUser can return an integer
+            int indexOfAssignedCorrectAnswer = 1;
+
+            //while loop to ensure user enters a valid index that can be found within the answers list
+            while (inValidInput)
+            {
+                PrintMessageAskingUserForIndices();
+
+                //put statement here so if user writes anything incorrect, it will loop back to this
+                string assignCorrectAnswer = Console.ReadLine();
+
+                //verify user enters a valid integer to parse from the list
+                bool isValid = int.TryParse(assignCorrectAnswer, out indexOfAssignedCorrectAnswer);
+                if (!isValid)
+                {
+                    Console.WriteLine("\nPlease enter a valid integer!\n");
+                }
+
+                //if user enters a value out of range
+                else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
+                {
+                    Console.WriteLine($"\nPlease enter a valid range from 1 to {answers.Count()}!\n");
+                }
+
+                //if user inputs a value having the correct answer
+                else
+                {
+                    //exit the loop once user has assigned the correct answer
+                    inValidInput = false;
+                }
+            }
+            return indexOfAssignedCorrectAnswer;
+        }
 
         //create a list of questions based off what user has inputted
         //return as object type since list of questions will contain object of quizzes
@@ -99,6 +145,7 @@
 
                 //statement asking user to print answers
                 PrintInputAnswers();
+
                 //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
@@ -107,45 +154,13 @@
                     answers.Add(answersToAdd.ToLower());
                 }
 
+                //call method getting the correct answer
+                int indexOfCorrectAnswer = GetIndexFromUser(answers);
+
                 //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
 
-                bool inValidInput = true;
-
-                //while loop to ensure user enters a valid index that can be found within the answers list
-                while (inValidInput)
-                {
-                    Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter 1 to" +
-                    $" mark first answer as correct, 2 to mark second answer as correct, " +
-                    $"3 to mark the third answer as the correct answer, etc..\n");
-
-                //variable to store the answer user marks as correct
-                    string assignCorrectAnswer = Console.ReadLine();
-                    int indexOfAssignedCorrectAnswer;
-
-                //verify user enters a valid integer to parse from the list
-                    bool isValid = int.TryParse(assignCorrectAnswer, out indexOfAssignedCorrectAnswer);
-                    if (!isValid)
-                    {
-                        Console.WriteLine("\nPlease enter a valid integer!\n");
-                    }
-
-                //if user enters a value out of range
-                    else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
-                    {
-                        Console.WriteLine($"\nPlease enter a valid range from 1 to {answers.Count()}!\n");
-                    }
-
-                //if user inputs a value having the correct answer
-                    else
-                    {
-                        storeCorrectAnswer = answers[indexOfAssignedCorrectAnswer - 1];
-                        Console.WriteLine($"\nYou have marked {storeCorrectAnswer} as the correct answer!\n");
-                
-                //exit the loop once user has assigned the correct answer
-                        inValidInput = false;
-                    }
-                }
+                storeCorrectAnswer = answers[indexOfCorrectAnswer];
 
                 //store the questions, answers and chosen correct answer in a listOfQuizCards
                 listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
