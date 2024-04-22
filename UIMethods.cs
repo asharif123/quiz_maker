@@ -196,14 +196,14 @@ namespace quiz_maker
         public static void PrintMessageUserHasChosenCorrectAnswer(int score)
         {
             Console.WriteLine("\nThat is the correct answer!\n");
-            Console.WriteLine($"\nYour total score is {score}!");
+            Console.WriteLine($"\nYour total score is {score} points!");
         }
 
         public static void PrintMessageUserHasChosenWrongAnswer(QuizCard quiz, int score)
         {
             Console.WriteLine("\nSorry that is not the correct answer!\n");
             Console.WriteLine($"\nThe correct answer is {quiz.correctAnswer}\n");
-            Console.WriteLine($"\nYour total score is {score}.\n");
+            Console.WriteLine($"\nYour total score is {score} points!\n");
         }
 
         //print the contents of the quiz and give user options to select
