@@ -239,7 +239,7 @@ namespace quiz_maker
 
                 if (!isValid)
                 {
-                    Console.WriteLine("\nPlease enter a valid integer!\n");
+                    Console.WriteLine("\nPlease enter an integer value!\n");
                 }
 
                 else if (indexGuessOfUser < 1 || indexGuessOfUser > 4)
