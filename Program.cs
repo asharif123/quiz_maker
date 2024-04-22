@@ -53,6 +53,7 @@ namespace quiz_maker
                     //record the user's guess when playing the loaded quiz
                     string guessOfUser = UIMethods.UserPlaysLoadedQuiz(selectedQuizCard);
 
+                    //return total score of the user
                     int totalScoreOfUser = UIMethods.GetUsersTotalScore(guessOfUser, selectedQuizCard);
          
                 }
