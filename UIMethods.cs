@@ -1,10 +1,13 @@
-﻿namespace quiz_maker
+﻿using System.ComponentModel;
+
+namespace quiz_maker
 {
     internal class UIMethods
     {
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
-
+        //increment score by 5 points
+        const int INCREMENT_SCORE = 5;
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
 
@@ -188,23 +191,51 @@
 
         //print the contents of the quiz and give user options to select
         //if user enters a non existent answer, have user re enter the answer 
-        //if answer is incorrect, totalScore stays at 0
-        //if answer is correct, increment totalScore by 5 points
-        //despite correct/incorrect answer, show total score at the end
-        public static int GetTotalScoreOfUser(QuizCard quiz)
+        public static string UserPlaysLoadedQuiz(QuizCard quiz)
         {
-            int totalScore = 0;
             //show the question from the quiz class
             Console.WriteLine(quiz.questions);
+
+            //add space between questions and answer
             Console.WriteLine();
 
-            //show all the answers to the randomly selected quiz
+            //show all the answers of the randomly selected quiz
             for (int i = 0; i < quiz.answers.Count; i++) 
             {
                 Console.WriteLine($"{i+1} - {quiz.answers[i]}");
             }
             PrintMessageAskingUserToSelectCorrectAnswer();
-            return totalScore;
+
+            //verify user enters a valid integer
+            bool notValidInput = true;
+
+            //initialize as empty so it can be retained
+            string guessOfUser = "";
+
+            while (notValidInput)
+            {
+                guessOfUser = Console.ReadLine();
+                int indexGuessOfUser;
+
+                bool isValid = int.TryParse(guessOfUser, out indexGuessOfUser);
+
+                if (!isValid)
+                {
+                    Console.WriteLine("\nPlease enter a valid integer!\n");
+                }
+
+                else if (indexGuessOfUser < 1 || indexGuessOfUser > 4)
+                {
+                    Console.WriteLine("\nPlease enter a valid integer from 1 to 4!\n");
+                }
+                
+            //if user enters a guess
+                else
+                {
+                   guessOfUser = quiz.answers[indexGuessOfUser];
+                }
+            }
+            return guessOfUser;
         }
 
         //ask user to play again
