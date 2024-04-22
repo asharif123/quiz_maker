@@ -11,6 +11,10 @@ namespace quiz_maker
         //user can enter 4 answers per question
         const int MAX_ANSWERS = 4;
 
+        //record the user's total score
+        //make it static to be accesible to the static methods utizling it
+        static int totalScore = 0;
+
         public static void PrintWelcomeMessage()
         {
             Console.WriteLine("\nWelcome to Quiz Maker!\n");
@@ -85,7 +89,7 @@ namespace quiz_maker
 
         //method asking user to select an answer to be assigned as the correct one
         //takes in a list of answers
-        //return the index of the answer user wants to be the correct one
+        //return the index of the answer user decides to be the correct one
         public static int GetIndexOfCorrectAnswerFromUser(List<string> answers)
         {
             bool inValidInput = true;
@@ -189,6 +193,19 @@ namespace quiz_maker
             Console.WriteLine("\nEnter a value from 1 to 4 to select the correct answer.\n");
         }
 
+        public static void PrintMessageUserHasChosenCorrectAnswer(int score)
+        {
+            Console.WriteLine("\nThat is the correct answer!\n");
+            Console.WriteLine($"\nYour total score is {score}!");
+        }
+
+        public static void PrintMessageUserHasChosenWrongAnswer(QuizCard quiz, int score)
+        {
+            Console.WriteLine("\nSorry that is not the correct answer!\n");
+            Console.WriteLine($"\nThe correct answer is {quiz.correctAnswer}\n");
+            Console.WriteLine($"\nYour total score is {score}.\n");
+        }
+
         //print the contents of the quiz and give user options to select
         //if user enters a non existent answer, have user re enter the answer 
         public static string UserPlaysLoadedQuiz(QuizCard quiz)
@@ -215,6 +232,7 @@ namespace quiz_maker
             while (notValidInput)
             {
                 guessOfUser = Console.ReadLine();
+
                 int indexGuessOfUser;
 
                 bool isValid = int.TryParse(guessOfUser, out indexGuessOfUser);
@@ -232,10 +250,31 @@ namespace quiz_maker
             //if user enters a guess
                 else
                 {
-                   guessOfUser = quiz.answers[indexGuessOfUser];
+                   guessOfUser = quiz.answers[indexGuessOfUser-1];
+                   notValidInput = false;
                 }
             }
             return guessOfUser;
+        }
+
+        //get total score of user, if correct increase by 5 points
+        //show the user's total score
+        public static int GetUsersTotalScore(string guessOfUser, QuizCard quiz)
+        {
+            //if user has chosen the correct answer
+            if (guessOfUser == quiz.correctAnswer)
+            {
+                totalScore += INCREMENT_SCORE;
+                PrintMessageUserHasChosenCorrectAnswer(totalScore);
+            }
+
+            //if user has chosen the incorrect answer
+            //show correct answer and user's total score
+            else
+            {
+                PrintMessageUserHasChosenWrongAnswer(quiz, totalScore);
+            }
+            return totalScore;
         }
 
         //ask user to play again
