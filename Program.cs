@@ -35,7 +35,6 @@ namespace quiz_maker
                     //take in a list of quizzes
                     List<QuizCard> serializedQuestions = Logic.SaveQuizToXML(totalListOfQuestions);
                     UIMethods.PrintQuizSavedMessage();
-
                 }
 
                 //if user decides to play a random quiz
@@ -55,7 +54,7 @@ namespace quiz_maker
 
                     //return total score of the user
                     int totalScoreOfUser = UIMethods.GetUserTotalScore(guessOfUser, selectedQuizCard);
-         
+
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
