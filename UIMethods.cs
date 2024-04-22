@@ -259,7 +259,7 @@ namespace quiz_maker
 
         //get total score of user, if correct increase by 5 points
         //show the user's total score
-        public static int GetUsersTotalScore(string guessOfUser, QuizCard quiz)
+        public static int GetUserTotalScore(string guessOfUser, QuizCard quiz)
         {
             //if user has chosen the correct answer
             if (guessOfUser == quiz.correctAnswer)
