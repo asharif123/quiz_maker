@@ -25,7 +25,7 @@ namespace quiz_maker
                 {
                     List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuizCards();
 
-                    List<QuizCard> serializedQuestions = Logic.SaveQuizToXML(totalListOfQuestions);
+                    Logic.SaveQuizToXML(totalListOfQuestions);
                     UIMethods.PrintQuizSavedMessage();
                 }
 
@@ -39,7 +39,7 @@ namespace quiz_maker
 
                     string guessOfUser = UIMethods.UserPlaysLoadedQuiz(selectedQuizCard);
 
-                    int totalScoreOfUser = UIMethods.GetUserTotalScore(guessOfUser, selectedQuizCard);
+                    UIMethods.GetUserTotalScore(guessOfUser, selectedQuizCard);
 
                 }
 

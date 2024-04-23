@@ -15,10 +15,9 @@ namespace quiz_maker
         
         /// <summary>
         /// method that takes the questions user has entered and saves in an xml file
+        /// stores them in a path having xml file
         /// </summary>
-        /// <param name="questionsList">list of questions user has entered</param>
-        /// <returns>serialized list of questions</returns>
-        public static List<QuizCard> SaveQuizToXML(List<QuizCard> questionsList)
+        public static void SaveQuizToXML(List<QuizCard> questionsList)
         {
 
             using (FileStream file = File.Create(PATH))
@@ -26,11 +25,10 @@ namespace quiz_maker
                 serializer.Serialize(file, questionsList);
             }
 
-            return questionsList;
         }
 
         /// <summary>
-        /// method that takes the serialized saved quizzes and loads a list of quizzes
+        /// method that loads the list of quizzes from the corresponding xml file
         /// </summary>
         /// <returns>a list of unserialized quizzes</returns>
         public static List<QuizCard> LoadQuizFromXML()
