@@ -25,32 +25,26 @@ namespace quiz_maker
             Console.WriteLine("Your quiz has been saved!\n");
         }
 
-        //method to return number of questions inputted by user
+        /// <summary>
+        /// asks user to input how many questions to enter, expects a positive integer
+        /// </summary>
+        /// <returns>returns the number of questions user has entered</returns>
         public static int AskNumberOfQuestions()
         {
-            //ensure user inputs correct value
             bool notValidInput = true;
-
-            //initialized numberofQuestions as an integer to ensure we return an integer having
-            //number of questions user has entered
             int numberOfQuestions = 0;
 
             while (notValidInput)
             {
                 Console.WriteLine("\nHow many questions would you like to create?\n");
-
-                //expect user to input integer value
                 string questionsToInput = Console.ReadLine();
 
-                //confirm user has entered a valid integer
-                //convert string input to int output
                 bool isValid = int.TryParse(questionsToInput, out numberOfQuestions);
 
                 if (!isValid)
                 {
                     Console.WriteLine("Please enter a valid integer!\n");
                 }
-                //if user enters a valid integer, break out of loop and return it!
                 else
                 {
                     notValidInput = false;
@@ -58,28 +52,30 @@ namespace quiz_maker
             }
             return numberOfQuestions;
         }
-
-        //take questions user has answered and add them to list
+        /// <summary>
+        /// asks user to input a string question to be stored as a quiz
+        /// </summary>
+        /// <returns>returns the inputted question</returns>
         public static string InputQuestion()
         {
             Console.WriteLine("\nPlease input your question!\n");
             string inputQuestions = Console.ReadLine();
             return inputQuestions;
         }
-
-        //print answers statement
         public static void PrintInputAnswers()
         {
             Console.WriteLine($"\nPlease input your answers, you can enter up to {MAX_ANSWERS} answers!\n");
         }
 
-        //input answers
         public static string InputAnswers()
         {
             string inputAnswers = Console.ReadLine();
             return inputAnswers;
         }
 
+        /// <summary>
+        /// message asking user to decide which question should be the correct answer by inputting index.
+        /// </summary>
         public static void PrintMessageAskingUserForIndices()
         {
             Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter 1 to" +
@@ -87,89 +83,73 @@ namespace quiz_maker
             $"3 to mark the third answer as the correct answer, etc..\n");
         }
 
-        //method asking user to select an answer to be assigned as the correct one
-        //takes in a list of answers
-        //return the index of the answer user decides to be the correct one
+        /// <summary>
+        /// asks user to enter an index from 1 to 4 to be assigned as the correct answer
+        /// </summary>
+        /// <param name="answers">takes the list of answers corresponding to the loaded question</param>
+        /// <returns>returns the index to use to assign as the correct answer</returns>
         public static int GetIndexOfCorrectAnswerFromUser(List<string> answers)
         {
             bool inValidInput = true;
-
-            //create integer so GetIndexFromUser can return an integer
             int indexOfAssignedCorrectAnswer = 1;
 
-            //while loop to ensure user enters a valid index that can be found within the answers list
             while (inValidInput)
             {
                 PrintMessageAskingUserForIndices();
 
-                //put statement here so if user writes anything incorrect, it will loop back to this
                 string assignCorrectAnswer = Console.ReadLine();
 
-                //verify user enters a valid integer to parse from the list
                 bool isValid = int.TryParse(assignCorrectAnswer, out indexOfAssignedCorrectAnswer);
                 if (!isValid)
                 {
                     Console.WriteLine("\nPlease enter a valid integer!\n");
                 }
 
-                //if user enters a value out of range
                 else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
                 {
                     Console.WriteLine($"\nPlease enter a valid range from 1 to {answers.Count()}!\n");
                 }
 
-                //if user inputs a value having the correct answer
                 else
                 {
-                    //exit the loop once user has assigned the correct answer
                     inValidInput = false;
                 }
             }
             return indexOfAssignedCorrectAnswer;
         }
 
-        //create a list of questions based off what user has inputted
-        //return as object type since list of questions will contain object of quizzes
-        //NOTE: can call UIMethods directly WITHOUT using UIMethods. notation since in same UIMethods file
+        /// <summary>
+        /// takes a list of created questions and stores them as a quiz
+        /// user first enters a question then enters 4 answers corresponding to that question
+        /// each quiz then gets added to a list of quizzes
+        /// </summary>
+        /// <returns>a list of quizzes to be serialized</returns>
         public static List<QuizCard> CreateListOfQuizCards()
         {
-            //list of questions user has inputted
-            //initialize it as a type List<Quiz>, where Quiz is the class name. 
-            //Since each item stored is a Quiz you are creating
             List<QuizCard> listOfQuizCards = new List<QuizCard>();
 
             int maxQuestions = AskNumberOfQuestions();
 
-            //take number of questions user wants to input and add to list
             for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
             {
-                //record question user is entering
                 string questionToAdd = InputQuestion();
 
-                //list of answers to add
-                //initialize it in for loop to ensure you have empty answers for each NEW question!
                 List<string> answers = new List<string>();
 
-                //statement asking user to print answers
                 PrintInputAnswers();
 
-                //record answers user has inputted, input up to 4 answers
                 for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
                 {
                     string answersToAdd = InputAnswers();
-                    //add answers to listofAnswers to initialize to Quiz
                     answers.Add(answersToAdd.ToLower());
                 }
 
-                //call method getting the correct answer
                 int indexOfCorrectAnswer = GetIndexOfCorrectAnswerFromUser(answers);
 
-                //variable to store the correct answer that the user wishes to be the correct one
                 string storeCorrectAnswer = "";
 
                 storeCorrectAnswer = answers[indexOfCorrectAnswer-1];
 
-                //store the questions, answers and chosen correct answer in a listOfQuizCards
                 listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
             }
             return listOfQuizCards;
@@ -206,27 +186,25 @@ namespace quiz_maker
             Console.WriteLine($"\nYour total score is {score} points!\n");
         }
 
-        //print the contents of the quiz and give user options to select
-        //if user enters a non existent answer, have user re enter the answer 
+        /// <summary>
+        /// load the quiz that has been randomly chosen showing the questions and possible answers
+        /// </summary>
+        /// <param name="quiz">take the randomly selected quiz and show its contents</param>
+        /// <returns>the user's guess once he has chosen an appropriate index</returns>        
         public static string UserPlaysLoadedQuiz(QuizCard quiz)
         {
-            //show the question from the quiz class
             Console.WriteLine(quiz.questions);
 
-            //add space between questions and answer
             Console.WriteLine();
 
-            //show all the answers of the randomly selected quiz
             for (int i = 0; i < quiz.answers.Count; i++) 
             {
                 Console.WriteLine($"{i+1} - {quiz.answers[i]}");
             }
             PrintMessageAskingUserToSelectCorrectAnswer();
 
-            //verify user enters a valid integer
             bool notValidInput = true;
 
-            //initialize as empty so it can be retained
             string guessOfUser = "";
 
             while (notValidInput)
@@ -247,7 +225,6 @@ namespace quiz_maker
                     Console.WriteLine("\nPlease enter a valid integer from 1 to 4!\n");
                 }
                 
-            //if user enters a guess
                 else
                 {
                    guessOfUser = quiz.answers[indexGuessOfUser-1];
@@ -257,19 +234,21 @@ namespace quiz_maker
             return guessOfUser;
         }
 
-        //get total score of user, if correct increase by 5 points
-        //show the user's total score
+        /// <summary>
+        /// show the total score of the user, where each correct answer is 5 points
+        /// user can see the final score
+        /// </summary>
+        /// <param name="guessOfUser">the answer user has guessed to be the correct answer</param>
+        /// <param name="quiz">the randomly selected quiz to obtain the correctAnswer content</param>
+        /// <returns>total score the user has obtained</returns>
         public static int GetUserTotalScore(string guessOfUser, QuizCard quiz)
         {
-            //if user has chosen the correct answer
             if (guessOfUser == quiz.correctAnswer)
             {
                 totalScore += INCREMENT_SCORE;
                 PrintMessageUserHasChosenCorrectAnswer(totalScore);
             }
 
-            //if user has chosen the incorrect answer
-            //show correct answer and user's total score
             else
             {
                 PrintMessageUserHasChosenWrongAnswer(quiz, totalScore);
@@ -277,12 +256,14 @@ namespace quiz_maker
             return totalScore;
         }
 
-        //ask user to play again
+        /// <summary>
+        /// gives user to continue playing or quit the game
+        /// </summary>
+        /// <returns>true if user wishes to continue, false to quit the program</returns>
         public static bool AskUserToPlayAgain()
         {
             Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-            //exit the game if user enters any key besides 'y'
             if (optionToContinue != CONTINUE_PLAYING)
             {
                 Console.WriteLine("\nExiting the game!\n");

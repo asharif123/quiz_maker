@@ -1,40 +1,17 @@
-﻿/*using System.Collections.Generic;
+﻿///<summary>
+///quiz to store questions, answers and the correct answer
+///each quiz card is filled with questions and answers where user selects the right one
+///NOTE: this DOES NOT use static since QuizCard is meant to be instantiated
+///</summary>
 
-What program has multiple choices, random questions and user scoring? 
-A quiz maker program! 
-Design a program which asks the user for a list of questions, multiple choice answers for each question 
-and select which answer is right. 
-
-The program will then add those questions and answers to a list that gets stored on your harddisk using 
-serialisation.The program can then read that file, randomly pick a question and load up its answers 
-for the user to choose from. When the user chooses an answer the program will determine if the answer chosen is correct.
-It should also keep score for the end.
-
-rocket Tips: First we need to create our repository of questions and answers. 
-
-A simple way to do this is to have your program open up and ask the user to enter questions and their answers. 
-Each question and the answers they add will be stored in a file (serialisation is your friend).
-
-An example might be “What color is the sky?” and list “red, blue, green” as the answers. 
-The answer “Blue” is marked as the right answer (which you obviously don’t show the user taking the quiz).
-When the user selects the answer it gets compared it to the correct one stored.
-Each successful answer can be added to a counter variable. 
-At the end of the quiz their score is this counter variable over the number of questions asked.
-*/
-
-//quiz card contains a question with 4 answers
 namespace quiz_maker
 {
-    //NOTE: this DOES NOT use static since QuizCard is meant to be instantiated
     public class QuizCard
     {
-        //question user has inputted
         public string questions = "";
 
-        //list of answers that user has inputted
         public List<string> answers = new List<string>();
 
-        //store correct answer user has inputted
         public string correctAnswer = "";
         
     }
