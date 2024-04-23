@@ -9,6 +9,7 @@ namespace quiz_maker
         //increment score by 5 points
         const int INCREMENT_SCORE = 5;
         //user can enter 4 answers per question
+        const int MIN_ANSWERS = 1;
         const int MAX_ANSWERS = 4;
 
         //record the user's total score
@@ -107,7 +108,7 @@ namespace quiz_maker
 
                 else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
                 {
-                    Console.WriteLine($"\nPlease enter a valid range from 1 to {answers.Count()}!\n");
+                    Console.WriteLine($"\nPlease enter a valid range from {MIN_ANSWERS} to {answers.Count()}!\n");
                 }
 
                 else
@@ -170,7 +171,7 @@ namespace quiz_maker
 
         public static void PrintMessageAskingUserToSelectCorrectAnswer()
         {
-            Console.WriteLine("\nEnter a value from 1 to 4 to select the correct answer.\n");
+            Console.WriteLine($"\nEnter a value from {MIN_ANSWERS} to {MAX_ANSWERS} to select the correct answer.\n");
         }
 
         public static void PrintMessageUserHasChosenCorrectAnswer(int score)
@@ -220,9 +221,9 @@ namespace quiz_maker
                     Console.WriteLine("\nPlease enter an integer value!\n");
                 }
 
-                else if (indexGuessOfUser < 1 || indexGuessOfUser > 4)
+                else if (indexGuessOfUser < MIN_ANSWERS || indexGuessOfUser > MAX_ANSWERS)
                 {
-                    Console.WriteLine("\nPlease enter a valid integer from 1 to 4!\n");
+                    Console.WriteLine($"\nPlease enter a valid integer from {MIN_ANSWERS} to {MAX_ANSWERS}!\n");
                 }
                 
                 else
