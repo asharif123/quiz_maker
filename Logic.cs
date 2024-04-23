@@ -12,13 +12,14 @@ namespace quiz_maker
 
         //relative path to xml file
         const string PATH = @"myFile.xml";
-
+        
         /// <summary>
         /// method that takes the questions user has entered and saves in an xml file
         /// stores them in a path having xml file
         /// </summary>
         public static void SaveQuizToXML(List<QuizCard> questionsList)
         {
+
             using (FileStream file = File.Create(PATH))
             {
                 serializer.Serialize(file, questionsList);

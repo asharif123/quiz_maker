@@ -237,6 +237,7 @@ namespace quiz_maker
 
         /// <summary>
         /// show the total score of the user, where each correct answer is 5 points
+        /// show user the correct answer if the user selected the incorrect answer
         /// user can see the final score
         /// </summary>
         /// <param name="guessOfUser">the answer user has guessed to be the correct answer</param>

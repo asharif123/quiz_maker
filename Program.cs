@@ -6,6 +6,7 @@ namespace quiz_maker
     /// <summary>
     /// Program.cs file takes each of the UIMethods and Logic methods to generate a quiz
     /// saves and loads the randomly generated quiz
+    /// get the user's total score at the end
     /// use while loop so user can continue playing or quit
     /// </summary>
     public class Program
