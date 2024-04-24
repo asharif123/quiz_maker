@@ -40,7 +40,11 @@ namespace quiz_maker
 
                     string guessOfUser = UIMethods.UserPlaysLoadedQuiz(selectedQuizCard);
 
-                    UIMethods.GetUserTotalScore(guessOfUser, selectedQuizCard);
+                    bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+
+                    int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+
+                    UIMethods.PrintMessageIfUserIsCorrectOrIncorrect(answerIfCorrect, totalUserScore, selectedQuizCard);
 
                 }
 

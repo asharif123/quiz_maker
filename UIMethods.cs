@@ -236,26 +236,23 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// show the total score of the user, where each correct answer is 5 points
-        /// show user the correct answer if the user selected the incorrect answer
-        /// user can see the final score
+        /// prints statements depending if user has the correct answer or not
         /// </summary>
-        /// <param name="guessOfUser">the answer user has guessed to be the correct answer</param>
-        /// <param name="quiz">the randomly selected quiz to obtain the correctAnswer content</param>
-        /// <returns>total score the user has obtained</returns>
-        public static int GetUserTotalScore(string guessOfUser, QuizCard quiz)
+        /// <param name="ifAnswerIsCorrect">bool variable to determine if user has the right answer</param>
+        /// <param name="totalScore">get user's total score</param>
+        /// <param name="quiz">get correct answer from random quiz</param>
+        public static void PrintMessageIfUserIsCorrectOrIncorrect(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
         {
-            if (guessOfUser == quiz.correctAnswer)
+            if (ifAnswerIsCorrect)
             {
-                totalScore += INCREMENT_SCORE;
-                PrintMessageUserHasChosenCorrectAnswer(totalScore);
+                Console.WriteLine("\nThat is the correct answer!\n");
             }
-
             else
             {
-                PrintMessageUserHasChosenWrongAnswer(quiz, totalScore);
+                Console.WriteLine("\nSorry, that is NOT the correct answer!\n");
+                Console.WriteLine($"\nThe correct answer is {quiz.correctAnswer}.\n");
             }
-            return totalScore;
+            Console.WriteLine($"\nYour total score is {totalScore}.\n");
         }
 
         /// <summary>

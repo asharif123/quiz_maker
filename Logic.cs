@@ -10,8 +10,11 @@ namespace quiz_maker
         //used to randomly select a question, need to be static
         static Random pickQuizCardAtRandom = new Random();
 
+        static int totalScore = 0;
+
         //relative path to xml file
         const string PATH = @"myFile.xml";
+        const int INCREMENT_SCORE = 5;
         
         /// <summary>
         /// method that takes the questions user has entered and saves in an xml file
@@ -49,5 +52,40 @@ namespace quiz_maker
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
             return quizCardList[randomNumber];
         }
+
+        /// <summary>
+        /// method to determine if what user entered matches the answer in the correct quiz
+        /// </summary>
+        /// <param name="userGuess">answer user has inputted as correct</param>
+        /// <param name="quiz">extract the correct answer</param>
+        /// <returns>true if user has the right answer, else false</returns>
+        public static bool checkIfAnswerIsCorrect(string userGuess, QuizCard quiz)
+        {
+            if (userGuess == quiz.correctAnswer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// show the user's total score by taking bool argument
+        /// </summary>
+        /// <param name="userGuess">argument to determine if user is right or wrong</param>
+        /// <param name="quiz">extract the correct answer</param>
+        /// <returns>true or false</returns>
+        public static int getUserTotalScore(string userGuess, QuizCard quiz)
+        {
+            if (userGuess == quiz.correctAnswer)
+            {
+                totalScore += INCREMENT_SCORE;
+            }
+
+            return totalScore;
+        }
+        
     }
 }
