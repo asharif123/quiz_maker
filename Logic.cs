@@ -14,6 +14,7 @@ namespace quiz_maker
 
         //relative path to xml file
         const string PATH = @"myFile.xml";
+        //score to increase user's score
         const int INCREMENT_SCORE = 5;
         
         /// <summary>

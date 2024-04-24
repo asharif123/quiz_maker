@@ -6,8 +6,6 @@ namespace quiz_maker
     {
         const char CREATE_QUIZ = 'c';
         const char CONTINUE_PLAYING = 'y';
-        //increment score by 5 points
-        const int INCREMENT_SCORE = 5;
         //user can enter 4 answers per question
         const int MIN_ANSWERS = 1;
         const int MAX_ANSWERS = 4;
