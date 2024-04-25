@@ -12,7 +12,7 @@ namespace quiz_maker
     /// </summary>
     public class Program
     {
-        const char NEW_QUIZ = 'c';
+      
         static void Main()
         {
             bool replay = true;
@@ -23,7 +23,7 @@ namespace quiz_maker
             {
                 char playTheGame = UIMethods.ReadyToPlay();
 
-                if (playTheGame == NEW_QUIZ)
+                if (playTheGame == Constants.NEW_QUIZ)
                 {
                     List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuizCards();
 
@@ -37,15 +37,16 @@ namespace quiz_maker
 
                     UIMethods.PrintRandomlySelectingAQuestionMessage();
 
-                    QuizCard selectedQuizCard = Logic.RandomlySelectedQuizCard(listofQuizCards);
+                    QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                    string guessOfUser = UIMethods.UserPlaysLoadedQuiz(selectedQuizCard);
+                    string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);                
 
                     bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
                     int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                    UIMethods.PrintMessageIfUserIsCorrectOrIncorrect(answerIfCorrect, totalUserScore, selectedQuizCard);
+                    UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                   
 
                 }
 
@@ -53,6 +54,7 @@ namespace quiz_maker
                 {
                     replay = false;
                 }
+        
             }
         }
     }

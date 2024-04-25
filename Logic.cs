@@ -12,11 +12,6 @@ namespace quiz_maker
 
         static int totalScore = 0;
 
-        //relative path to xml file
-        const string PATH = @"myFile.xml";
-        //score to increase user's score
-        const int INCREMENT_SCORE = 5;
-        
         /// <summary>
         /// method that takes the questions user has entered and saves in an xml file
         /// stores them in a path having xml file
@@ -24,7 +19,7 @@ namespace quiz_maker
         public static void SaveQuizToXML(List<QuizCard> questionsList)
         {
 
-            using (FileStream file = File.Create(PATH))
+            using (FileStream file = File.Create(Constants.PATH))
             {
                 serializer.Serialize(file, questionsList);
             }
@@ -39,7 +34,7 @@ namespace quiz_maker
         {
             List<QuizCard> quizList = new List<QuizCard>();
 
-            using (FileStream file = File.OpenRead(PATH))
+            using (FileStream file = File.OpenRead(Constants.PATH))
             {
                 quizList = serializer.Deserialize(file) as List<QuizCard>;
             }
@@ -48,7 +43,7 @@ namespace quiz_maker
         }
 
         //show randomly selected question, pass argument of list of questions
-        public static QuizCard RandomlySelectedQuizCard(List<QuizCard> quizCardList)
+        public static QuizCard GetRandomQuizCard(List<QuizCard> quizCardList)
         {
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
             return quizCardList[randomNumber];
@@ -80,13 +75,13 @@ namespace quiz_maker
         /// <returns>true or false</returns>
         public static int getUserTotalScore(string userGuess, QuizCard quiz)
         {
-            if (userGuess == quiz.correctAnswer)
+            if (checkIfAnswerIsCorrect(userGuess, quiz))
             {
-                totalScore += INCREMENT_SCORE;
+                totalScore += Constants.INCREMENT_SCORE;
             }
 
             return totalScore;
         }
-        
+
     }
 }

@@ -2,13 +2,9 @@
 
 namespace quiz_maker
 {
-    internal class UIMethods
+    internal static class UIMethods
     {
-        const char CREATE_QUIZ = 'c';
-        const char CONTINUE_PLAYING = 'y';
-        //user can enter 4 answers per question
-        const int MIN_ANSWERS = 1;
-        const int MAX_ANSWERS = 4;
+
 
         //record the user's total score
         //make it static to be accesible to the static methods utizling it
@@ -63,7 +59,7 @@ namespace quiz_maker
         }
         public static void PrintInputAnswers()
         {
-            Console.WriteLine($"\nPlease input your answers, you can enter up to {MAX_ANSWERS} answers!\n");
+            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
         }
 
         public static string InputAnswers()
@@ -106,7 +102,7 @@ namespace quiz_maker
 
                 else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
                 {
-                    Console.WriteLine($"\nPlease enter a valid range from {MIN_ANSWERS} to {answers.Count()}!\n");
+                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_ANSWERS} to {answers.Count()}!\n");
                 }
 
                 else
@@ -137,7 +133,7 @@ namespace quiz_maker
 
                 PrintInputAnswers();
 
-                for (int numberOfAnswers = 0; numberOfAnswers < MAX_ANSWERS; numberOfAnswers++)
+                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
                 {
                     string answersToAdd = InputAnswers();
                     answers.Add(answersToAdd.ToLower());
@@ -147,7 +143,7 @@ namespace quiz_maker
 
                 string storeCorrectAnswer = "";
 
-                storeCorrectAnswer = answers[indexOfCorrectAnswer-1];
+                storeCorrectAnswer = answers[indexOfCorrectAnswer - 1];
 
                 listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
             }
@@ -157,7 +153,7 @@ namespace quiz_maker
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
-            Console.WriteLine($"\nPress {CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
+            Console.WriteLine($"\nPress {Constants.CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
         }
@@ -169,7 +165,7 @@ namespace quiz_maker
 
         public static void PrintMessageAskingUserToSelectCorrectAnswer()
         {
-            Console.WriteLine($"\nEnter a value from {MIN_ANSWERS} to {MAX_ANSWERS} to select the correct answer.\n");
+            Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
         }
 
         public static void PrintMessageUserHasChosenCorrectAnswer(int score)
@@ -190,44 +186,45 @@ namespace quiz_maker
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
-        public static string UserPlaysLoadedQuiz(QuizCard quiz)
+        public static string GetUserAnswer(QuizCard quiz)
         {
             Console.WriteLine(quiz.questions);
 
             Console.WriteLine();
 
-            for (int i = 0; i < quiz.answers.Count; i++) 
+            for (int i = 0; i < quiz.answers.Count; i++)
             {
-                Console.WriteLine($"{i+1} - {quiz.answers[i]}");
+                Console.WriteLine($"{i + 1} - {quiz.answers[i]}");
             }
-            PrintMessageAskingUserToSelectCorrectAnswer();
 
-            bool notValidInput = true;
+            Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
+
+            bool inValidInput = true;
 
             string guessOfUser = "";
 
-            while (notValidInput)
+            while (inValidInput)
             {
                 guessOfUser = Console.ReadLine();
 
                 int indexGuessOfUser;
 
-                bool isValid = int.TryParse(guessOfUser, out indexGuessOfUser);
+                bool valid = int.TryParse(guessOfUser, out indexGuessOfUser);
 
-                if (!isValid)
+                if (!valid)
                 {
                     Console.WriteLine("\nPlease enter an integer value!\n");
                 }
 
-                else if (indexGuessOfUser < MIN_ANSWERS || indexGuessOfUser > MAX_ANSWERS)
+                else if (indexGuessOfUser < Constants.MIN_ANSWERS || indexGuessOfUser > Constants.MAX_ANSWERS)
                 {
-                    Console.WriteLine($"\nPlease enter a valid integer from {MIN_ANSWERS} to {MAX_ANSWERS}!\n");
+                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS}!\n");
                 }
-                
+
                 else
                 {
-                   guessOfUser = quiz.answers[indexGuessOfUser-1];
-                   notValidInput = false;
+                    guessOfUser = quiz.answers[indexGuessOfUser - 1];
+                    inValidInput = false;
                 }
             }
             return guessOfUser;
@@ -239,7 +236,7 @@ namespace quiz_maker
         /// <param name="ifAnswerIsCorrect">bool variable to determine if user has the right answer</param>
         /// <param name="totalScore">get user's total score</param>
         /// <param name="quiz">get correct answer from random quiz</param>
-        public static void PrintMessageIfUserIsCorrectOrIncorrect(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
+        public static void PrintResultInformation(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
         {
             if (ifAnswerIsCorrect)
             {
@@ -259,9 +256,9 @@ namespace quiz_maker
         /// <returns>true if user wishes to continue, false to quit the program</returns>
         public static bool AskUserToPlayAgain()
         {
-            Console.WriteLine($"\nPress {CONTINUE_PLAYING} to continue playing or any key to quit!\n");
+            Console.WriteLine($"\nPress {Constants.CONTINUE_PLAYING} to continue playing or any key to quit!\n");
             char optionToContinue = Char.ToLower(Console.ReadKey().KeyChar);
-            if (optionToContinue != CONTINUE_PLAYING)
+            if (optionToContinue != Constants.CONTINUE_PLAYING)
             {
                 Console.WriteLine("\nExiting the game!\n");
                 return false;
