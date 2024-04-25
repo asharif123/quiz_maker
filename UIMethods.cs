@@ -10,16 +10,6 @@ namespace quiz_maker
         //make it static to be accesible to the static methods utizling it
         static int totalScore = 0;
 
-        public static void PrintWelcomeMessage()
-        {
-            Console.WriteLine("\nWelcome to Quiz Maker!\n");
-        }
-
-        public static void PrintQuizSavedMessage()
-        {
-            Console.WriteLine("Your quiz has been saved!\n");
-        }
-
         /// <summary>
         /// asks user to input how many questions to enter, expects a positive integer
         /// </summary>
@@ -56,10 +46,6 @@ namespace quiz_maker
             Console.WriteLine("\nPlease input your question!\n");
             string inputQuestions = Console.ReadLine();
             return inputQuestions;
-        }
-        public static void PrintInputAnswers()
-        {
-            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
         }
 
         public static string InputAnswers()
@@ -131,7 +117,7 @@ namespace quiz_maker
 
                 List<string> answers = new List<string>();
 
-                PrintInputAnswers();
+                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
 
                 for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
                 {
@@ -153,19 +139,9 @@ namespace quiz_maker
         //ask user if ready to play after inputting all the quizzes
         public static char ReadyToPlay()
         {
-            Console.WriteLine($"\nPress {Constants.CREATE_QUIZ} to create a quiz or any key to play a random quiz!\n");
+            Console.WriteLine($"\nPress {Constants.NEW_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
-        }
-
-        public static void PrintRandomlySelectingAQuestionMessage()
-        {
-            Console.WriteLine("\nRandomly selecting a question...\n");
-        }
-
-        public static void PrintMessageAskingUserToSelectCorrectAnswer()
-        {
-            Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
         }
 
         public static void PrintMessageUserHasChosenCorrectAnswer(int score)

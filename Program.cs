@@ -17,8 +17,6 @@ namespace quiz_maker
         {
             bool replay = true;
 
-            UIMethods.PrintWelcomeMessage();
-
             while (replay)
             {
                 char playTheGame = UIMethods.ReadyToPlay();
@@ -28,14 +26,11 @@ namespace quiz_maker
                     List<QuizCard> totalListOfQuestions = UIMethods.CreateListOfQuizCards();
 
                     Logic.SaveQuizToXML(totalListOfQuestions);
-                    UIMethods.PrintQuizSavedMessage();
                 }
 
                 else
                 {
                     List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
-
-                    UIMethods.PrintRandomlySelectingAQuestionMessage();
 
                     QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
