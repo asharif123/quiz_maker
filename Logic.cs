@@ -68,7 +68,7 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// show the user's total score by taking bool argument
+        /// show the user's total score by taking bool argument, use checkIfAnswerIfCorrect method above
         /// </summary>
         /// <param name="userGuess">argument to determine if user is right or wrong</param>
         /// <param name="quiz">extract the correct answer</param>
