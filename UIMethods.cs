@@ -4,8 +4,6 @@ namespace quiz_maker
 {
     internal static class UIMethods
     {
-
-
         //record the user's total score
         //make it static to be accesible to the static methods utizling it
         static int totalScore = 0;
@@ -48,6 +46,10 @@ namespace quiz_maker
             return inputQuestions;
         }
 
+        /// <summary>
+        /// asks user to enter answers for each question
+        /// </summary>
+        /// <returns>answers in string format</returns>
         public static string InputAnswers()
         {
             string inputAnswers = Console.ReadLine();
@@ -69,7 +71,7 @@ namespace quiz_maker
         /// </summary>
         /// <param name="answers">takes the list of answers corresponding to the loaded question</param>
         /// <returns>returns the index to use to assign as the correct answer</returns>
-        public static int GetIndexOfCorrectAnswerFromUser(List<string> answers)
+        public static int GetIndexOfCorrectAnswer(List<string> answers)
         {
             bool inValidInput = true;
             int indexOfAssignedCorrectAnswer = 1;
@@ -102,7 +104,7 @@ namespace quiz_maker
         /// <summary>
         /// takes a list of created questions and stores them as a quiz
         /// user first enters a question then enters 4 answers corresponding to that question
-        /// each quiz then gets added to a list of quizzes
+        /// each quiz class then gets added to a list of quizzes
         /// </summary>
         /// <returns>a list of quizzes to be serialized</returns>
         public static List<QuizCard> CreateListOfQuizCards()
@@ -125,7 +127,7 @@ namespace quiz_maker
                     answers.Add(answersToAdd.ToLower());
                 }
 
-                int indexOfCorrectAnswer = GetIndexOfCorrectAnswerFromUser(answers);
+                int indexOfCorrectAnswer = GetIndexOfCorrectAnswer(answers);
 
                 string storeCorrectAnswer = "";
 
@@ -136,7 +138,10 @@ namespace quiz_maker
             return listOfQuizCards;
         }
 
-        //ask user if ready to play after inputting all the quizzes
+        /// <summary>
+        /// takes in an input of c if user wants to create a new quiz, or input any key to play a random quiz
+        /// </summary>
+        /// <returns>a char argument</returns>
         public static char ReadyToPlay()
         {
             Console.WriteLine($"\nPress {Constants.NEW_QUIZ} to create a quiz or any key to play a random quiz!\n");
@@ -144,13 +149,22 @@ namespace quiz_maker
             return startPlaying;
         }
 
-        public static void PrintMessageUserHasChosenCorrectAnswer(int score)
+        /// <summary>
+        /// message showing user has entered the correct answer and user's updated score
+        /// </summary>
+        /// <param name="score">user's most recent score</param>
+        public static void PrintCorrectAnswerMessage(int score)
         {
             Console.WriteLine("\nThat is the correct answer!\n");
             Console.WriteLine($"\nYour total score is {score} points!");
         }
 
-        public static void PrintMessageUserHasChosenWrongAnswer(QuizCard quiz, int score)
+        /// <summary>
+        /// message showing if user has entered the incorrect answer
+        /// </summary>
+        /// <param name="quiz">extract the correct answer</param>
+        /// <param name="score">user's most recent score</param>
+        public static void PrintWrongAnswerMessage(QuizCard quiz, int score)
         {
             Console.WriteLine("\nSorry that is not the correct answer!\n");
             Console.WriteLine($"\nThe correct answer is {quiz.correctAnswer}\n");
