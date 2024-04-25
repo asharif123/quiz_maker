@@ -164,6 +164,8 @@ namespace quiz_maker
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
         public static string GetUserAnswer(QuizCard quiz)
         {
+            Console.WriteLine();
+
             Console.WriteLine(quiz.questions);
 
             Console.WriteLine();

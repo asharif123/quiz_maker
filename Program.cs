@@ -41,8 +41,6 @@ namespace quiz_maker
                     int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
                     UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
-                   
-
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
