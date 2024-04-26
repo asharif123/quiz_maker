@@ -57,14 +57,7 @@ namespace quiz_maker
         /// <returns>true if user has the right answer, else false</returns>
         public static bool checkIfAnswerIsCorrect(string userGuess, QuizCard quiz)
         {
-            if (userGuess == quiz.correctAnswer)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return userGuess == quiz.correctAnswer;
         }
 
         /// <summary>
