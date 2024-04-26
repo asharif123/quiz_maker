@@ -12,6 +12,7 @@ namespace quiz_maker
         //score to increase user's score
         public const int INCREMENT_SCORE = 5;
         //relative path to xml file
+        public const int NO_QUIZ_IN_DATABASE = 0;
         public const string PATH = @"myFile.xml";
     }
 }

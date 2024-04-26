@@ -67,6 +67,27 @@ namespace quiz_maker
         }
 
         /// <summary>
+        /// method to determine if there are available quizzes to play when user wants to load a quiz
+        ///force user to break out of the loop if there are no available quizzes to play with
+        /// </summary>
+        /// <param name="quizCards">list of quizzes in database</param>
+        /// <returns>number of quizzes in database</returns>
+        public static int GetNumberOfQuizzesInDatabase(List<QuizCard> quizCards)
+        {
+            if (quizCards.Count == Constants.NO_QUIZ_IN_DATABASE)
+            {
+                Console.WriteLine("\nThere are no quizzes in the database, please create at least one!\n");
+            }
+            
+            else
+            {
+                Console.WriteLine("\nStarting the game!\n");
+            }
+
+            return quizCards.Count;
+        }
+
+        /// <summary>
         /// asks user to enter an index from 1 to 4 to be assigned as the correct answer
         /// </summary>
         /// <param name="answers">takes the list of answers corresponding to the loaded question</param>
@@ -148,6 +169,8 @@ namespace quiz_maker
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
             return startPlaying;
         }
+
+
 
         /// <summary>
         /// load the quiz that has been randomly chosen showing the questions and possible answers

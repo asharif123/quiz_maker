@@ -7,12 +7,13 @@ namespace quiz_maker
     /// Program.cs file takes each of the UIMethods and Logic methods to generate a quiz
     /// saves and loads the randomly generated quiz
     /// user can either create or play an existing quiz in the database
+    /// if there are no quizzes in the database, inform user
     /// get the user's total score at the end
     /// use while loop so user can continue playing or quit
     /// </summary>
     public class Program
     {
-      
+
         static void Main()
         {
             bool replay = true;
@@ -32,22 +33,31 @@ namespace quiz_maker
                 {
                     List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
 
-                    QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
+                    if (UIMethods.GetNumberOfQuizzesInDatabase(listofQuizCards) == Constants.NO_QUIZ_IN_DATABASE)
+                    {
+                        break;
+                    }
 
-                    string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);                
+                    else
+                    {
+                        QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                    bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                        string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
 
-                    int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                        bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                    UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                        int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+
+                        UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                    }
+
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
                 {
                     replay = false;
                 }
-        
+
             }
         }
     }
