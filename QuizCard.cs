@@ -8,7 +8,7 @@ namespace quiz_maker
 {
     public class QuizCard
     {
-        public string questions = "";
+        public string question = "";
 
         public List<string> answers = new List<string>();
 

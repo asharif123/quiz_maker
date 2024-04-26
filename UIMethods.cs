@@ -133,7 +133,7 @@ namespace quiz_maker
 
                 storeCorrectAnswer = answers[indexOfCorrectAnswer - 1];
 
-                listOfQuizCards.Add(new QuizCard { questions = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
+                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
             }
             return listOfQuizCards;
         }
@@ -180,7 +180,7 @@ namespace quiz_maker
         {
             Console.WriteLine();
 
-            Console.WriteLine(quiz.questions);
+            Console.WriteLine(quiz.question);
 
             Console.WriteLine();
 
