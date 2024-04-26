@@ -78,7 +78,7 @@ namespace quiz_maker
             {
                 Console.WriteLine("\nThere are no quizzes in the database, please create at least one!\n");
             }
-            
+
             else
             {
                 Console.WriteLine("\nStarting the game!\n");
@@ -170,14 +170,11 @@ namespace quiz_maker
             return startPlaying;
         }
 
-
-
         /// <summary>
-        /// load the quiz that has been randomly chosen showing the questions and possible answers
+        /// print contents of the randomly selected quiz to display to the user
         /// </summary>
-        /// <param name="quiz">take the randomly selected quiz and show its contents</param>
-        /// <returns>the user's guess once he has chosen an appropriate index</returns>        
-        public static string GetUserAnswer(QuizCard quiz)
+        /// <param name="quiz">randomly selected quiz</param>
+        public static void PrintLoadedQuiz(QuizCard quiz)
         {
             Console.WriteLine();
 
@@ -191,6 +188,16 @@ namespace quiz_maker
             }
 
             Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
+        }
+        /// <summary>
+        /// give user the option to select the correct answer from list of answers
+        /// Added 2 Console.WriteLine() statements to make the loaded quiz readable
+        /// </summary>
+        /// <param name="quiz">take the randomly selected quiz and show its contents</param>
+        /// <returns>the user's guess once he has chosen an appropriate index</returns>        
+        public static string GetUserAnswer(QuizCard quiz)
+        {
+            PrintLoadedQuiz(quiz);
 
             bool inValidInput = true;
 
