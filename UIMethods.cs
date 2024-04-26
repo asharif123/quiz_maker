@@ -255,10 +255,7 @@ namespace quiz_maker
                 Console.WriteLine("\nExiting the game!\n");
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
     }
 }
