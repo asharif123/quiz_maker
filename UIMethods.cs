@@ -150,28 +150,6 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// message showing user has entered the correct answer and user's updated score
-        /// </summary>
-        /// <param name="score">user's most recent score</param>
-        public static void PrintCorrectAnswerMessage(int score)
-        {
-            Console.WriteLine("\nThat is the correct answer!\n");
-            Console.WriteLine($"\nYour total score is {score} points!");
-        }
-
-        /// <summary>
-        /// message showing if user has entered the incorrect answer
-        /// </summary>
-        /// <param name="quiz">extract the correct answer</param>
-        /// <param name="score">user's most recent score</param>
-        public static void PrintWrongAnswerMessage(QuizCard quiz, int score)
-        {
-            Console.WriteLine("\nSorry that is not the correct answer!\n");
-            Console.WriteLine($"\nThe correct answer is {quiz.correctAnswer}\n");
-            Console.WriteLine($"\nYour total score is {score} points!\n");
-        }
-
-        /// <summary>
         /// load the quiz that has been randomly chosen showing the questions and possible answers
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
