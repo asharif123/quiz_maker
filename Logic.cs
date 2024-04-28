@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Linq.Expressions;
+using System.Xml.Serialization;
 
 namespace quiz_maker
 {
@@ -27,19 +28,22 @@ namespace quiz_maker
 
         /// <summary>
         /// method that loads the list of quizzes from the corresponding xml file
-        /// add if statement to confirm if xml file exists or not before trying to load the xml file
+        /// use try/catch method to verify if xml file exists
         /// </summary>
         /// <returns>a list of unserialized quizzes</returns>
         public static List<QuizCard> LoadQuizFromXML()
         {
             List<QuizCard> quizList = new List<QuizCard>();
-
-            if (File.Exists(Constants.PATH))
+            try
             {
                 using (FileStream file = File.OpenRead(Constants.PATH))
                 {
                     quizList = serializer.Deserialize(file) as List<QuizCard>;
                 }
+            }
+
+            catch (FileNotFoundException)
+            {
             }
             return quizList;
         }
