@@ -20,7 +20,7 @@ namespace quiz_maker
 
             while (replay)
             {
-                char playTheGame = UIMethods.ReadyToPlay();
+                char playTheGame = UIMethods.AskUserToCreateOrPlayAQuiz();
 
                 if (playTheGame == Constants.NEW_QUIZ)
                 {
@@ -35,21 +35,19 @@ namespace quiz_maker
 
                     if (UIMethods.GetNumberOfQuizzesInDatabase(listofQuizCards) == Constants.NO_QUIZ_IN_DATABASE)
                     {
-                        break;
+                        replay = true;
                     }
 
-                    else
-                    {
-                        QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
+                    QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                        string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
+                    string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
 
-                        bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                    bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                        int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                    int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                        UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
-                    }
+                    UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+
 
                 }
 

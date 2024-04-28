@@ -4,10 +4,6 @@ namespace quiz_maker
 {
     internal static class UIMethods
     {
-        //record the user's total score
-        //make it static to be accesible to the static methods utizling it
-        static int totalScore = 0;
-
         /// <summary>
         /// asks user to input how many questions to enter, expects a positive integer
         /// </summary>
@@ -125,6 +121,7 @@ namespace quiz_maker
         /// <summary>
         /// takes a list of created questions and stores them as a quiz
         /// user first enters a question then enters 4 answers corresponding to that question
+        /// put answers empty list to reset answers each time user enters a question.
         /// each quiz class then gets added to a list of quizzes
         /// </summary>
         /// <returns>a list of quizzes to be serialized</returns>
@@ -163,7 +160,7 @@ namespace quiz_maker
         /// takes in an input of c if user wants to create a new quiz, or input any key to play a random quiz
         /// </summary>
         /// <returns>a char argument</returns>
-        public static char ReadyToPlay()
+        public static char AskUserToCreateOrPlayAQuiz()
         {
             Console.WriteLine($"\nPress {Constants.NEW_QUIZ} to create a quiz or any key to play a random quiz!\n");
             char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
@@ -174,7 +171,7 @@ namespace quiz_maker
         /// print contents of the randomly selected quiz to display to the user
         /// </summary>
         /// <param name="quiz">randomly selected quiz</param>
-        public static void PrintLoadedQuiz(QuizCard quiz)
+        public static void PrintContentsOfLoadedQuiz(QuizCard quiz)
         {
             Console.WriteLine();
 
@@ -190,14 +187,14 @@ namespace quiz_maker
             Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
         }
         /// <summary>
-        /// give user the option to select the correct answer from list of answers
+        /// give user the option to select the correct answer from list of possible answers
         /// Added 2 Console.WriteLine() statements to make the loaded quiz readable
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
         public static string GetUserAnswer(QuizCard quiz)
         {
-            PrintLoadedQuiz(quiz);
+            PrintContentsOfLoadedQuiz(quiz);
 
             bool inValidInput = true;
 
