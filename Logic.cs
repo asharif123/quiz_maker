@@ -23,7 +23,6 @@ namespace quiz_maker
             {
                 serializer.Serialize(file, questionsList);
             }
-
         }
 
         /// <summary>
@@ -75,7 +74,6 @@ namespace quiz_maker
             {
                 totalScore += Constants.INCREMENT_SCORE;
             }
-
             return totalScore;
         }
 
