@@ -8,6 +8,7 @@ namespace quiz_maker
     /// saves and loads the randomly generated quiz
     /// user can either create or play an existing quiz in the database
     /// if there are no quizzes in the database, inform user
+    /// if quiz available to load, load a random quiz
     /// get the user's total score at the end
     /// use while loop so user can continue playing or quit
     /// </summary>
@@ -20,7 +21,7 @@ namespace quiz_maker
 
             while (replay)
             {
-                char playTheGame = UIMethods.AskUserToCreateOrPlayAQuiz();
+                char playTheGame = UIMethods.AskUserToCreateOrPlayRandomQuiz();
 
                 if (playTheGame == Constants.NEW_QUIZ)
                 {
@@ -35,19 +36,25 @@ namespace quiz_maker
 
                     if (UIMethods.GetNumberOfQuizzesInDatabase(listofQuizCards) == Constants.NO_QUIZ_IN_DATABASE)
                     {
-                        replay = true;
+                        break;
                     }
 
-                    QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
+                    else
+                    {
+                        for (int i = 0; i <  listofQuizCards.Count; i++)
+                        {
+                            QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                    string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
+                            string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
 
-                    bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                            bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                    int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                            int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                    UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                            UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                        }
 
+                    }
 
                 }
 
