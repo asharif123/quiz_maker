@@ -45,11 +45,21 @@ namespace quiz_maker
             return quizList;
         }
 
-        //show randomly selected question, pass argument of list of questions
-        public static QuizCard GetRandomQuizCard(List<QuizCard> quizCardList)
+        /// <summary>
+        /// method that grabs quizzes from xml file and adds them to hash set to create a unique list of quizzes
+        /// 
+        /// </summary>
+        /// <param name="quizCardList">list of loaded quizzes from xml file</param>
+        /// <returns>a list having unique and NON-repeating quizzes</returns>
+        public static HashSet<QuizCard> GetUniqueListOfQuizCards(List<QuizCard> quizCardList)
         {
-            int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
-            return quizCardList[randomNumber];
+            HashSet<QuizCard> uniqueQuizCards = new HashSet<QuizCard>();
+            for (int i = 0; i < quizCardList.Count(); i++)
+            {
+                int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
+                uniqueQuizCards.Add(quizCardList[randomNumber]);
+            }
+            return uniqueQuizCards;
         }
 
         /// <summary>
@@ -77,5 +87,6 @@ namespace quiz_maker
             }
             return totalScore;
         }
+
     }
 }
