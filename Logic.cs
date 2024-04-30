@@ -28,22 +28,19 @@ namespace quiz_maker
 
         /// <summary>
         /// method that loads the list of quizzes from the corresponding xml file
-        /// use try/catch method to verify if xml file exists
+        /// first, verify if xml file exists
         /// </summary>
         /// <returns>a list of unserialized quizzes</returns>
         public static List<QuizCard> LoadQuizFromXML()
         {
             List<QuizCard> quizList = new List<QuizCard>();
-            try
+
+            if (File.Exists(Constants.PATH))
             {
                 using (FileStream file = File.OpenRead(Constants.PATH))
                 {
                     quizList = serializer.Deserialize(file) as List<QuizCard>;
                 }
-            }
-
-            catch (FileNotFoundException)
-            {
             }
             return quizList;
         }
@@ -80,6 +77,5 @@ namespace quiz_maker
             }
             return totalScore;
         }
-
     }
 }
