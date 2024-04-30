@@ -41,16 +41,17 @@ namespace quiz_maker
 
                     else
                     {
-                        HashSet<QuizCard> uniqueListOfQuizCards = Logic.GetUniqueListOfQuizCards(listofQuizCards);
-                        foreach (QuizCard uniqueQuizCard in uniqueListOfQuizCards)
+                        for (int i = 0; i <  listofQuizCards.Count; i++)
                         {
-                            string guessOfUser = UIMethods.GetUserAnswer(uniqueQuizCard);
+                            QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                            bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, uniqueQuizCard);
+                            string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
 
-                            int totalUserScore = Logic.getUserTotalScore(guessOfUser, uniqueQuizCard);
+                            bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                            UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, uniqueQuizCard);
+                            int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+
+                            UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
                         }
 
                     }
