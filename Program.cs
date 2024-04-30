@@ -8,7 +8,7 @@ namespace quiz_maker
     /// saves and loads the randomly generated quiz
     /// user can either create or play an existing quiz in the database
     /// if there are no quizzes in the database, inform user
-    /// if quiz available to load, load a random quiz, use for loop to load every quiz
+    /// if quiz available to load, load a random quiz, use for loop to load every random quiz
     /// get the user's total score at the end
     /// use while loop so user can continue playing or quit
     /// </summary>
@@ -41,7 +41,7 @@ namespace quiz_maker
 
                     else
                     {
-                        for (int i = 0; i <  listofQuizCards.Count; i++)
+                        for (int i = 0; i <=  listofQuizCards.Count; i++)
                         {
                             QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
@@ -52,6 +52,8 @@ namespace quiz_maker
                             int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
                             UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+
+                            listofQuizCards.RemoveAt(listofQuizCards.IndexOf(selectedQuizCard));
                         }
 
                     }
