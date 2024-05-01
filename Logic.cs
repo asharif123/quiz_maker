@@ -82,5 +82,15 @@ namespace quiz_maker
             return totalScore;
         }
 
+        /// <summary>
+        /// method to remove a quiz from the databse once user has played it to ensure user does not play repetitive quizzes
+        /// </summary>
+        /// <param name="quizCardList">list of quizzes that are being loaded from database</param>
+        /// <param name="quizCard">quizcard that has been selected and remove it once played by user</param>
+        public static void QuizAlreadyPlayedByUser(List<QuizCard> quizCardList, QuizCard quizCard)
+        {
+            quizCardList.RemoveAt(quizCardList.IndexOf(quizCard));
+        }
+
     }
 }
