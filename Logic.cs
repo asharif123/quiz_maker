@@ -5,7 +5,7 @@ namespace quiz_maker
 {
     internal class Logic
     {
-        //method to save quiz takesList<Quiz> and returns it as same type, needs to be static
+        //method to save quiz takes List<Quiz> and returns it as same type, needs to be static
         static XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
 
         //used to randomly select a question, need to be static
@@ -88,7 +88,7 @@ namespace quiz_maker
         /// </summary>
         /// <param name="quizCardList">list of quizzes that are being loaded from database</param>
         /// <param name="quizCard">quizcard that has been selected and remove it once played by user</param>
-        public static void QuizAlreadyPlayedByUser(List<QuizCard> quizCardList, QuizCard quizCard)
+        public static void QuizCardAlreadyPlayedByUser(List<QuizCard> quizCardList, QuizCard quizCard)
         {
             quizCardList.RemoveAt(quizCardList.IndexOf(quizCard));
         }

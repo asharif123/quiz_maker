@@ -54,7 +54,7 @@ namespace quiz_maker
 
                             UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
 
-                            Logic.QuizAlreadyPlayedByUser(listofQuizCards, selectedQuizCard);
+                            Logic.QuizCardAlreadyPlayedByUser(listofQuizCards, selectedQuizCard);
                         }
 
                     }
