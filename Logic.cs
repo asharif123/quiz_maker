@@ -11,6 +11,7 @@ namespace quiz_maker
         //used to randomly select a question, need to be static
         static Random pickQuizCardAtRandom = new Random();
 
+        //user initially starts at a score of 0, increment by 5 for each correct answer
         static int totalScore = 0;
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// method to take a randomly selected quiz
+        /// method to take a randomly selected quiz by using a random number as index to select the quiz
         /// </summary>
         /// <param name="quizCardList">take a list of quizzes</param>
         /// <returns>a randomly selected quiz</returns>
@@ -83,7 +84,7 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// method to remove a quiz from the databse once user has played it to ensure user does not play repetitive quizzes
+        /// method to remove a quiz from the xml database once user has played it to ensure user does not play repetitive quizzes
         /// </summary>
         /// <param name="quizCardList">list of quizzes that are being loaded from database</param>
         /// <param name="quizCard">quizcard that has been selected and remove it once played by user</param>

@@ -5,7 +5,19 @@ namespace quiz_maker
     internal static class UIMethods
     {
         /// <summary>
+        /// takes in an input of c if user wants to create a new quiz, or input any key to play a random quiz
+        /// </summary>
+        /// <returns>a char argument</returns>
+        public static char AskUserToCreateOrPlayRandomQuiz()
+        {
+            Console.WriteLine($"\nPress {Constants.NEW_QUIZ} to create a quiz or any key to play a random quiz!\n");
+            char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
+            return startPlaying;
+        }
+
+        /// <summary>
         /// asks user to input how many questions to enter, expects a positive integer
+        /// NOTE: need to initialize numberOfQuestions as an integer so method can return an integer
         /// </summary>
         /// <returns>returns the number of questions user has entered</returns>
         public static int AskNumberOfQuestions()
@@ -31,6 +43,7 @@ namespace quiz_maker
             }
             return numberOfQuestions;
         }
+
         /// <summary>
         /// asks user to input a string question to be stored as a quiz
         /// </summary>
@@ -63,27 +76,6 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// method to determine if there are available quizzes to play when user wants to load a quiz
-        ///force user to break out of the loop if there are no available quizzes to play with
-        /// </summary>
-        /// <param name="quizCards">list of quizzes in database</param>
-        /// <returns>number of quizzes in database</returns>
-        public static int GetNumberOfQuizzesInDatabase(List<QuizCard> quizCards)
-        {
-            if (quizCards.Count == Constants.NO_QUIZ_IN_DATABASE)
-            {
-                Console.WriteLine("\nThere are no quizzes in the database, please create at least one!\n");
-            }
-
-            else
-            {
-                Console.WriteLine("\nStarting the game!\n");
-            }
-
-            return quizCards.Count;
-        }
-
-        /// <summary>
         /// asks user to enter an index from 1 to 4 to be assigned as the correct answer
         /// </summary>
         /// <param name="answers">takes the list of answers corresponding to the loaded question</param>
@@ -105,7 +97,7 @@ namespace quiz_maker
                     Console.WriteLine("\nPlease enter a valid integer!\n");
                 }
 
-                else if (indexOfAssignedCorrectAnswer < 1 || indexOfAssignedCorrectAnswer > answers.Count())
+                else if (indexOfAssignedCorrectAnswer < Constants.MIN_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
                 {
                     Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_ANSWERS} to {answers.Count()}!\n");
                 }
@@ -122,9 +114,11 @@ namespace quiz_maker
         /// takes a list of created questions and stores them as a quiz
         /// user first enters a question then enters 4 answers corresponding to that question
         /// put answers empty list to reset answers each time user enters a question.
+        /// user then decides which answer will be the correct one
         /// each quiz class then gets added to a list of quizzes
         /// </summary>
         /// <returns>a list of quizzes to be serialized</returns>
+        /// 
         public static List<QuizCard> CreateListOfQuizCards()
         {
             List<QuizCard> listOfQuizCards = new List<QuizCard>();
@@ -157,14 +151,24 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// takes in an input of c if user wants to create a new quiz, or input any key to play a random quiz
+        /// method to determine if there are available quizzes to play when user wants to load a quiz
+        ///force user to break out of the loop if there are no available quizzes to play with
         /// </summary>
-        /// <returns>a char argument</returns>
-        public static char AskUserToCreateOrPlayRandomQuiz()
+        /// <param name="quizCards">list of quizzes in database</param>
+        /// <returns>number of quizzes in database</returns>
+        public static int GetNumberOfQuizzesInDatabase(List<QuizCard> quizCards)
         {
-            Console.WriteLine($"\nPress {Constants.NEW_QUIZ} to create a quiz or any key to play a random quiz!\n");
-            char startPlaying = char.ToLower(Console.ReadKey().KeyChar);
-            return startPlaying;
+            if (quizCards.Count == Constants.NO_QUIZ_IN_DATABASE)
+            {
+                Console.WriteLine("\nThere are no quizzes in the database, please create at least one!\n");
+            }
+
+            else
+            {
+                Console.WriteLine("\nStarting the game!\n");
+            }
+
+            return quizCards.Count;
         }
 
         /// <summary>
@@ -187,7 +191,7 @@ namespace quiz_maker
             Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
         }
         /// <summary>
-        /// give user the option to select the correct answer from list of possible answers
+        /// give user the option to guess the correct answer from list of possible answers
         /// Added 2 Console.WriteLine() statements to make the loaded quiz readable
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
