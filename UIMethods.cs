@@ -91,17 +91,17 @@ namespace quiz_maker
             {
                 PrintMessageAskingUserForIndices();
 
-                string assignCorrectAnswer = Console.ReadLine();
+                string inputCorrectAnswer = Console.ReadLine();
 
-                bool isValid = int.TryParse(assignCorrectAnswer, out indexOfAssignedCorrectAnswer);
+                bool isValid = int.TryParse(inputCorrectAnswer, out indexOfAssignedCorrectAnswer);
                 if (!isValid)
                 {
                     Console.WriteLine("\nPlease enter a valid integer!\n");
                 }
 
-                else if (indexOfAssignedCorrectAnswer < Constants.MIN_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
+                else if (indexOfAssignedCorrectAnswer < Constants.MIN_NUMBER_OF_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
                 {
-                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_ANSWERS} to {answers.Count()}!\n");
+                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_NUMBER_OF_ANSWERS} to {answers.Count()}!\n");
                 }
 
                 else
@@ -133,9 +133,9 @@ namespace quiz_maker
 
                 List<string> answers = new List<string>();
 
-                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
+                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_NUMBER_OF_ANSWERS} answers!\n");
 
-                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
+                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_NUMBER_OF_ANSWERS; numberOfAnswers++)
                 {
                     string answersToAdd = InputAnswers();
                     answers.Add(answersToAdd.ToLower());
@@ -190,7 +190,7 @@ namespace quiz_maker
                 Console.WriteLine($"{i + 1} - {quiz.answers[i]}");
             }
 
-            Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
+            Console.WriteLine($"\nEnter a value from {Constants.MIN_NUMBER_OF_ANSWERS} to {Constants.MAX_NUMBER_OF_ANSWERS} to select the correct answer.\n");
         }
         /// <summary>
         /// give user the option to guess the correct answer from list of possible answers
@@ -220,9 +220,9 @@ namespace quiz_maker
                     Console.WriteLine("\nPlease enter an integer value!\n");
                 }
 
-                else if (indexGuessOfUser < Constants.MIN_ANSWERS || indexGuessOfUser > Constants.MAX_ANSWERS)
+                else if (indexGuessOfUser < Constants.MIN_NUMBER_OF_ANSWERS || indexGuessOfUser > Constants.MAX_NUMBER_OF_ANSWERS)
                 {
-                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS}!\n");
+                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_NUMBER_OF_ANSWERS} to {Constants.MAX_NUMBER_OF_ANSWERS}!\n");
                 }
 
                 else

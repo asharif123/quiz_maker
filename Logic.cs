@@ -88,7 +88,7 @@ namespace quiz_maker
         /// </summary>
         /// <param name="quizCardList">list of quizzes that are being loaded from database</param>
         /// <param name="quizCard">quizcard that has been selected and remove it once played by user</param>
-        public static void QuizCardAlreadyPlayedByUser(List<QuizCard> quizCardList, QuizCard quizCard)
+        public static void RemoveAlreadyPlayedQuiz(List<QuizCard> quizCardList, QuizCard quizCard)
         {
             quizCardList.RemoveAt(quizCardList.IndexOf(quizCard));
         }
