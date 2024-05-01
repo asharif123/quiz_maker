@@ -15,7 +15,6 @@ namespace quiz_maker
     /// </summary>
     public class Program
     {
-
         static void Main()
         {
             bool replay = true;
