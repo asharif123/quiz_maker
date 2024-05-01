@@ -17,6 +17,7 @@ namespace quiz_maker
 
         /// <summary>
         /// asks user to input how many questions to enter, expects a positive integer
+        /// use tryparse to force user to enter a value that can convert to an integer
         /// NOTE: need to initialize numberOfQuestions as an integer so method can return an integer
         /// </summary>
         /// <returns>returns the number of questions user has entered</returns>
@@ -72,7 +73,8 @@ namespace quiz_maker
         {
             Console.WriteLine($"\nWhich answer would you like to make as the correct answer? Enter 1 to" +
             $" mark first answer as correct, 2 to mark second answer as correct, " +
-            $"3 to mark the third answer as the correct answer, etc..\n");
+            $"3 to mark the third answer as correct, " +
+            $"or 4 to mark the fourth answer as the correct answer.");
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// takes a list of created questions and stores them as a quiz
+        /// takes a list of created questions w/its corresponding answers and stores them as a quiz
         /// user first enters a question then enters 4 answers corresponding to that question
         /// put answers empty list to reset answers each time user enters a question.
         /// user then decides which answer will be the correct one
@@ -193,6 +195,7 @@ namespace quiz_maker
         /// <summary>
         /// give user the option to guess the correct answer from list of possible answers
         /// Added 2 Console.WriteLine() statements to make the loaded quiz readable
+        /// NOTE: need to initialize guessOfUser as empty string so string can be returned
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        

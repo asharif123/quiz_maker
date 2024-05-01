@@ -92,6 +92,5 @@ namespace quiz_maker
         {
             quizCardList.RemoveAt(quizCardList.IndexOf(quizCard));
         }
-
     }
 }

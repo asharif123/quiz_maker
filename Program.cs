@@ -42,7 +42,7 @@ namespace quiz_maker
 
                     else
                     {
-                        while (listofQuizCards.Count > Constants.NO_QUIZ_IN_DATABASE) 
+                        while (listofQuizCards.Count > Constants.NO_QUIZ_IN_DATABASE)
                         {
                             QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
@@ -64,7 +64,6 @@ namespace quiz_maker
                 {
                     replay = false;
                 }
-
             }
         }
     }
