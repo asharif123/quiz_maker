@@ -60,7 +60,7 @@ namespace quiz_maker
         /// asks user to enter answers for each question
         /// </summary>
         /// <returns>answers in string format</returns>
-        public static string InputAnswers()
+        public static string InputAnswer()
         {
             string inputAnswers = Console.ReadLine();
             return inputAnswers;
@@ -91,9 +91,9 @@ namespace quiz_maker
             {
                 PrintMessageAskingUserForIndices();
 
-                string inputCorrectAnswer = Console.ReadLine();
+                string assignedCorrectAnswer = Console.ReadLine();
 
-                bool isValid = int.TryParse(inputCorrectAnswer, out indexOfAssignedCorrectAnswer);
+                bool isValid = int.TryParse(assignedCorrectAnswer, out indexOfAssignedCorrectAnswer);
                 if (!isValid)
                 {
                     Console.WriteLine("\nPlease enter a valid integer!\n");
@@ -137,7 +137,7 @@ namespace quiz_maker
 
                 for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_NUMBER_OF_ANSWERS; numberOfAnswers++)
                 {
-                    string answersToAdd = InputAnswers();
+                    string answersToAdd = InputAnswer();
                     answers.Add(answersToAdd.ToLower());
                 }
 
