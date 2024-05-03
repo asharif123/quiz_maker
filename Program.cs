@@ -9,7 +9,7 @@ namespace quiz_maker
     /// user can either create or play an existing quiz in the database
     /// if there are no quizzes in the database, inform user
     /// if quiz available to load, load a random quiz
-    /// use while loop to keep loading quizzes until all quizzes in database have been laoded
+    /// use while loop to keep loading quizzes until all quizzes in database have been loaded
     /// get the user's total score at the end
     /// use another while loop so user can either continue playing or quit
     /// </summary>
