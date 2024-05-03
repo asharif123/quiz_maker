@@ -29,9 +29,9 @@ namespace quiz_maker
             while (notValidInput)
             {
                 Console.WriteLine("\nHow many questions would you like to create?\n");
-                string questionsToInput = Console.ReadLine();
+                string numberOfQuestionsToInput = Console.ReadLine();
 
-                bool isValid = int.TryParse(questionsToInput, out numberOfQuestions);
+                bool isValid = int.TryParse(numberOfQuestionsToInput, out numberOfQuestions);
 
                 if (!isValid)
                 {
@@ -60,10 +60,10 @@ namespace quiz_maker
         /// asks user to enter answers for each question
         /// </summary>
         /// <returns>answers in string format</returns>
-        public static string InputAnswer()
+        public static string InputAnswers()
         {
-            string inputAnswer = Console.ReadLine();
-            return inputAnswer;
+            string inputAnswers = Console.ReadLine();
+            return inputAnswers;
         }
 
         /// <summary>
@@ -91,17 +91,17 @@ namespace quiz_maker
             {
                 PrintMessageAskingUserForIndices();
 
-                string assignedCorrectAnswer = Console.ReadLine();
+                string inputCorrectAnswer = Console.ReadLine();
 
-                bool isValid = int.TryParse(assignedCorrectAnswer, out indexOfAssignedCorrectAnswer);
+                bool isValid = int.TryParse(inputCorrectAnswer, out indexOfAssignedCorrectAnswer);
                 if (!isValid)
                 {
                     Console.WriteLine("\nPlease enter a valid integer!\n");
                 }
 
-                else if (indexOfAssignedCorrectAnswer < Constants.MIN_NUMBER_OF_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
+                else if (indexOfAssignedCorrectAnswer < Constants.MIN_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
                 {
-                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_NUMBER_OF_ANSWERS} to {answers.Count()}!\n");
+                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_ANSWERS} to {answers.Count()}!\n");
                 }
 
                 else
@@ -125,19 +125,19 @@ namespace quiz_maker
         {
             List<QuizCard> listOfQuizCards = new List<QuizCard>();
 
-            int maxQuestions = AskNumberOfQuestions();
+            int maxQuestionsToInput = AskNumberOfQuestions();
 
-            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestions; numberOfQuestions++)
+            for (int numberOfQuestions = 0; numberOfQuestions < maxQuestionsToInput; numberOfQuestions++)
             {
                 string questionToAdd = InputQuestion();
 
                 List<string> answers = new List<string>();
 
-                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_NUMBER_OF_ANSWERS} answers!\n");
+                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
 
-                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_NUMBER_OF_ANSWERS; numberOfAnswers++)
+                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
                 {
-                    string answersToAdd = InputAnswer();
+                    string answersToAdd = InputAnswers();
                     answers.Add(answersToAdd.ToLower());
                 }
 
@@ -190,12 +190,12 @@ namespace quiz_maker
                 Console.WriteLine($"{i + 1} - {quiz.answers[i]}");
             }
 
-            Console.WriteLine($"\nEnter a value from {Constants.MIN_NUMBER_OF_ANSWERS} to {Constants.MAX_NUMBER_OF_ANSWERS} to select the correct answer.\n");
+            Console.WriteLine($"\nEnter a value from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS} to select the correct answer.\n");
         }
         /// <summary>
         /// give user the option to guess the correct answer from list of possible answers
         /// Added 2 Console.WriteLine() statements to make the loaded quiz readable
-        /// NOTE: need to initialize guessOfUser as empty string so string can be returned
+        /// NOTE: need to initialize guessOfUser as empty string so string can be returnedd
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
@@ -220,9 +220,9 @@ namespace quiz_maker
                     Console.WriteLine("\nPlease enter an integer value!\n");
                 }
 
-                else if (indexGuessOfUser < Constants.MIN_NUMBER_OF_ANSWERS || indexGuessOfUser > Constants.MAX_NUMBER_OF_ANSWERS)
+                else if (indexGuessOfUser < Constants.MIN_ANSWERS || indexGuessOfUser > Constants.MAX_ANSWERS)
                 {
-                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_NUMBER_OF_ANSWERS} to {Constants.MAX_NUMBER_OF_ANSWERS}!\n");
+                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS}!\n");
                 }
 
                 else
