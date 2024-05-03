@@ -62,8 +62,8 @@ namespace quiz_maker
         /// <returns>answers in string format</returns>
         public static string InputAnswer()
         {
-            string inputAnswers = Console.ReadLine();
-            return inputAnswers;
+            string inputAnswer = Console.ReadLine();
+            return inputAnswer;
         }
 
         /// <summary>
