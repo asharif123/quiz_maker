@@ -116,7 +116,7 @@ namespace quiz_maker
         /// method that takes answers inputted by user for each question
         /// </summary>
         /// <returns>a list of answers that gets stored in the quizcard class <returns>
-        public static List<string> StoreAnswersInputtedByUser()
+        public static List<string> StoreAnswersInputtedByUserPerQuestion()
         {
             List<string> answers = new List<string>();
 
@@ -166,7 +166,7 @@ namespace quiz_maker
             {
                 string questionToAdd = InputQuestion();
 
-                List<string> answers = UIMethods.StoreAnswersInputtedByUser();
+                List<string> answers = UIMethods.StoreAnswersInputtedByUserPerQuestion();
 
                 string storeCorrectAnswer = UIMethods.StoreCorrectAnswerChosenByUser(answers);
 
