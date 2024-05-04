@@ -52,8 +52,8 @@ namespace quiz_maker
         public static string InputQuestion()
         {
             Console.WriteLine("\nPlease input your question!\n");
-            string inputQuestions = Console.ReadLine();
-            return inputQuestions;
+            string inputQuestion = Console.ReadLine();
+            return inputQuestion;
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace quiz_maker
         /// <returns>answers in string format</returns>
         public static string InputAnswer()
         {
-            string inputAnswers = Console.ReadLine();
-            return inputAnswers;
+            string inputAnswer = Console.ReadLine();
+            return inputAnswer;
         }
 
         /// <summary>
