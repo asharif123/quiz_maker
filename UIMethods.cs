@@ -113,6 +113,41 @@ namespace quiz_maker
         }
 
         /// <summary>
+        /// method that takes answers inputted by user for each question
+        /// </summary>
+        /// <returns>a list of answers that gets stored in the quizcard class <returns>
+        public static List<string> StoreAnswersInputtedByUser()
+        {
+            List<string> answers = new List<string>();
+
+            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
+
+            for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
+            {
+                string answersToAdd = InputAnswer();
+                answers.Add(answersToAdd.ToLower());
+            }
+            return answers;
+        }
+
+        /// <summary>
+        /// takes the answers inputted by the user and stores the answer the user decided to be the correct one
+        /// user selects an index from one to four corresponding to each of the 4 answers.
+        /// </summary>
+        /// <param name="answers">list of answers inputted by the user per question</param>
+        /// <returns>the correct answer chosen by the user</returns>
+        public static string StoreCorrectAnswerChosenByUser(List<string> answers)
+        {
+            int indexOfCorrectAnswer = GetIndexOfCorrectAnswer(answers);
+
+            string storeCorrectAnswer = "";
+
+            storeCorrectAnswer = answers[indexOfCorrectAnswer - 1];
+
+            return storeCorrectAnswer;
+        }
+
+        /// <summary>
         /// takes a list of created questions w/its corresponding answers and stores them as a quiz
         /// user first enters a question then enters 4 answers corresponding to that question
         /// put answers empty list to reset answers each time user enters a question.
@@ -131,23 +166,11 @@ namespace quiz_maker
             {
                 string questionToAdd = InputQuestion();
 
-                List<string> answers = new List<string>();
+                List<string> answers = UIMethods.StoreAnswersInputtedByUser();
 
-                Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
+                string storeCorrectAnswer = UIMethods.StoreCorrectAnswerChosenByUser(answers);
 
-                for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
-                {
-                    string answersToAdd = InputAnswer();
-                    answers.Add(answersToAdd.ToLower());
-                }
-
-                int indexOfCorrectAnswer = GetIndexOfCorrectAnswer(answers);
-
-                string storeCorrectAnswer = "";
-
-                storeCorrectAnswer = answers[indexOfCorrectAnswer - 1];
-
-                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
+                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer});
             }
             return listOfQuizCards;
         }
