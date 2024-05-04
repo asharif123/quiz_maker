@@ -84,7 +84,7 @@ namespace quiz_maker
         }
 
         /// <summary>
-        /// method to remove a quiz from the xml database once user has played it to ensure user does not play repetitive quizzes
+        /// get index of quizcard already played by user and remove it from loaded quizcards from the database
         /// </summary>
         /// <param name="quizCardList">list of quizzes that are being loaded from database</param>
         /// <param name="quizCard">quizcard that has been selected and remove it once played by user</param>
