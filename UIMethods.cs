@@ -29,7 +29,6 @@ namespace quiz_maker
             while (notValidInput)
             {
                 Console.WriteLine("\nHow many questions would you like to create?\n");
-                Console.WriteLine($"\nYou can enter up to {Constants.MAX_QUESTIONS} questions.\n");
                 string numberOfQuestionsToInput = Console.ReadLine();
 
                 bool isValid = int.TryParse(numberOfQuestionsToInput, out numberOfQuestions);
@@ -38,9 +37,9 @@ namespace quiz_maker
                 {
                     Console.WriteLine("Please enter a valid integer!\n");
                 }
-                else if (numberOfQuestions < Constants.MIN_QUESTIONS || numberOfQuestions > Constants.MAX_QUESTIONS)
+                else if (numberOfQuestions < Constants.MIN_QUESTIONS)
                 {
-                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_QUESTIONS} to {Constants.MAX_QUESTIONS}!\n");
+                    Console.WriteLine($"\nPlease enter at least one question!\n");
                 }
                 else
                 {
