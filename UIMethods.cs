@@ -38,6 +38,10 @@ namespace quiz_maker
                 {
                     Console.WriteLine("Please enter a valid integer!\n");
                 }
+                else if (numberOfQuestions < Constants.MIN_QUESTIONS || numberOfQuestions > Constants.MAX_QUESTIONS)
+                {
+                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_QUESTIONS} to {Constants.MAX_QUESTIONS}!\n");
+                }
                 else
                 {
                     notValidInput = false;

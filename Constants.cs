@@ -6,6 +6,7 @@ namespace quiz_maker
     {
         public const char NEW_QUIZ = 'c';
         public const char CONTINUE_PLAYING = 'y';
+        public const int MIN_QUESTIONS = 1;
         public const int MIN_ANSWERS = 1;
         //user can enter 4 answers per question
         public const int MAX_ANSWERS = 4;
