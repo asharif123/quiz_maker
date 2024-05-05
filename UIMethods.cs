@@ -29,6 +29,7 @@ namespace quiz_maker
             while (notValidInput)
             {
                 Console.WriteLine("\nHow many questions would you like to create?\n");
+                Console.WriteLine($"\nYou can enter up to {Constants.MAX_QUESTIONS} questions.\n");
                 string numberOfQuestionsToInput = Console.ReadLine();
 
                 bool isValid = int.TryParse(numberOfQuestionsToInput, out numberOfQuestions);
