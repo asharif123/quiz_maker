@@ -170,9 +170,9 @@ namespace quiz_maker
             {
                 string questionToAdd = InputQuestion();
 
-                List<string> answers = UIMethods.StoreAnswersInputtedByUserPerQuestion();
+                List<string> answers = StoreAnswersInputtedByUserPerQuestion();
 
-                string storeCorrectAnswer = UIMethods.StoreCorrectAnswerChosenByUser(answers);
+                string storeCorrectAnswer = StoreCorrectAnswerChosenByUser(answers);
 
                 listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer});
             }
