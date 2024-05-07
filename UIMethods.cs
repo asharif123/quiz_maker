@@ -81,6 +81,40 @@ namespace quiz_maker
             $"or 4 to mark the fourth answer as the correct answer.");
         }
 
+        public static string GetUserInput()
+        {
+            string userInput = Console.ReadLine();
+            return userInput;
+        }
+
+        public static int ConvertUserInputToInteger(string userInput, int minValue, int maxValue)
+        {
+            int convertToInteger;
+            bool notValidInput = true;
+
+            bool isValid = int.TryParse(userInput, out convertToInteger);
+
+            while (notValidInput)
+            {
+                if(!isValid)
+                {
+                    Console.WriteLine("\nPlease enter a valid integer!\n");
+                }
+
+                else if (convertToInteger < minValue || convertToInteger > maxValue)
+                {
+                    Console.WriteLine($"\nPlease enter a value between {minValue} and {maxValue}!\n");
+                }
+
+                else
+                {
+                    notValidInput = false;
+                }
+            }
+
+            return convertToInteger;
+        }
+
         /// <summary>
         /// asks user to enter an index from 1 to 4 to be assigned as the correct answer
         /// </summary>
@@ -95,8 +129,7 @@ namespace quiz_maker
             {
                 PrintMessageAskingUserForIndices();
 
-                string correctAnswerInput = Console.ReadLine();
-
+                string correctAnswerInput = UIMethods.GetUserInput();
                 bool isValid = int.TryParse(correctAnswerInput, out indexOfAssignedCorrectAnswer);
                 if (!isValid)
                 {
