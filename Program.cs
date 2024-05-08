@@ -39,24 +39,22 @@ namespace quiz_maker
                         break;
                     }
 
-                    else
+                    while (listofQuizCards.Count > Constants.NO_QUIZ_IN_DATABASE)
                     {
-                        while (listofQuizCards.Count > Constants.NO_QUIZ_IN_DATABASE)
-                        {
-                            QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
+                        QuizCard selectedQuizCard = Logic.GetRandomQuizCard(listofQuizCards);
 
-                            string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
+                        string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
 
-                            bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                        bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                            int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                        int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                            UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                        UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
 
-                            Logic.RemoveAlreadyPlayedQuizCard(listofQuizCards, selectedQuizCard);
-                        }
-
+                        Logic.RemoveAlreadyPlayedQuizCard(listofQuizCards, selectedQuizCard);
                     }
+
+
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
