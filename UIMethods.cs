@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace quiz_maker
+﻿namespace quiz_maker
 {
     internal static class UIMethods
     {
@@ -16,6 +14,49 @@ namespace quiz_maker
         }
 
         /// <summary>
+        /// method that takes in string input from the user
+        /// </summary>
+        /// <returns>string output</returns>
+        public static string GetUserInput()
+        {
+            string userInput = Console.ReadLine();
+            return userInput;
+        }
+        /// <summary>
+        /// method that takes user input and uses tryparse to confirm user has entered an integer
+        /// </summary>
+        /// <param name="minValue">smallest value to start from</param>
+        /// <param name="maxValue">largest value to end at</param>
+        /// <returns>converted integer based off string input</returns>
+        public static int ConvertUserInputToInteger(int minValue, int maxValue)
+        {
+            bool notValidInput = true;
+            int convertToInteger = 0;
+
+            while (notValidInput)
+            {
+                string userInput = UIMethods.GetUserInput();
+                bool isValid = int.TryParse(userInput, out convertToInteger);
+
+                if (!isValid)
+                {
+                    Console.WriteLine("\nPlease enter a valid integer!\n");
+                }
+
+                else if (convertToInteger < minValue || convertToInteger > maxValue)
+                {
+                    Console.WriteLine($"\nPlease enter a value between {minValue} and {maxValue}!\n");
+                }
+
+                else
+                {
+                    notValidInput = false;
+                }
+            }
+            return convertToInteger;
+        }
+
+        /// <summary>
         /// asks user to input how many questions to enter, expects a positive integer
         /// use tryparse to force user to enter a value that can convert to an integer
         /// NOTE: need to initialize numberOfQuestions as an integer so method can return an integer
@@ -23,29 +64,8 @@ namespace quiz_maker
         /// <returns>returns the number of questions user has entered</returns>
         public static int AskNumberOfQuestions()
         {
-            bool notValidInput = true;
-            int numberOfQuestions = 0;
-
-            while (notValidInput)
-            {
-                Console.WriteLine("\nHow many questions would you like to create?\n");
-                string numberOfQuestionsToInput = Console.ReadLine();
-
-                bool isValid = int.TryParse(numberOfQuestionsToInput, out numberOfQuestions);
-
-                if (!isValid)
-                {
-                    Console.WriteLine("Please enter a valid integer!\n");
-                }
-                else if (numberOfQuestions < Constants.MIN_QUESTIONS)
-                {
-                    Console.WriteLine($"\nPlease enter at least one question!\n");
-                }
-                else
-                {
-                    notValidInput = false;
-                }
-            }
+            Console.WriteLine($"\nHow many questions would you like to enter? You can enter up to {Constants.MAX_QUESTIONS} questions at a time.\n");
+            int numberOfQuestions = ConvertUserInputToInteger(Constants.MIN_QUESTIONS, Constants.MAX_QUESTIONS);
             return numberOfQuestions;
         }
 
@@ -81,71 +101,14 @@ namespace quiz_maker
             $"or 4 to mark the fourth answer as the correct answer.");
         }
 
-        public static string GetUserInput()
-        {
-            string userInput = Console.ReadLine();
-            return userInput;
-        }
-
-        public static int ConvertUserInputToInteger(string userInput, int minValue, int maxValue)
-        {
-            int convertToInteger;
-            bool notValidInput = true;
-
-            bool isValid = int.TryParse(userInput, out convertToInteger);
-
-            while (notValidInput)
-            {
-                if(!isValid)
-                {
-                    Console.WriteLine("\nPlease enter a valid integer!\n");
-                }
-
-                else if (convertToInteger < minValue || convertToInteger > maxValue)
-                {
-                    Console.WriteLine($"\nPlease enter a value between {minValue} and {maxValue}!\n");
-                }
-
-                else
-                {
-                    notValidInput = false;
-                }
-            }
-
-            return convertToInteger;
-        }
-
         /// <summary>
         /// asks user to enter an index from 1 to 4 to be assigned as the correct answer
         /// </summary>
-        /// <param name="answers">takes the list of answers corresponding to the loaded question</param>
         /// <returns>returns the index to use to assign as the correct answer</returns>
-        public static int GetIndexOfCorrectAnswer(List<string> answers)
+        public static int GetIndexOfCorrectAnswer()
         {
-            bool inValidInput = true;
-            int indexOfAssignedCorrectAnswer = 1;
-
-            while (inValidInput)
-            {
-                PrintMessageAskingUserForIndices();
-
-                string correctAnswerInput = UIMethods.GetUserInput();
-                bool isValid = int.TryParse(correctAnswerInput, out indexOfAssignedCorrectAnswer);
-                if (!isValid)
-                {
-                    Console.WriteLine("\nPlease enter a valid integer!\n");
-                }
-
-                else if (indexOfAssignedCorrectAnswer < Constants.MIN_ANSWERS || indexOfAssignedCorrectAnswer > answers.Count())
-                {
-                    Console.WriteLine($"\nPlease enter a valid range from {Constants.MIN_ANSWERS} to {answers.Count()}!\n");
-                }
-
-                else
-                {
-                    inValidInput = false;
-                }
-            }
+            PrintMessageAskingUserForIndices();
+            int indexOfAssignedCorrectAnswer = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return indexOfAssignedCorrectAnswer;
         }
 
@@ -175,7 +138,7 @@ namespace quiz_maker
         /// <returns>the correct answer chosen by the user</returns>
         public static string StoreCorrectAnswerChosenByUser(List<string> answers)
         {
-            int indexOfCorrectAnswer = GetIndexOfCorrectAnswer(answers);
+            int indexOfCorrectAnswer = GetIndexOfCorrectAnswer();
 
             string storeCorrectAnswer = "";
 
@@ -259,39 +222,23 @@ namespace quiz_maker
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
-        public static string GetUserAnswer(QuizCard quiz)
+        public static int GetIndexOfUserAnswer(QuizCard quiz)
         {
             PrintContentsOfLoadedQuiz(quiz);
 
-            bool inValidInput = true;
+            int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
+            return indexGuessOfUser;
+        }
 
-            string guessOfUser = "";
-
-            while (inValidInput)
-            {
-                guessOfUser = Console.ReadLine();
-
-                int indexGuessOfUser;
-
-                bool valid = int.TryParse(guessOfUser, out indexGuessOfUser);
-
-                if (!valid)
-                {
-                    Console.WriteLine("\nPlease enter an integer value!\n");
-                }
-
-                else if (indexGuessOfUser < Constants.MIN_ANSWERS || indexGuessOfUser > Constants.MAX_ANSWERS)
-                {
-                    Console.WriteLine($"\nPlease enter a valid integer from {Constants.MIN_ANSWERS} to {Constants.MAX_ANSWERS}!\n");
-                }
-
-                else
-                {
-                    guessOfUser = quiz.answers[indexGuessOfUser - 1];
-                    inValidInput = false;
-                }
-            }
-            return guessOfUser;
+        /// <summary>
+        /// method that takes the index user inputted and returns the answer user has selected in string format
+        /// </summary>
+        /// <param name="quiz">randomly selected quiz</param>
+        /// <returns>string answer user has selected</returns>
+        public static string GetUserAnswer(QuizCard quiz)
+        {
+            int indexGuessOfUser = GetIndexOfUserAnswer(quiz);
+            return quiz.answers[indexGuessOfUser-1];
         }
 
         /// <summary>
