@@ -222,22 +222,10 @@
         /// </summary>
         /// <param name="quiz">take the randomly selected quiz and show its contents</param>
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
-        public static int GetIndexOfUserAnswer(QuizCard quiz)
-        {
-            PrintContentsOfLoadedQuiz(quiz);
-
-            int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
-            return indexGuessOfUser;
-        }
-
-        /// <summary>
-        /// method that takes the index user inputted and returns the answer user has selected in string format
-        /// </summary>
-        /// <param name="quiz">randomly selected quiz</param>
-        /// <returns>string answer user has selected</returns>
         public static string GetUserAnswer(QuizCard quiz)
         {
-            int indexGuessOfUser = GetIndexOfUserAnswer(quiz);
+            PrintContentsOfLoadedQuiz(quiz);
+            int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return quiz.answers[indexGuessOfUser-1];
         }
 
