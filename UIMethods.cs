@@ -266,5 +266,31 @@
             }
             return true;
         }
+
+        /// <summary>
+        /// method that gets called when a user decides to play a random quiz from the database
+        /// first confirms if there are quizzes available, selects a random quiz, gets a guess 
+        /// from the user. if the guess matches the correct answer, score increments
+        /// removes quiz from database to ensure user does not play repeated quizzes
+        /// NOTE: YOU CAN INVOKE LOGIC IN UIMETHODS
+        /// </summary>
+        /// <param name="quizCardList"></param>
+        public static void UserPlaysRandomQuizCard(List<QuizCard> quizCardList)
+        {
+            while (quizCardList.Count > Constants.NO_QUIZ_IN_DATABASE)
+            {
+                QuizCard selectedQuizCard = Logic.GetRandomQuizCard(quizCardList);
+
+                string guessOfUser = GetUserAnswer(selectedQuizCard);
+
+                bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+
+                int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+
+                PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+
+                Logic.RemoveAlreadyPlayedQuizCard(quizCardList, selectedQuizCard);
+            }
+        }
     }
 }
