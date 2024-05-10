@@ -225,9 +225,11 @@
         public static string GetUserAnswer(QuizCard quiz)
         {
             PrintContentsOfLoadedQuiz(quiz);
+
             int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return quiz.answers[indexGuessOfUser-1];
         }
+
 
         /// <summary>
         /// prints statements depending if user has the correct answer or not

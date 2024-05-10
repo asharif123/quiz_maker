@@ -52,6 +52,7 @@ namespace quiz_maker
         /// <returns>a randomly selected quiz</returns>
         public static QuizCard GetRandomQuizCard(List<QuizCard> quizCardList)
         {
+            List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
             return quizCardList[randomNumber];
         }
@@ -90,6 +91,32 @@ namespace quiz_maker
         public static void RemoveAlreadyPlayedQuizCard(List<QuizCard> quizCardList, QuizCard quizCard)
         {
             quizCardList.RemoveAt(quizCardList.IndexOf(quizCard));
+        }
+
+        /// <summary>
+        /// method that gets called when a user decides to play a random quiz from the database
+        /// first confirms if there are quizzes available, selects a random quiz, gets a guess 
+        /// from the user. if the guess matches the correct answer, score increments
+        /// removes quiz from database to ensure user does not play repeated quizzes
+        /// NOTE: you can invoke UImethods in Logic 
+        /// </summary>
+        /// <param name="quizCardList"></param>
+        public static void UserPlaysRandomQuizCard(List<QuizCard> quizCardList)
+        {
+            while (quizCardList.Count > Constants.NO_QUIZ_IN_DATABASE)
+            {
+                QuizCard selectedQuizCard = GetRandomQuizCard(quizCardList);
+
+                string guessOfUser = UIMethods.GetUserAnswer(selectedQuizCard);
+
+                bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+
+                int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+
+                UIMethods.PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+
+                Logic.RemoveAlreadyPlayedQuizCard(quizCardList, selectedQuizCard);
+            }
         }
     }
 }
