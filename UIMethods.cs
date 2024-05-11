@@ -238,7 +238,7 @@
         /// <param name="quiz">get correct answer from random quiz</param>
         public static void PrintResultInformation(string userGuess, int totalScore, QuizCard quiz)
         {
-            if (Logic.checkIfAnswerIsCorrect(userGuess, quiz))
+            if (Logic.CheckIfAnswerIsCorrect(userGuess, quiz))
             {
                 Console.WriteLine("\nThat is the correct answer!\n");
             }
@@ -285,7 +285,7 @@
 
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
-                int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                int totalUserScore = Logic.GetUserTotalScore(guessOfUser, selectedQuizCard);
 
                 PrintResultInformation(guessOfUser, totalUserScore, selectedQuizCard);
 

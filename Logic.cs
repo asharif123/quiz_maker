@@ -61,7 +61,7 @@ namespace quiz_maker
         /// <param name="userGuess">answer user has inputted as correct</param>
         /// <param name="quiz">extract the correct answer</param>
         /// <returns>true if user has the right answer, else false</returns>
-        public static bool checkIfAnswerIsCorrect(string userGuess, QuizCard quiz)
+        public static bool CheckIfAnswerIsCorrect(string userGuess, QuizCard quiz)
         {
             return userGuess == quiz.correctAnswer;
         }
@@ -72,9 +72,9 @@ namespace quiz_maker
         /// <param name="userGuess">argument to determine if user is right or wrong</param>
         /// <param name="quiz">extract the correct answer</param>
         /// <returns>true or false</returns>
-        public static int getUserTotalScore(string userGuess, QuizCard quiz)
+        public static int GetUserTotalScore(string userGuess, QuizCard quiz)
         {
-            if (checkIfAnswerIsCorrect(userGuess, quiz))
+            if (CheckIfAnswerIsCorrect(userGuess, quiz))
             {
                 totalScore += Constants.INCREMENT_SCORE;
             }
