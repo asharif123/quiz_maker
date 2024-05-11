@@ -170,7 +170,7 @@
 
                 string storeCorrectAnswer = StoreCorrectAnswerChosenByUser(answers);
 
-                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer});
+                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
             }
             return listOfQuizCards;
         }
@@ -225,18 +225,20 @@
         public static string GetUserAnswer(QuizCard quiz)
         {
             int indexGuessOfUser = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
-            return quiz.answers[indexGuessOfUser-1];
+            return quiz.answers[indexGuessOfUser - 1];
         }
 
         /// <summary>
         /// prints statements depending if user has the correct answer or not
+        /// NOTE: invoking Logic.checkifAnswerIsCorrect in UIMethod to verify user has correct answer
+        /// You can invoke Logic methods into UI Methods
         /// </summary>
-        /// <param name="ifAnswerIsCorrect">bool variable to determine if user has the right answer</param>
+        /// <param name="userGuess">guess of user</param>
         /// <param name="totalScore">get user's total score</param>
         /// <param name="quiz">get correct answer from random quiz</param>
-        public static void PrintResultInformation(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
+        public static void PrintResultInformation(string userGuess, int totalScore, QuizCard quiz)
         {
-            if (ifAnswerIsCorrect)
+            if (Logic.checkIfAnswerIsCorrect(userGuess, quiz))
             {
                 Console.WriteLine("\nThat is the correct answer!\n");
             }
@@ -283,11 +285,9 @@
 
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
-                bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
-
                 int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
+                PrintResultInformation(guessOfUser, totalUserScore, selectedQuizCard);
 
                 Logic.RemoveAlreadyPlayedQuizCard(quizCardList, selectedQuizCard);
             }

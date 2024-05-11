@@ -19,7 +19,6 @@ namespace quiz_maker
         /// </summary>
         public static void SaveQuizToXML(List<QuizCard> questionsList)
         {
-
             using (FileStream file = File.Create(Constants.PATH))
             {
                 serializer.Serialize(file, questionsList);
