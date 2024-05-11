@@ -224,12 +224,9 @@
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
         public static string GetUserAnswer(QuizCard quiz)
         {
-            PrintContentsOfLoadedQuiz(quiz);
-
             int indexGuessOfUser = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return quiz.answers[indexGuessOfUser-1];
         }
-
 
         /// <summary>
         /// prints statements depending if user has the correct answer or not
@@ -280,6 +277,8 @@
             while (quizCardList.Count > Constants.NO_QUIZ_IN_DATABASE)
             {
                 QuizCard selectedQuizCard = Logic.GetRandomQuizCard(quizCardList);
+
+                PrintContentsOfLoadedQuiz(selectedQuizCard);
 
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
