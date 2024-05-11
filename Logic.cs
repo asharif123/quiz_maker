@@ -52,7 +52,6 @@ namespace quiz_maker
         /// <returns>a randomly selected quiz</returns>
         public static QuizCard GetRandomQuizCard(List<QuizCard> quizCardList)
         {
-            List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
             int randomNumber = pickQuizCardAtRandom.Next(0, quizCardList.Count);
             return quizCardList[randomNumber];
         }
