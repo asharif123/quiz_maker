@@ -266,7 +266,8 @@
 
         /// <summary>
         /// method that gets called when a user decides to play a random quiz from the database
-        /// first confirms if there are quizzes available, selects a random quiz, gets a guess 
+        /// first confirms if there are quizzes available, selects a random quiz, gets a guess
+        /// print the contents of the loaded quiz to the user
         /// from the user. if the guess matches the correct answer, score increments
         /// removes quiz from database to ensure user does not play repeated quizzes
         /// NOTE: YOU CAN INVOKE LOGIC IN UIMETHODS
