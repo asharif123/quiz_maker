@@ -28,14 +28,14 @@
         /// <param name="minValue">smallest value to start from</param>
         /// <param name="maxValue">largest value to end at</param>
         /// <returns>converted integer based off string input</returns>
-        public static int ConvertUserInputToInteger(int minValue, int maxValue)
+        public static int ValidateUserInputIsInteger(int minValue, int maxValue)
         {
             bool notValidInput = true;
             int convertToInteger = 0;
 
             while (notValidInput)
             {
-                string userInput = UIMethods.GetUserInput();
+                string userInput = GetUserInput();
                 bool isValid = int.TryParse(userInput, out convertToInteger);
 
                 if (!isValid)
@@ -65,7 +65,7 @@
         public static int AskNumberOfQuestions()
         {
             Console.WriteLine($"\nHow many questions would you like to enter? You can enter up to {Constants.MAX_QUESTIONS} questions at a time.\n");
-            int numberOfQuestions = ConvertUserInputToInteger(Constants.MIN_QUESTIONS, Constants.MAX_QUESTIONS);
+            int numberOfQuestions = ValidateUserInputIsInteger(Constants.MIN_QUESTIONS, Constants.MAX_QUESTIONS);
             return numberOfQuestions;
         }
 
@@ -108,7 +108,7 @@
         public static int GetIndexOfCorrectAnswer()
         {
             PrintMessageAskingUserForIndices();
-            int indexOfAssignedCorrectAnswer = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
+            int indexOfAssignedCorrectAnswer = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return indexOfAssignedCorrectAnswer;
         }
 
@@ -226,7 +226,7 @@
         {
             PrintContentsOfLoadedQuiz(quiz);
 
-            int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
+            int indexGuessOfUser = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return quiz.answers[indexGuessOfUser-1];
         }
 
