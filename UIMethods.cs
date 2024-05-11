@@ -275,7 +275,7 @@
         /// NOTE: YOU CAN INVOKE LOGIC IN UIMETHODS
         /// </summary>
         /// <param name="quizCardList"></param>
-        public static void UserPlaysRandomQuizCard(List<QuizCard> quizCardList)
+        public static void GenerateRandomQuizCard(List<QuizCard> quizCardList)
         {
             while (quizCardList.Count > Constants.NO_QUIZ_IN_DATABASE)
             {

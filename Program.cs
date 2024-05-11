@@ -39,7 +39,7 @@ namespace quiz_maker
                         break;
                     }
 
-                    UIMethods.UserPlaysRandomQuizCard(listofQuizCards);
+                    UIMethods.GenerateRandomQuizCard(listofQuizCards);
                 }
 
                 if (UIMethods.AskUserToPlayAgain() == false)
