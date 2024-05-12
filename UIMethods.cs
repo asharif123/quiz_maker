@@ -75,7 +75,7 @@
         /// <param name="minValue">minimum number of characters user has to enter</param>
         /// <param name="printStatement">prints statement depending if asking user to enter question or answer</param>
         /// <returns>userinput once user has entered minimum character length</returns>
-        public static string VerifyMinimumLengthOfUserInput(int minValue, string printStatement)
+        public static string VerifyUserInputsMinimumCharacterLength(int minValue, string printStatement)
         {
             bool notValidInput = true;
             string userInput = String.Empty;
@@ -104,7 +104,7 @@
         /// <returns>returns the inputted question</returns>
         public static string InputQuestion()
         {
-            string inputQuestion = VerifyMinimumLengthOfUserInput(Constants.MIN_QUESTION_LENGTH, "question");
+            string inputQuestion = VerifyUserInputsMinimumCharacterLength(Constants.MIN_QUESTION_LENGTH, "question");
             return inputQuestion;
         }
 
@@ -114,7 +114,7 @@
         /// <returns>answers in string format</returns>
         public static string InputAnswer()
         {
-            string inputAnswer = VerifyMinimumLengthOfUserInput(Constants.MIN_ANSWER_LENGTH, "answer");
+            string inputAnswer = VerifyUserInputsMinimumCharacterLength(Constants.MIN_ANSWER_LENGTH, "answer");
             return inputAnswer;
         }
 
