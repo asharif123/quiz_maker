@@ -70,13 +70,41 @@
         }
 
         /// <summary>
+        /// method that verifies user enters appropriate minimum number of characters
+        /// </summary>
+        /// <param name="minValue">minimum number of characters user has to enter</param>
+        /// <param name="printStatement">prints statement depending if asking user to enter question or answer</param>
+        /// <returns>userinput once user has entered minimum character length</returns>
+        public static string VerifyMinimumLengthOfUserInput(int minValue, string printStatement)
+        {
+            bool notValidInput = true;
+            string userInput = String.Empty;
+
+            while (notValidInput)
+            {
+                Console.WriteLine($"\nPlease input your {printStatement}!\n");
+                userInput = Console.ReadLine();
+
+                if (userInput.Length < minValue)
+                {
+                    Console.WriteLine($"\nPlease enter at least {minValue} character(s)!\n");
+                }
+                else
+                {
+                    notValidInput = false;
+                }
+            }
+            return userInput;
+        }
+
+        /// <summary>
         /// asks user to input a string question to be stored as a quiz
+        /// user needs to enter a question having at least 10 characters
         /// </summary>
         /// <returns>returns the inputted question</returns>
         public static string InputQuestion()
         {
-            Console.WriteLine("\nPlease input your question!\n");
-            string inputQuestion = Console.ReadLine();
+            string inputQuestion = VerifyMinimumLengthOfUserInput(Constants.MIN_QUESTION_LENGTH, "question");
             return inputQuestion;
         }
 
@@ -86,7 +114,7 @@
         /// <returns>answers in string format</returns>
         public static string InputAnswer()
         {
-            string inputAnswer = Console.ReadLine();
+            string inputAnswer = VerifyMinimumLengthOfUserInput(Constants.MIN_ANSWER_LENGTH, "answer");
             return inputAnswer;
         }
 
@@ -119,8 +147,6 @@
         public static List<string> StoreAnswersInputtedByUserPerQuestion()
         {
             List<string> answers = new List<string>();
-
-            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
 
             for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
             {
