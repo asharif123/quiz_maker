@@ -259,12 +259,12 @@
         /// NOTE: invoking Logic.checkifAnswerIsCorrect in UIMethod to verify user has correct answer
         /// You can invoke Logic methods into UI Methods
         /// </summary>
-        /// <param name="userGuess">guess of user</param>
+        /// <param name="ifAnswerIsCorrect">verifies user has entered correct answer</param>
         /// <param name="totalScore">get user's total score</param>
         /// <param name="quiz">get correct answer from random quiz</param>
-        public static void PrintResultInformation(string userGuess, int totalScore, QuizCard quiz)
+        public static void PrintResultInformation(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
         {
-            if (Logic.CheckIfAnswerIsCorrect(userGuess, quiz))
+            if (ifAnswerIsCorrect)
             {
                 Console.WriteLine("\nThat is the correct answer!\n");
             }
@@ -311,9 +311,11 @@
 
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
-                int totalUserScore = Logic.GetUserTotalScore(guessOfUser, selectedQuizCard);
+                bool ifAnswerIsCorrect = Logic.CheckIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                PrintResultInformation(guessOfUser, totalUserScore, selectedQuizCard);
+                int totalUserScore = Logic.GetUserTotalScore(ifAnswerIsCorrect);
+
+                PrintResultInformation(ifAnswerIsCorrect, totalUserScore, selectedQuizCard);
 
                 Logic.RemoveAlreadyPlayedQuizCard(quizCardList, selectedQuizCard);
             }

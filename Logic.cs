@@ -69,12 +69,11 @@ namespace quiz_maker
         /// <summary>
         /// show the user's total score by taking bool argument, use checkIfAnswerIfCorrect method above
         /// </summary>
-        /// <param name="userGuess">argument to determine if user is right or wrong</param>
-        /// <param name="quiz">extract the correct answer</param>
+        /// <param name="ifAnswerIsCorrect">argument to determine if user is right or wrong. calls checkIfUserAnswerIsCorrect</param>
         /// <returns>true or false</returns>
-        public static int GetUserTotalScore(string userGuess, QuizCard quiz)
+        public static int GetUserTotalScore(bool ifAnswerIsCorrect)
         {
-            if (CheckIfAnswerIsCorrect(userGuess, quiz))
+            if (ifAnswerIsCorrect)
             {
                 totalScore += Constants.INCREMENT_SCORE;
             }
