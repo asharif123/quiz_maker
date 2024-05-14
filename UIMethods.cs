@@ -274,9 +274,9 @@
 
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
-                bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                bool answerIfCorrect = Logic.CheckIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
+                int totalUserScore = Logic.GetUserTotalScore(guessOfUser, selectedQuizCard);
 
                 PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
 
