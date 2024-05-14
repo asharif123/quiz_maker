@@ -34,7 +34,7 @@ namespace quiz_maker
                 {
                     List<QuizCard> listofQuizCards = Logic.LoadQuizFromXML();
 
-                    if (UIMethods.GetNumberOfQuizzesInDatabase(listofQuizCards) == Constants.NO_QUIZ_IN_DATABASE)
+                    if (UIMethods.GetNumberOfQuizzesInDatabase(listofQuizCards) == 0)
                     {
                         break;
                     }
