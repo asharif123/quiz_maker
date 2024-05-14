@@ -28,14 +28,14 @@
         /// <param name="minValue">smallest value to start from</param>
         /// <param name="maxValue">largest value to end at</param>
         /// <returns>converted integer based off string input</returns>
-        public static int ValidateUserInputIsInteger(int minValue, int maxValue)
+        public static int ConvertUserInputToInteger(int minValue, int maxValue)
         {
             bool notValidInput = true;
             int convertToInteger = 0;
 
             while (notValidInput)
             {
-                string userInput = GetUserInput();
+                string userInput = UIMethods.GetUserInput();
                 bool isValid = int.TryParse(userInput, out convertToInteger);
 
                 if (!isValid)
@@ -65,46 +65,18 @@
         public static int AskNumberOfQuestions()
         {
             Console.WriteLine($"\nHow many questions would you like to enter? You can enter up to {Constants.MAX_QUESTIONS} questions at a time.\n");
-            int numberOfQuestions = ValidateUserInputIsInteger(Constants.MIN_QUESTIONS, Constants.MAX_QUESTIONS);
+            int numberOfQuestions = ConvertUserInputToInteger(Constants.MIN_QUESTIONS, Constants.MAX_QUESTIONS);
             return numberOfQuestions;
         }
 
         /// <summary>
-        /// method that verifies user enters appropriate minimum number of characters
-        /// </summary>
-        /// <param name="minValue">minimum number of characters user has to enter</param>
-        /// <param name="printStatement">prints statement depending if asking user to enter question or answer</param>
-        /// <returns>userinput once user has entered minimum character length</returns>
-        public static string VerifyUserInputsMinimumCharacterLength(int minValue, string printStatement)
-        {
-            bool notValidInput = true;
-            string userInput = String.Empty;
-
-            while (notValidInput)
-            {
-                Console.WriteLine($"\nPlease input your {printStatement}!\n");
-                userInput = Console.ReadLine();
-
-                if (userInput.Length < minValue)
-                {
-                    Console.WriteLine($"\nPlease enter at least {minValue} character(s)!\n");
-                }
-                else
-                {
-                    notValidInput = false;
-                }
-            }
-            return userInput;
-        }
-
-        /// <summary>
         /// asks user to input a string question to be stored as a quiz
-        /// user needs to enter a question having at least 10 characters
         /// </summary>
         /// <returns>returns the inputted question</returns>
         public static string InputQuestion()
         {
-            string inputQuestion = VerifyUserInputsMinimumCharacterLength(Constants.MIN_QUESTION_LENGTH, "question");
+            Console.WriteLine("\nPlease input your question!\n");
+            string inputQuestion = Console.ReadLine();
             return inputQuestion;
         }
 
@@ -114,7 +86,7 @@
         /// <returns>answers in string format</returns>
         public static string InputAnswer()
         {
-            string inputAnswer = VerifyUserInputsMinimumCharacterLength(Constants.MIN_ANSWER_LENGTH, "answer");
+            string inputAnswer = Console.ReadLine();
             return inputAnswer;
         }
 
@@ -136,7 +108,7 @@
         public static int GetIndexOfCorrectAnswer()
         {
             PrintMessageAskingUserForIndices();
-            int indexOfAssignedCorrectAnswer = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
+            int indexOfAssignedCorrectAnswer = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
             return indexOfAssignedCorrectAnswer;
         }
 
@@ -147,6 +119,8 @@
         public static List<string> StoreAnswersInputtedByUserPerQuestion()
         {
             List<string> answers = new List<string>();
+
+            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
 
             for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
             {
@@ -196,7 +170,7 @@
 
                 string storeCorrectAnswer = StoreCorrectAnswerChosenByUser(answers);
 
-                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer });
+                listOfQuizCards.Add(new QuizCard { question = questionToAdd, answers = answers, correctAnswer = storeCorrectAnswer});
             }
             return listOfQuizCards;
         }
@@ -209,7 +183,7 @@
         /// <returns>number of quizzes in database</returns>
         public static int GetNumberOfQuizzesInDatabase(List<QuizCard> quizCards)
         {
-            if (quizCards.Count == Constants.NO_QUIZ_IN_DATABASE)
+            if (quizCards.Count == 0)
             {
                 Console.WriteLine("\nThere are no quizzes in the database, please create at least one!\n");
             }
@@ -250,16 +224,17 @@
         /// <returns>the user's guess once he has chosen an appropriate index</returns>        
         public static string GetUserAnswer(QuizCard quiz)
         {
-            int indexGuessOfUser = ValidateUserInputIsInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
-            return quiz.answers[indexGuessOfUser - 1];
+            PrintContentsOfLoadedQuiz(quiz);
+
+            int indexGuessOfUser = ConvertUserInputToInteger(Constants.MIN_ANSWERS, Constants.MAX_ANSWERS);
+            return quiz.answers[indexGuessOfUser-1];
         }
+
 
         /// <summary>
         /// prints statements depending if user has the correct answer or not
-        /// NOTE: invoking Logic.checkifAnswerIsCorrect in UIMethod to verify user has correct answer
-        /// You can invoke Logic methods into UI Methods
         /// </summary>
-        /// <param name="ifAnswerIsCorrect">verifies user has entered correct answer</param>
+        /// <param name="ifAnswerIsCorrect">bool variable to determine if user has the right answer</param>
         /// <param name="totalScore">get user's total score</param>
         /// <param name="quiz">get correct answer from random quiz</param>
         public static void PrintResultInformation(bool ifAnswerIsCorrect, int totalScore, QuizCard quiz)
@@ -294,28 +269,25 @@
 
         /// <summary>
         /// method that gets called when a user decides to play a random quiz from the database
-        /// first confirms if there are quizzes available, selects a random quiz, gets a guess
-        /// print the contents of the loaded quiz to the user
+        /// first confirms if there are quizzes available, selects a random quiz, gets a guess 
         /// from the user. if the guess matches the correct answer, score increments
         /// removes quiz from database to ensure user does not play repeated quizzes
         /// NOTE: YOU CAN INVOKE LOGIC IN UIMETHODS
         /// </summary>
         /// <param name="quizCardList"></param>
-        public static void GenerateRandomQuizCard(List<QuizCard> quizCardList)
+        public static void UserPlaysRandomQuizCard(List<QuizCard> quizCardList)
         {
-            while (quizCardList.Count > Constants.NO_QUIZ_IN_DATABASE)
+            while (quizCardList.Count > 0)
             {
                 QuizCard selectedQuizCard = Logic.GetRandomQuizCard(quizCardList);
 
-                PrintContentsOfLoadedQuiz(selectedQuizCard);
-
                 string guessOfUser = GetUserAnswer(selectedQuizCard);
 
-                bool ifAnswerIsCorrect = Logic.CheckIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
+                bool answerIfCorrect = Logic.checkIfAnswerIsCorrect(guessOfUser, selectedQuizCard);
 
-                int totalUserScore = Logic.GetUserTotalScore(ifAnswerIsCorrect);
+                int totalUserScore = Logic.getUserTotalScore(guessOfUser, selectedQuizCard);
 
-                PrintResultInformation(ifAnswerIsCorrect, totalUserScore, selectedQuizCard);
+                PrintResultInformation(answerIfCorrect, totalUserScore, selectedQuizCard);
 
                 Logic.RemoveAlreadyPlayedQuizCard(quizCardList, selectedQuizCard);
             }

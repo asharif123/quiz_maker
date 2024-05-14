@@ -2,15 +2,22 @@
 
 namespace quiz_maker
 {
-    internal class Logic
+    internal static class Logic
     {
-        //method to save quiz takes List<Quiz> and returns it as same type, needs to be static
+        //method to save quiz takes List<Quiz> and returns it as same type
+        //made static so can be accessed anywhere without needing to be instantiated
+        //variable is shared among all instances of class
+        //ex: if method is static and members are non-static, to access non-static
+        //you would need to instantiate method would would be impossible to access in this case
         static XmlSerializer serializer = new XmlSerializer(typeof(List<QuizCard>));
 
         //used to randomly select a question, need to be static
+        //made static so can be accessed anywhere without needing to be instantiated
+        //variable is shared among all instances of class
         static Random pickQuizCardAtRandom = new Random();
 
         //user initially starts at a score of 0, increment by 5 for each correct answer
+        //made static so can be accessed anywhere without needing to be instantiated
         static int totalScore = 0;
 
         /// <summary>
@@ -61,7 +68,7 @@ namespace quiz_maker
         /// <param name="userGuess">answer user has inputted as correct</param>
         /// <param name="quiz">extract the correct answer</param>
         /// <returns>true if user has the right answer, else false</returns>
-        public static bool CheckIfAnswerIsCorrect(string userGuess, QuizCard quiz)
+        public static bool checkIfAnswerIsCorrect(string userGuess, QuizCard quiz)
         {
             return userGuess == quiz.correctAnswer;
         }
@@ -69,11 +76,12 @@ namespace quiz_maker
         /// <summary>
         /// show the user's total score by taking bool argument, use checkIfAnswerIfCorrect method above
         /// </summary>
-        /// <param name="ifAnswerIsCorrect">argument to determine if user is right or wrong. calls checkIfUserAnswerIsCorrect</param>
+        /// <param name="userGuess">argument to determine if user is right or wrong</param>
+        /// <param name="quiz">extract the correct answer</param>
         /// <returns>true or false</returns>
-        public static int GetUserTotalScore(bool ifAnswerIsCorrect)
+        public static int getUserTotalScore(string userGuess, QuizCard quiz)
         {
-            if (ifAnswerIsCorrect)
+            if (checkIfAnswerIsCorrect(userGuess, quiz))
             {
                 totalScore += Constants.INCREMENT_SCORE;
             }
