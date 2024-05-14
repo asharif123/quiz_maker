@@ -14,15 +14,6 @@
         }
 
         /// <summary>
-        /// method that takes in string input from the user
-        /// </summary>
-        /// <returns>string output</returns>
-        public static string GetUserInput()
-        {
-            string userInput = Console.ReadLine();
-            return userInput;
-        }
-        /// <summary>
         /// method that takes user input and uses tryparse to confirm user has entered an integer
         /// </summary>
         /// <param name="minValue">smallest value to start from</param>
@@ -35,7 +26,7 @@
 
             while (notValidInput)
             {
-                string userInput = UIMethods.GetUserInput();
+                string userInput = Console.ReadLine();
                 bool isValid = int.TryParse(userInput, out convertToInteger);
 
                 if (!isValid)
