@@ -72,16 +72,6 @@
         }
 
         /// <summary>
-        /// asks user to enter answers for each question
-        /// </summary>
-        /// <returns>answers in string format</returns>
-        public static string InputAnswer()
-        {
-            string inputAnswer = Console.ReadLine();
-            return inputAnswer;
-        }
-
-        /// <summary>
         /// message asking user to decide which question should be the correct answer by inputting index.
         /// </summary>
         public static void PrintMessageAskingUserForIndices()
@@ -111,11 +101,11 @@
         {
             List<string> answers = new List<string>();
 
-            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers!\n");
+            Console.WriteLine($"\nPlease input your answers, you can enter up to {Constants.MAX_ANSWERS} answers per question!\n");
 
             for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
             {
-                string answersToAdd = InputAnswer();
+                string answersToAdd = Console.ReadLine();
                 answers.Add(answersToAdd.ToLower());
             }
             return answers;
