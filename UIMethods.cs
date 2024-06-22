@@ -16,6 +16,7 @@
 
         /// <summary>
         /// method that takes user input and uses tryparse to confirm user has entered an integer
+        /// initialize convertToInteger to 0 to ensure method returns integer
         /// </summary>
         /// <param name="minValue">smallest value to start from</param>
         /// <param name="maxValue">largest value to end at</param>
