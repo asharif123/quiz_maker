@@ -136,6 +136,7 @@
         /// put answers empty list to reset answers each time user enters a question.
         /// user then decides which answer will be the correct one
         /// each quiz class then gets added to a list of quizzes
+        /// NOTE: first create 2 methods right above to store list of answers and the chosen correct answer
         /// </summary>
         /// <returns>a list of quizzes to be serialized</returns>
         /// 
