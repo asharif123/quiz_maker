@@ -3,7 +3,8 @@
     internal static class UIMethods
     {
         /// <summary>
-        /// takes in an input of c if user wants to create a new quiz, or input any key to play a random quiz
+        /// takes in an input of c if user wants to create a new quiz, 
+        /// or input any key to play a random quiz
         /// </summary>
         /// <returns>a char argument</returns>
         public static char AskUserToCreateOrPlayRandomQuiz()
