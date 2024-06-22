@@ -34,7 +34,7 @@ namespace quiz_maker
 
         /// <summary>
         /// method that loads the list of quizzes from the corresponding xml file
-        /// first, verify if xml file exists then load the quizcards
+        /// first, verify if xml file exists then load the quizcards56y
         /// </summary>
         /// <returns>a list of unserialized quizzes</returns>
         public static List<QuizCard> LoadQuizFromXML()
