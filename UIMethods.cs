@@ -108,7 +108,16 @@
             for (int numberOfAnswers = 0; numberOfAnswers < Constants.MAX_ANSWERS; numberOfAnswers++)
             {
                 string answersToAdd = Console.ReadLine();
-                answers.Add(answersToAdd.ToLower());
+
+                if (answersToAdd.Length > 0)
+                {
+                    answers.Add(answersToAdd.ToLower());
+                }
+                else
+                {
+                    Console.WriteLine("\nPlease enter an answer having at least one character!\n");
+                    numberOfAnswers = 0;
+                }
             }
             return answers;
         }
